@@ -88,7 +88,7 @@ public abstract class Character {
 
 	public static int decrementStat()
 	{
-		
+		//What do I put in here?
 		return 0;
 	}
 
