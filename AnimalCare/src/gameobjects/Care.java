@@ -1,5 +1,5 @@
 package gameobjects;
 
-public class Care {
+public interface Care {
 
 }
