@@ -86,10 +86,12 @@ public abstract class Character {
 		this.daysAlive = daysAlive;
 	}
 
-	public static int decrementStat()
+	public static int decrementStat(int statType)
 	{
 		//What do I put in here??
-		return 0;
+		statType--;
+		return statType;
+		
 	}
 
 }
