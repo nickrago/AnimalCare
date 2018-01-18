@@ -1,6 +1,6 @@
 package gameobjects;
 
-public abstract class Character {
+public abstract class Character implements Care {
 	private String charName;
 	private String charGreeting;
 	private String charImgPath;
