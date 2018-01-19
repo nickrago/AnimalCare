@@ -5,5 +5,6 @@ package backend;
 */
 public class Utilities
 {
-
+	public static String[] greetings= {"","","","",""};
+	public static String[] names= {"","","","",""};
 }
