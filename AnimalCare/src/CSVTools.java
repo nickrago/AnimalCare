@@ -49,5 +49,9 @@ public class CSVTools {
 		{	
 			String line = br.readLine();
 		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }
