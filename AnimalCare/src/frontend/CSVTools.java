@@ -58,7 +58,7 @@ public class CSVTools {
 				String[] info = line.split(",");
 				//implement for each i in info, add to game character
 				//GameCharacter newCharacter = new GameCharacter(info);
-				//pets.add(newCharacter);
+				//pets.add(newCharacter); 
 				line = br.readLine();
 			}
 		}
