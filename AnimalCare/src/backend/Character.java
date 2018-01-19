@@ -1,6 +1,6 @@
 package backend;
 
-public abstract class Character implements Care
+public class Character
 {
 	private String charName;
 	private String charGreeting;
