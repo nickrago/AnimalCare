@@ -1,4 +1,4 @@
-package gameobjects;
+package backend;
 
 public abstract class Character implements Care {
 	private String charName;
