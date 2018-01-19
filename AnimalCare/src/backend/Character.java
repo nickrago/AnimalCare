@@ -11,18 +11,31 @@ public class Character
 	private int charHealth;
 	private int charHunger;
 	private int charCleanliness;
-	private String[] greetingArray;
 	private int daysAlive;
 	//this constructor is for making NEW CHARACTERS.
-	public Character(String charName, String charGreeting, String[] greetingArray) 
+	public Character(String charName) 
 	{
 		this.charName=charName;
-		this.charGreeting=charGreeting;
+		for(int i=0;i<Utilities.names.length;i++)
+		{
+			if(charName.equals(Utilities.names[i]))
+			{
+				this.charGreeting=Utilities.greetings[i];
+				break;
+			}
+		}
 		this.charImgPath=charName+".png";
 		this.charHealth=100;
 		this.charHunger=100;
 		this.charCleanliness=100;
 		this.daysAlive=0;
+	}
+	//this constructor is for LOADING CHARACTERS.
+	public Character(String charName, String charGreeting)
+	{
+		this.charName=charName;
+		this.charGreeting=charGreeting;
+		this.charImgPath=charName+".png";
 	}
 	public String getCharName()
 	{
@@ -73,13 +86,6 @@ public class Character
 	public void setCharCleanliness(int charCleanliness)
 	{
 		this.charCleanliness = charCleanliness;
-	}
-	public String[] getGreetingArray()
-	{
-		return greetingArray;
-	}
-	public void setGreetingArray(String[] greetingArray) {
-		this.greetingArray = greetingArray;
 	}
 	public int getDaysAlive()
 	{
