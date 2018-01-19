@@ -8,6 +8,7 @@ public class Character
 	private String charName;
 	private String charGreeting;
 	private String charImgPath;
+	private static String backgroundImgPath;
 	private int charHealth;
 	private int charHunger;
 	private int charCleanliness;
@@ -36,6 +37,7 @@ public class Character
 		this.charName=charName;
 		this.charGreeting=charGreeting;
 		this.charImgPath=charName+".png";
+		this.backgroundImgPath=charName+"BGImg"+".png";
 	}
 	public String getCharName()
 	{
@@ -95,8 +97,8 @@ public class Character
 	{
 		this.daysAlive = daysAlive;
 	}
-	public static void getImageBackground()
+	public static String getImageBackground()
 	{
-		//gets the background image for each character.
+		return backgroundImgPath;
 	}
 }
