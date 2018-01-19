@@ -9,6 +9,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+
+import backend.GameCharacter;
+
 import java.util.ArrayList;
 
 public class CSVTools {
@@ -53,8 +56,9 @@ public class CSVTools {
 			while (line != null)
 			{
 				String[] info = line.split(",");
-				Character newCharacter = new Character(info);
-				pets.add(newCharacter);
+				//implement for each i in info, add to game character
+				//GameCharacter newCharacter = new GameCharacter(info);
+				//pets.add(newCharacter);
 				line = br.readLine();
 			}
 		}
