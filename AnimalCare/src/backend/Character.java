@@ -95,4 +95,8 @@ public class Character
 	{
 		this.daysAlive = daysAlive;
 	}
+	public static void getImageBackground()
+	{
+		//gets the background image for each character.
+	}
 }
