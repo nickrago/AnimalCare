@@ -49,10 +49,20 @@ public class CSVTools {
 		try(BufferedReader br = Files.newBufferedReader(path,StandardCharsets.US_ASCII))
 		{	
 			String line = br.readLine();
+			
+			while (line != null)
+			{
+				String[] info = line.split(",");
+				Character newCharacter = new Character(info);
+				pets.add(newCharacter);
+				line = br.readLine();
+			}
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
+		
+		return pets;
 	}
 }
