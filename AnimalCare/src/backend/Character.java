@@ -1,5 +1,8 @@
 package backend;
-
+/*
+*	Authors: Justin Fagan, Amir Hasan, Anis Tarafdar
+*	Description: Character represents the animal that the player cares for.
+*/
 public class Character
 {
 	private String charName;
