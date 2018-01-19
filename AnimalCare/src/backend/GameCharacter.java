@@ -3,7 +3,7 @@ package backend;
 *	Authors: Justin Fagan, Amir Hasan, Anis Tarafdar
 *	Description: Character represents the animal that the player cares for.
 */
-public class Character
+public class GameCharacter
 {
 	private String charName;
 	private String charGreeting;
@@ -14,7 +14,7 @@ public class Character
 	private int charCleanliness;
 	private int daysAlive;
 	//this constructor is for making NEW CHARACTERS.
-	public Character(String charName) 
+	public GameCharacter(String charName) 
 	{
 		this.charName=charName;
 		for(int i=0;i<Utilities.names.length;i++)
@@ -32,7 +32,7 @@ public class Character
 		this.daysAlive=0;
 	}
 	//this constructor is for LOADING CHARACTERS.
-	public Character(String charName, String charGreeting)
+	public GameCharacter(String charName, String charGreeting)
 	{
 		this.charName=charName;
 		this.charGreeting=charGreeting;
