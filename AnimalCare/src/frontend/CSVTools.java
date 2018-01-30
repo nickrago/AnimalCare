@@ -38,6 +38,8 @@ public class CSVTools {
 		for (int row = 1; row < pets.size(); row ++)
 		{
 			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
+			
+			//pull getIsAlive from the backend
 		}
 		
 		pw.write(sb.toString());
@@ -70,7 +72,6 @@ public class CSVTools {
 				GameCharacter newCharacter = new GameCharacter(info);
 				pets.add(newCharacter); 
 				line = br.readLine();
-				
 			}
 		}
 		catch(IOException e)
