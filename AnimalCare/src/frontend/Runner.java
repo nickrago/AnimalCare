@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
+
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -85,7 +87,14 @@ public class Runner extends Application{
 	       
 	       primaryStage.setHeight(500);
 	       primaryStage.setWidth(850);
-      
+	       
+	       //Adds the photo
+	       Image image = new Image("mainScreen.png");
+	       
+	       
+	       
+	       
+	       
 	       //Tells the button what to do when clicked
 	       martha.setOnAction(new EventHandler<ActionEvent>() {
 
