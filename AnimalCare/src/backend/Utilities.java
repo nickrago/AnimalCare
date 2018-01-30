@@ -1,5 +1,5 @@
 package backend;
-/*
+/**
 *	Authors: Justin Fagan, Amir Hasan, Anis Tarafdar
 *	Description: Functions & objects pertaining to the character class. The functions will be used directly by the front end.
 */

@@ -1,7 +1,7 @@
 package backend;
 /**
 *	Authors: Justin Fagan, Amir Hasan, Anis Tarafdar
-*	Description: Character represents the animal that the player cares for.
+*	Description: GameCharacter represents the animal that the player cares for.
 */
 public class GameCharacter
 {
@@ -13,6 +13,8 @@ public class GameCharacter
 	private int charHunger;
 	private int charCleanliness;
 	private int daysAlive;
+	private boolean isAlive;
+	
 	//this constructor is for making NEW CHARACTERS.
 	public GameCharacter(String charName) 
 	{
@@ -31,6 +33,7 @@ public class GameCharacter
 		this.charCleanliness=100;
 		this.daysAlive=0;
 	}
+	
 	//this constructor is for LOADING CHARACTERS.
 	public GameCharacter(String charName, String charGreeting)
 	{
@@ -38,6 +41,7 @@ public class GameCharacter
 		this.charGreeting=charGreeting;
 		this.charImgPath=charName+".png";
 		this.backgroundImgPath=charName+"BGImg"+".png";
+		this.isAlive = true;
 	}
 	public String getCharName()
 	{
@@ -98,5 +102,13 @@ public class GameCharacter
 	public String getImageBackground()
 	{
 		return backgroundImgPath;
+	}
+	public boolean getIsAlive()
+	{
+		return isAlive;
+	}
+	public void setAlive(boolean isAlive)
+	{
+		this.isAlive = isAlive;
 	}
 }
