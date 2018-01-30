@@ -8,7 +8,7 @@ public class GameCharacter
 	private String charName;
 	private String charGreeting;
 	private String charImgPath;
-	private static String backgroundImgPath;
+	private String backgroundImgPath;
 	private int charHealth;
 	private int charHunger;
 	private int charCleanliness;
@@ -55,12 +55,10 @@ public class GameCharacter
 	{
 		this.charGreeting = charGreeting;
 	}
-
 	public String getCharImgPath()
 	{
 		return charImgPath;
 	}
-
 	public void setCharImgPath(String charImgPath)
 	{
 		this.charImgPath = charImgPath;
@@ -97,7 +95,7 @@ public class GameCharacter
 	{
 		this.daysAlive = daysAlive;
 	}
-	public static String getImageBackground()
+	public String getImageBackground()
 	{
 		return backgroundImgPath;
 	}
