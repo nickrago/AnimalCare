@@ -52,6 +52,8 @@ public class CSVTools {
 			pw.append(",");
 		}
 		pw.append("\n");
+		
+		//implement into runner to constantly push information into the csv
 	}
 	
 	public static List<GameCharacter> readCSV(String file)
@@ -68,6 +70,7 @@ public class CSVTools {
 				GameCharacter newCharacter = new GameCharacter(info);
 				pets.add(newCharacter); 
 				line = br.readLine();
+				
 			}
 		}
 		catch(IOException e)
