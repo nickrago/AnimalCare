@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class CSVTools {
 
 	public static PrintWriter pw = null;
-	public static List<Character> pets = new ArrayList<>();
+	public static List<GameCharacter> pets = new ArrayList<>();
 	
 	public static void writeCSV()
 	{
@@ -31,7 +31,14 @@ public class CSVTools {
 		}
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("Character,Current Status,Days Alive,Hygeine Level,Hunger Level,Health Level\n");
+		
+		//headlines
+		sb.append("Character,Alive?,Days Alive,Hygeine Level,Hunger Level,Health Level\n");
+		
+		for (int row = 1; row < pets.size(); row ++)
+		{
+			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
+		}
 		
 		pw.write(sb.toString());
 		//pw.close();
@@ -44,9 +51,10 @@ public class CSVTools {
 			pw.append(s);
 			pw.append(",");
 		}
+		pw.append("\n");
 	}
 	
-	public static List<Character> readCSV(String file)
+	public static List<GameCharacter> readCSV(String file)
 	{
 		Path path = Paths.get(file);
 		try(BufferedReader br = Files.newBufferedReader(path,StandardCharsets.US_ASCII))
@@ -55,10 +63,10 @@ public class CSVTools {
 			
 			while (line != null)
 			{
-				String[] info = line.split(",");
+				String info = line;
 				//implement for each i in info, add to game character
-				//GameCharacter newCharacter = new GameCharacter(info);
-				//pets.add(newCharacter); 
+				GameCharacter newCharacter = new GameCharacter(info);
+				pets.add(newCharacter); 
 				line = br.readLine();
 			}
 		}
