@@ -89,7 +89,7 @@ public class Runner extends Application{
 	       primaryStage.setWidth(850);
 	       
 	       //Adds the photo
-	       Image image = new Image("mainScreen.png");
+	      // Image image = new Image("mainScreen.png");
 	       
 	       
 	       
@@ -149,13 +149,7 @@ public class Runner extends Application{
 	       //Sets the GUI and adds button to the scene
 	       Group g = new Group();
 	       
-	       g.getChildren().add(martha);
-	       g.getChildren().add(amelie);
-	       g.getChildren().add(mimi);
-	       g.getChildren().add(ned);
-	       g.getChildren().add(holden);
-	       
-	       g.getChildren().add(txt);
+	       g.getChildren().addAll(martha, amelie, mimi, ned, holden, txt);
 	       Scene scene = new Scene(g);
 	       
 	       
