@@ -16,7 +16,7 @@ public class GameCharacter
 	private boolean isAlive;
 	
 	//this constructor is for making NEW CHARACTERS.
-	public GameCharacter(String charName) 
+	public GameCharacter(String charName, String type) 
 	{
 		this.charName=charName;
 		for(int i=0;i<Utilities.names.length;i++)
@@ -32,16 +32,16 @@ public class GameCharacter
 		this.charHunger=100;
 		this.charCleanliness=100;
 		this.daysAlive=0;
+		this.isAlive=true;
 	}
 	
 	//this constructor is for LOADING CHARACTERS.
-	public GameCharacter(String charName, String charGreeting)
+	public GameCharacter(String charName)
 	{
 		this.charName=charName;
 		this.charGreeting=charGreeting;
 		this.charImgPath=charName+".png";
 		this.backgroundImgPath=charName+"BGImg"+".png";
-		this.isAlive = true;
 	}
 	public String getCharName()
 	{
