@@ -8,7 +8,7 @@ public class GameCharacter
 	private String charName;
 	private String charGreeting;
 	private String charImgPath;
-	private static String backgroundImgPath;
+	private String backgroundImgPath;
 	private int charHealth;
 	private int charHunger;
 	private int charCleanliness;
@@ -16,7 +16,7 @@ public class GameCharacter
 	private boolean isAlive;
 	
 	//this constructor is for making NEW CHARACTERS.
-	public GameCharacter(String charName) 
+	public GameCharacter(String charName, String type) 
 	{
 		this.charName=charName;
 		for(int i=0;i<Utilities.names.length;i++)
@@ -32,16 +32,16 @@ public class GameCharacter
 		this.charHunger=100;
 		this.charCleanliness=100;
 		this.daysAlive=0;
+		this.isAlive=true;
 	}
 	
 	//this constructor is for LOADING CHARACTERS.
-	public GameCharacter(String charName, String charGreeting)
+	public GameCharacter(String charName)
 	{
 		this.charName=charName;
 		this.charGreeting=charGreeting;
 		this.charImgPath=charName+".png";
 		this.backgroundImgPath=charName+"BGImg"+".png";
-		this.isAlive = true;
 	}
 	public String getCharName()
 	{
@@ -59,12 +59,10 @@ public class GameCharacter
 	{
 		this.charGreeting = charGreeting;
 	}
-
 	public String getCharImgPath()
 	{
 		return charImgPath;
 	}
-
 	public void setCharImgPath(String charImgPath)
 	{
 		this.charImgPath = charImgPath;
@@ -101,14 +99,16 @@ public class GameCharacter
 	{
 		this.daysAlive = daysAlive;
 	}
-	public static String getImageBackground()
+	public String getImageBackground()
 	{
 		return backgroundImgPath;
 	}
-	public boolean getIsAlive() {
+	public boolean getIsAlive()
+	{
 		return isAlive;
 	}
-	public void setAlive(boolean isAlive) {
+	public void setAlive(boolean isAlive)
+	{
 		this.isAlive = isAlive;
 	}
 }
