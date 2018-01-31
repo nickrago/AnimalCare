@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class CSVTools {
 
-	//create toString method in gameCharacter
+	//create toString method in gameCharacter - back end
 	
 	public static List<GameCharacter> pets = new ArrayList<>();
 	
