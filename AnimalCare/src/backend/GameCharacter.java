@@ -19,18 +19,20 @@ public class GameCharacter
 	public GameCharacter(String charName) 
 	{
 		this.charName=charName;
+		int pos=0;
 		for(int i=0;i<Utilities.names.length;i++)
 		{
 			if(charName.equals(Utilities.names[i]))
 			{
 				this.charGreeting=Utilities.greetings[i];
+				pos=i;
 				break;
 			}
 		}
 		this.charImgPath=charName+".png";
-		this.charHealth=100;
-		this.charHunger=100;
-		this.charCleanliness=100;
+		this.charHealth=Utilities.baseHealth[pos];
+		this.charHunger=Utilities.baseHunger[pos];
+		this.charCleanliness=Utilities.baseClean[pos];
 		this.daysAlive=0;
 		this.isAlive=true;
 	}
