@@ -23,10 +23,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import backend.GameCharacter;
+
 public class Runner extends Application{
 
+	static String fileName = "characters.csv";
+	
 	public static void main(String args[]) {
 		launch(args);
+		
+		//Creates the CSV
+		CSVTools.writeCSV(fileName);
+		List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	}
 	
 	public void start(Stage primaryStage) { 
@@ -94,6 +102,8 @@ public class Runner extends Application{
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Martha");
+	        	   
+	        	   //CSVTools.writeToCSV(fileName);
 	           }
 	       });
 	       amelie.setOnAction(new EventHandler<ActionEvent>() {

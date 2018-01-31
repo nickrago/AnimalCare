@@ -17,14 +17,14 @@ import java.util.ArrayList;
 
 public class CSVTools {
 
-	public static PrintWriter pw = null;
 	public static List<GameCharacter> pets = new ArrayList<>();
 	
-	public static void writeCSV()
+	public static void writeCSV(String file)
 	{
+		PrintWriter pw = null; 
 		try
 		{
-			pw = new PrintWriter(new File("currentUser.csv"));
+			pw = new PrintWriter(new File(file));
 		}
 		catch (FileNotFoundException e)
 		{
@@ -38,13 +38,14 @@ public class CSVTools {
 		
 		for (int row = 1; row < pets.size(); row ++)
 		{
-			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
+			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
 			
 			//pull getIsAlive from the backend
+			// + "," + pets.get(row).getIsAlive()
 		}
 		
 		pw.write(sb.toString());
-		//pw.close();
+		pw.close();
 	}
 	
 	public static void writeToCSV(String file, String info)
@@ -68,6 +69,8 @@ public class CSVTools {
 	
 	public static List<GameCharacter> readCSV(String file)
 	{
+		List<GameCharacter> pets = new ArrayList<>();
+		
 		Path path = Paths.get(file);
 		try(BufferedReader br = Files.newBufferedReader(path,StandardCharsets.US_ASCII))
 		{	
