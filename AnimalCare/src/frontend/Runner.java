@@ -81,11 +81,6 @@ public class Runner extends Application{
 	       primaryStage.setHeight(500);
 	       primaryStage.setWidth(850);
 	       
-	       //Adds the photo
-	      // Image image = new Image("mainScreen.png");
-	       
-	       
-	       
 	       
 	       
 	       //Tells the button what to do when clicked
