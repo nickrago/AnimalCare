@@ -6,22 +6,19 @@ package backend;
 public class Utilities
 {
 	public static String[] greetings= {"","","","",""};
-	public static String[] names= {"","","","",""};
-	
+	public static String[] names= {"Amelie","Martha","Holden","Mimi","Ned"};
 	public void feed(GameCharacter c)
 	{
 		int c1=c.getCharHunger();
 		c1+=10;
 		c.setCharHunger(c1);
 	}
-	
 	public void med(GameCharacter c)
 	{
 		int c1=c.getCharHealth();
 		c1+=10;
 		c.setCharHealth(c1);
 	}
-	
 	public void clean(GameCharacter c)
 	{
 		int c1=c.getCharCleanliness();
