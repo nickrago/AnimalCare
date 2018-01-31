@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
+
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -85,7 +87,14 @@ public class Runner extends Application{
 	       
 	       primaryStage.setHeight(500);
 	       primaryStage.setWidth(850);
-      
+	       
+	       //Adds the photo
+	      // Image image = new Image("mainScreen.png");
+	       
+	       
+	       
+	       
+	       
 	       //Tells the button what to do when clicked
 	       martha.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -140,13 +149,7 @@ public class Runner extends Application{
 	       //Sets the GUI and adds button to the scene
 	       Group g = new Group();
 	       
-	       g.getChildren().add(martha);
-	       g.getChildren().add(amelie);
-	       g.getChildren().add(mimi);
-	       g.getChildren().add(ned);
-	       g.getChildren().add(holden);
-	       
-	       g.getChildren().add(txt);
+	       g.getChildren().addAll(martha, amelie, mimi, ned, holden, txt);
 	       Scene scene = new Scene(g);
 	       
 	       
