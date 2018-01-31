@@ -5,3 +5,11 @@
     -fx-background-color: linear-gradient(#61a2b1, #2A5058);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
+
+#gamescreen {
+	-fx-background-image: url("../backgroundimages/mainScreen.PNG");
+	-fx-background-repeat: none;
+	-fx-background-size: stretch;
+	-fx-text-align: center;
+}
+

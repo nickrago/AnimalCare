@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import backend.GameCharacter;
+
 public class Runner extends Application{
 
 	public static void main(String args[]) {
@@ -35,22 +37,28 @@ public class Runner extends Application{
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
 	              
+	       //Creates the game characters as an object to use their functions
+	       GameCharacter marthaObject = new GameCharacter("Martha");
+	       GameCharacter amelieObject = new GameCharacter("Amelie");
+	       GameCharacter mimiObject = new GameCharacter("Mimi");
+	       GameCharacter nedObject = new GameCharacter("Ned");
+	       GameCharacter holdenObject = new GameCharacter("Holden");
+	       
+	       
+	       
 	       //Creates new button
-	       Button martha = new Button();
-	       Button amelie = new Button();
-	       Button mimi = new Button();
-	       Button ned = new Button();
-	       Button holden = new Button();
+	       Button martha = new Button("Choose Martha");
+	       Button amelie = new Button("Choose Amelie");
+	       Button mimi = new Button("Choose Mimi");
+	       Button ned = new Button("Choose Ned");
+	       Button holden = new Button("Choose Holden");
 	       
 	       //Creates text object
 	       Text txt = new Text(0,10,"Button Not Pressed");
 	       
-	       //Sets the text on the button
-	       martha.setText("Choose Martha");
-	       amelie.setText("Choose Amelie");
-	       mimi.setText("Choose Mimi");
-	       ned.setText("Choose Ned");
-	       holden.setText("Choose Holden");
+	       //Creates clickable images
+	       Image marthaImg = new Image(marthaObject.getCharImgPath());
+	       
 	      
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(50);
@@ -87,11 +95,6 @@ public class Runner extends Application{
 	       
 	       primaryStage.setHeight(500);
 	       primaryStage.setWidth(850);
-	       
-	       //Adds the photo
-	      // Image image = new Image("mainScreen.png");
-	       
-	       
 	       
 	       
 	       
@@ -145,17 +148,16 @@ public class Runner extends Application{
 
 	       BorderPane gameScreen = new BorderPane();
 	       gameScreen.setId("gamescreen");
+	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
-	       Group g = new Group();
 	       
-	       g.getChildren().addAll(martha, amelie, mimi, ned, holden, txt);
-	       Scene scene = new Scene(g);
-	       
+	       gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden, txt);
+	       Scene scene = new Scene(gameScreen);
+	       scene.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Shows
 	       primaryStage.setScene(scene);
-	       scene.getStylesheets().add("style.css");
 	       primaryStage.show();
 	   }
 
