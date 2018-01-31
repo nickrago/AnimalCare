@@ -36,7 +36,7 @@ public class GameCharacter
 	}
 	
 	//this constructor is for LOADING CHARACTERS.
-	public GameCharacter(String charName, int charHealth, int charHunger, int charCleanliness)
+	public GameCharacter(String charName, int charHealth, int charHunger, int charCleanliness, String charGreeting)
 	{
 		this.charName=charName;
 		this.charGreeting=charGreeting;
