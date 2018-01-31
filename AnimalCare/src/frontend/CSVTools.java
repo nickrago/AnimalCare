@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 public class CSVTools {
 
+	//create toString method in gameCharacter
+	
 	public static List<GameCharacter> pets = new ArrayList<>();
 	
 	public static void writeCSV(String file)
@@ -79,7 +81,7 @@ public class CSVTools {
 			while (line != null)
 			{
 				String info = line;
-				//implement for each i in info, add to game character
+				
 				GameCharacter newCharacter = new GameCharacter(info);
 				pets.add(newCharacter); 
 				line = br.readLine();

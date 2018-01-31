@@ -103,7 +103,8 @@ public class Runner extends Application{
 	        	   
 	        	   txt.setText("You Have Selected Martha");
 	        	   
-	        	   //CSVTools.writeToCSV(fileName);
+	        	   GameCharacter newGC = new GameCharacter("Martha");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
 	       amelie.setOnAction(new EventHandler<ActionEvent>() {
@@ -113,6 +114,9 @@ public class Runner extends Application{
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Amelie!");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Amelie");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
 	       mimi.setOnAction(new EventHandler<ActionEvent>() {
@@ -122,6 +126,9 @@ public class Runner extends Application{
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Mimi!");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Mimi");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
 	       ned.setOnAction(new EventHandler<ActionEvent>() {
@@ -131,6 +138,9 @@ public class Runner extends Application{
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Ned");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Ned");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
 	       holden.setOnAction(new EventHandler<ActionEvent>() {
@@ -140,6 +150,9 @@ public class Runner extends Application{
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Holden");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Holden");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
 
