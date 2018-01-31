@@ -36,12 +36,21 @@ public class GameCharacter
 	}
 	
 	//this constructor is for LOADING CHARACTERS.
-	public GameCharacter(String charName, int charHealth, int charHunger, int charCleanliness, String charGreeting)
+	public GameCharacter(String charName, int charHealth, int charHunger, int charCleanliness, int daysAlive, boolean isAlive)
 	{
 		this.charName=charName;
-		this.charGreeting=charGreeting;
+		for(int i=0;i<Utilities.names.length;i++)
+		{
+			if(charName.equals(Utilities.names[i]))
+			{
+				this.charGreeting=Utilities.greetings[i];
+				break;
+			}
+		}
 		this.charImgPath=charName+".png";
 		this.backgroundImgPath=charName+"BGImg"+".png";
+		this.daysAlive=daysAlive;
+		this.isAlive=isAlive;
 	}
 	public String getCharName()
 	{
