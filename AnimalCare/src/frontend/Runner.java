@@ -3,8 +3,10 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -12,7 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,12 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.imageio.ImageIO;
-import javax.swing.text.Element;
-import javax.swing.text.html.ImageView;
-
-import backend.GameCharacter;
-
 public class Runner extends Application{
 
 	public static void main(String args[]) {
@@ -41,15 +36,6 @@ public class Runner extends Application{
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
 	              
-	       //Creates the game characters as an object to use their functions
-	       GameCharacter marthaObject = new GameCharacter("Martha");
-	       GameCharacter amelieObject = new GameCharacter("Amelie");
-	       GameCharacter mimiObject = new GameCharacter("Mimi");
-	       GameCharacter nedObject = new GameCharacter("Ned");
-	       GameCharacter holdenObject = new GameCharacter("Holden");
-	       
-	       
-	       
 	       //Creates new button
 	       Button martha = new Button("Choose Martha");
 	       Button amelie = new Button("Choose Amelie");
@@ -58,10 +44,7 @@ public class Runner extends Application{
 	       Button holden = new Button("Choose Holden");
 	       
 	       //Creates text object
-	       Text txt = new Text(0,10,"Button Not Pressed");
-	       
-	       //Creates clickable images
-	       
+	       Text txt = new Text(0,10,"Please select a character");
 	      
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(50);
@@ -154,8 +137,7 @@ public class Runner extends Application{
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
-	       
-	       gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden, txt);
+	       gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
 	       Scene scene = new Scene(gameScreen);
 	       scene.getStylesheets().add("stylesheets/style.css");
 	       
