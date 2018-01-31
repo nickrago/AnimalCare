@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import backend.GameCharacter;
+
 public class Runner extends Application{
 
 	public static void main(String args[]) {
@@ -35,6 +37,15 @@ public class Runner extends Application{
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
 	              
+	       //Creates the game characters as an object to use their functions
+	       GameCharacter marthaObject = new GameCharacter("Martha");
+	       GameCharacter amelieObject = new GameCharacter("Amelie");
+	       GameCharacter mimiObject = new GameCharacter("Mimi");
+	       GameCharacter nedObject = new GameCharacter("Ned");
+	       GameCharacter holdenObject = new GameCharacter("Holden");
+	       
+	       
+	       
 	       //Creates new button
 	       Button martha = new Button("Choose Martha");
 	       Button amelie = new Button("Choose Amelie");
@@ -44,6 +55,10 @@ public class Runner extends Application{
 	       
 	       //Creates text object
 	       Text txt = new Text(0,10,"Button Not Pressed");
+	       
+	       //Creates clickable images
+	       Image marthaImg = new Image(marthaObject.getCharImgPath());
+	       
 	      
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(50);
