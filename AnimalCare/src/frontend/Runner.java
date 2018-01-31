@@ -1,19 +1,19 @@
 package frontend;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+
+import backend.GameCharacter;
 
 import java.awt.Image;
+import java.awt.Label;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,7 +27,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Runner extends Application{
-
+	private String charLabel = "";
+	
 	public static void main(String args[]) {
 		launch(args);
 	}
@@ -46,6 +47,20 @@ public class Runner extends Application{
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
 	      
+	       //Character Scene
+	       BorderPane characterLayout = new BorderPane();
+	       VBox buttonContainer = new VBox(10);
+	       Button feed = new Button("Feed");
+	       Button clean = new Button("Clean");
+	       Button medicate = new Button("Medicate");
+	       
+	       VBox charName = new VBox();
+	       Label name = new Label(charLabel);
+	       buttonContainer.getChildren().addAll(feed, clean, medicate);
+	       characterLayout.setRight(buttonContainer);
+	       Scene nurturePage = new Scene(characterLayout);
+	       nurturePage.getStylesheets().add("stylesheets/NuturePage.css");
+	       
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(50);
 	       martha.setPrefWidth(100);
@@ -85,52 +100,39 @@ public class Runner extends Application{
 	       
 	       
 	       //Tells the button what to do when clicked
-	       martha.setOnAction(new EventHandler<ActionEvent>() {
-
+	       martha.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
 	        	   txt.setText("You Have Selected Martha");
-	           }
+	        	   primaryStage.setScene(nurturePage);
 	       });
-	       amelie.setOnAction(new EventHandler<ActionEvent>() {
-
+	       amelie.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
-	        	   txt.setText("You Have Selected Amelie!");
-	           }
-	       });
-	       mimi.setOnAction(new EventHandler<ActionEvent>() {
-
+	        	   txt.setText("You Have Selected Amelie");
+	        	   primaryStage.setScene(nurturePage);
+	       });	       
+	       
+	       mimi.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
-	        	   txt.setText("You Have Selected Mimi!");
-	           }
+	        	   txt.setText("You Have Selected Martha");
+	        	   primaryStage.setScene(nurturePage);
 	       });
-	       ned.setOnAction(new EventHandler<ActionEvent>() {
-
+	       
+	       ned.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
-	        	   txt.setText("You Have Selected Ned");
-	           }
+	        	   txt.setText("You Have Selected Martha");
+	        	   primaryStage.setScene(nurturePage);
 	       });
-	       holden.setOnAction(new EventHandler<ActionEvent>() {
-
+	       
+	       holden.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
-	        	   txt.setText("You Have Selected Holden");
-	           }
+	        	   txt.setText("You Have Selected Martha");
+	        	   primaryStage.setScene(nurturePage);
 	       });
-
 
 	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
@@ -145,5 +147,9 @@ public class Runner extends Application{
 	       primaryStage.setScene(scene);
 	       primaryStage.show();
 	   }
+	
+	public static void changeScene() {
+		
+	}
 
 }
