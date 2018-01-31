@@ -3,16 +3,16 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,6 +24,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
+import javax.swing.text.Element;
+import javax.swing.text.html.ImageView;
 
 import backend.GameCharacter;
 
@@ -57,7 +61,6 @@ public class Runner extends Application{
 	       Text txt = new Text(0,10,"Button Not Pressed");
 	       
 	       //Creates clickable images
-	       Image marthaImg = new Image(marthaObject.getCharImgPath());
 	       
 	      
 	       //Sets the height and width of the button
@@ -146,7 +149,7 @@ public class Runner extends Application{
 	       });
 
 
-	       BorderPane gameScreen = new BorderPane();
+	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
