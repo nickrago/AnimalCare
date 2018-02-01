@@ -44,6 +44,13 @@ public class Runner extends Application{
 	public void start(Stage primaryStage) { 
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
+	       
+	       //Instances of the characters (Do not delete)
+	       GameCharacter marthaChar = new GameCharacter("Martha");
+	       GameCharacter amelieChar = new GameCharacter("Amelie");
+	       GameCharacter mimiChar = new GameCharacter("Mimi");
+	       GameCharacter nedChar = new GameCharacter("Ned");
+	       GameCharacter holdenChar = new GameCharacter("Holden");
 	              
 	       //Creates new button
 	       Button martha = new Button("Choose Martha");
@@ -66,8 +73,9 @@ public class Runner extends Application{
 	       Label name = new Label(charLabel);
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
 	       characterLayout.setRight(buttonContainer);
+	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
 	       Scene nurturePage = new Scene(characterLayout);
-	       nurturePage.getStylesheets().add("stylesheets/NuturePage.css");
+	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
 	       
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(50);
@@ -112,7 +120,11 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
+<<<<<<< HEAD
+	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+marthaChar.getCharImgPath()+"\")");
+=======
 
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 	        	   primaryStage.setScene(nurturePage);
 
 	        	   
@@ -123,6 +135,15 @@ public class Runner extends Application{
 	       amelie.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
+<<<<<<< HEAD
+	        	   txt.setText("You Have Selected Amelie");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+amelieChar.getCharImgPath()+"\")");
+	        	   primaryStage.setScene(nurturePage);
+	       });	       
+	       
+	       mimi.setOnAction(e-> {
+	    	   
+=======
 	           @Override
 	           public void handle(ActionEvent event) {
 	        	   
@@ -134,7 +155,13 @@ public class Runner extends Application{
 	       });
 	       mimi.setOnAction(new EventHandler<ActionEvent>() {
 
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 	    	   //The on-click operation
+<<<<<<< HEAD
+	        	   txt.setText("You Have Selected Martha");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+mimiChar.getCharImgPath()+"\")");
+	        	   primaryStage.setScene(nurturePage);
+=======
 	           @Override
 	           public void handle(ActionEvent event) {
 	        	   
@@ -144,11 +171,17 @@ public class Runner extends Application{
 	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 	       });
 	       
 	       ned.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
+<<<<<<< HEAD
+	        	   txt.setText("You Have Selected Martha");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+nedChar.getCharImgPath()+"\")");
+	        	   primaryStage.setScene(nurturePage);
+=======
 
 	           @Override
 	           public void handle(ActionEvent event) {
@@ -158,11 +191,17 @@ public class Runner extends Application{
 	        	   GameCharacter newGC = new GameCharacter("Ned");
 	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 	       });
 	       
 	       holden.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
+<<<<<<< HEAD
+	        	   txt.setText("You Have Selected Martha");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+holdenChar.getCharImgPath()+"\")");
+	        	   primaryStage.setScene(nurturePage);
+=======
 
 	           @Override
 	           public void handle(ActionEvent event) {
@@ -172,6 +211,7 @@ public class Runner extends Application{
 	        	   GameCharacter newGC = new GameCharacter("Holden");
 	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 	       });
 
 	       GridPane gameScreen = new GridPane();
