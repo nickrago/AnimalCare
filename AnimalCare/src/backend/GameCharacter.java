@@ -39,7 +39,7 @@ public class GameCharacter
 	//this constructor is for LOADING CHARACTERS.
 	public GameCharacter(String charName, int charHealth, int charHunger, int charCleanliness, int daysAlive, boolean isAlive)
 	{
-		this.charName=charName;
+		this.charName=charName.toLowerCase();
 		for(int i=0;i<Utilities.names.length;i++)
 		{
 			if(charName.equals(Utilities.names[i]))
@@ -48,8 +48,8 @@ public class GameCharacter
 				break;
 			}
 		}
-		this.charImgPath=charName+".png";
-		this.backgroundImgPath=charName+"BGImg"+".png";
+		//this.charImgPath=charName.toLowerCase()+".png";
+		this.charImgPath = "../"+charName+"characterimages/";
 		this.daysAlive=daysAlive;
 		this.isAlive=isAlive;
 

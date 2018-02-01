@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.scene.image.*;
+
 public class Runner extends Application{
 
 	static String fileName = "characters.csv";
@@ -67,6 +69,8 @@ public class Runner extends Application{
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
 	       
+	       Image petImg = new Image("");
+	       ImageView displayPet = new ImageView();
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
 	       characterLayout.setRight(buttonContainer);
