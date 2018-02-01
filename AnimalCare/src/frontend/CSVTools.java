@@ -40,10 +40,7 @@ public class CSVTools {
 		
 		for (int row = 1; row < pets.size(); row ++)
 		{
-			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
-			
-			//pull getIsAlive from the backend
-			// + "," + pets.get(row).getIsAlive()
+			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
 		}
 		
 		pw.write(sb.toString());
@@ -52,6 +49,7 @@ public class CSVTools {
 	
 	public static void writeToCSV(String file, String info)
 	{
+		//writes a new line for each pet
 		try (FileWriter fw = new FileWriter(Paths.get(file).toString(), true);) 
 		{
 			for (String string : info.split(",")) 
@@ -91,7 +89,7 @@ public class CSVTools {
 		{
 			e.printStackTrace();
 		}
-		 
+		
 		return pets;
 	}
 }
