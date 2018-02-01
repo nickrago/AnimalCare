@@ -8,7 +8,6 @@ public class GameCharacter
 	private String charName;
 	private String charGreeting;
 	private String charImgPath;
-	private String backgroundImgPath;
 	private int charHealth;
 	private int charHunger;
 	private int charCleanliness;
@@ -16,7 +15,29 @@ public class GameCharacter
 	private boolean isAlive;
 	
 	//this constructor is for making NEW CHARACTERS.
-	public GameCharacter(String charName, String type) 
+	public GameCharacter(String charName) 
+	{
+		this.charName=charName;
+		int pos=0;
+		for(int i=0;i<Utilities.names.length;i++)
+		{
+			if(charName.equals(Utilities.names[i]))
+			{
+				this.charGreeting=Utilities.greetings[i];
+				pos=i;
+				break;
+			}
+		}
+		this.charImgPath=charName+".png";
+		this.charHealth=Utilities.baseHealth[pos];
+		this.charHunger=Utilities.baseHunger[pos];
+		this.charCleanliness=Utilities.baseClean[pos];
+		this.daysAlive=0;
+		this.isAlive=true;
+	}
+	
+	//this constructor is for LOADING CHARACTERS.
+	public GameCharacter(String charName, int charHealth, int charHunger, int charCleanliness, int daysAlive, boolean isAlive)
 	{
 		this.charName=charName;
 		for(int i=0;i<Utilities.names.length;i++)
@@ -28,20 +49,10 @@ public class GameCharacter
 			}
 		}
 		this.charImgPath=charName+".png";
-		this.charHealth=100;
-		this.charHunger=100;
-		this.charCleanliness=100;
-		this.daysAlive=0;
-		this.isAlive=true;
-	}
-	
-	//this constructor is for LOADING CHARACTERS.
-	public GameCharacter(String charName)
-	{
-		this.charName=charName;
-		this.charGreeting=charGreeting;
-		this.charImgPath=charName+".png";
 		this.backgroundImgPath=charName+"BGImg"+".png";
+		this.daysAlive=daysAlive;
+		this.isAlive=isAlive;
+
 	}
 	public String getCharName()
 	{
@@ -99,10 +110,7 @@ public class GameCharacter
 	{
 		this.daysAlive = daysAlive;
 	}
-	public String getImageBackground()
-	{
-		return backgroundImgPath;
-	}
+	
 	public boolean getIsAlive()
 	{
 		return isAlive;
@@ -110,5 +118,8 @@ public class GameCharacter
 	public void setAlive(boolean isAlive)
 	{
 		this.isAlive = isAlive;
+	}
+	public String toString() { 
+		return "" + this.charName + "," + this.isAlive + "," + this.daysAlive + "," + this.charCleanliness + "," + this.charHunger + "," + this.charHealth;
 	}
 }
