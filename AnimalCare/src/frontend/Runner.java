@@ -1,16 +1,19 @@
 package frontend;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+
+import backend.GameCharacter;
+
+import java.awt.Image;
+import java.awt.Label;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,11 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import backend.GameCharacter;
-
 public class Runner extends Application{
+	private String charLabel = "";
+
 
 	static String fileName = "characters.csv";
+
 	
 	public static void main(String args[]) {
 		launch(args);
@@ -42,22 +46,29 @@ public class Runner extends Application{
 	       primaryStage.setTitle("Hello World!");
 	              
 	       //Creates new button
-	       Button martha = new Button();
-	       Button amelie = new Button();
-	       Button mimi = new Button();
-	       Button ned = new Button();
-	       Button holden = new Button();
+	       Button martha = new Button("Choose Martha");
+	       Button amelie = new Button("Choose Amelie");
+	       Button mimi = new Button("Choose Mimi");
+	       Button ned = new Button("Choose Ned");
+	       Button holden = new Button("Choose Holden");
 	       
 	       //Creates text object
-	       Text txt = new Text(0,10,"Button Not Pressed");
-	       
-	       //Sets the text on the button
-	       martha.setText("Choose Martha");
-	       amelie.setText("Choose Amelie");
-	       mimi.setText("Choose Mimi");
-	       ned.setText("Choose Ned");
-	       holden.setText("Choose Holden");
+	       Text txt = new Text(0,10,"Please select a character");
 	      
+	       //Character Scene
+	       BorderPane characterLayout = new BorderPane();
+	       VBox buttonContainer = new VBox(10);
+	       Button feed = new Button("Feed");
+	       Button clean = new Button("Clean");
+	       Button medicate = new Button("Medicate");
+	       
+	       VBox charName = new VBox();
+	       Label name = new Label(charLabel);
+	       buttonContainer.getChildren().addAll(feed, clean, medicate);
+	       characterLayout.setRight(buttonContainer);
+	       Scene nurturePage = new Scene(characterLayout);
+	       nurturePage.getStylesheets().add("stylesheets/NuturePage.css");
+	       
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(50);
 	       martha.setPrefWidth(100);
@@ -93,22 +104,24 @@ public class Runner extends Application{
 	       
 	       primaryStage.setHeight(500);
 	       primaryStage.setWidth(850);
-      
+	       
+	       
+	       
 	       //Tells the button what to do when clicked
-	       martha.setOnAction(new EventHandler<ActionEvent>() {
-
+	       martha.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
 	        	   txt.setText("You Have Selected Martha");
+
+	        	   primaryStage.setScene(nurturePage);
+
 	        	   
 	        	   GameCharacter newGC = new GameCharacter("Martha");
 	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
-	       amelie.setOnAction(new EventHandler<ActionEvent>() {
-
+	       amelie.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
 	           @Override
 	           public void handle(ActionEvent event) {
@@ -130,10 +143,13 @@ public class Runner extends Application{
 	        	   GameCharacter newGC = new GameCharacter("Mimi");
 	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
-	       });
-	       ned.setOnAction(new EventHandler<ActionEvent>() {
 
+	       });
+	       
+	       ned.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
+
 	           @Override
 	           public void handle(ActionEvent event) {
 	        	   
@@ -143,9 +159,11 @@ public class Runner extends Application{
 	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
-	       holden.setOnAction(new EventHandler<ActionEvent>() {
-
+	       
+	       holden.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
+
 	           @Override
 	           public void handle(ActionEvent event) {
 	        	   
@@ -156,27 +174,22 @@ public class Runner extends Application{
 	           }
 	       });
 
-
-	       BorderPane gameScreen = new BorderPane();
+	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
+	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
-	       Group g = new Group();
-	       
-	       g.getChildren().add(martha);
-	       g.getChildren().add(amelie);
-	       g.getChildren().add(mimi);
-	       g.getChildren().add(ned);
-	       g.getChildren().add(holden);
-	       
-	       g.getChildren().add(txt);
-	       Scene scene = new Scene(g);
-	       
+	       gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
+	       Scene scene = new Scene(gameScreen);
+	       scene.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Shows
 	       primaryStage.setScene(scene);
-	       scene.getStylesheets().add("style.css");
 	       primaryStage.show();
 	   }
+	
+	public static void changeScene() {
+		
+	}
 
 }
