@@ -32,7 +32,7 @@ public class Runner extends Application{
 
 	static String fileName = "characters.csv";
 
-	
+//	
 	public static void main(String args[]) {
 		launch(args);
 		
