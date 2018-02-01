@@ -69,8 +69,7 @@ public class Runner extends Application{
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
 	       
-	       VBox charName = new VBox();
-	       Label name = new Label(charLabel);
+	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
 	       characterLayout.setRight(buttonContainer);
 	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
@@ -120,98 +119,50 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
-<<<<<<< HEAD
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+marthaChar.getCharImgPath()+"\")");
-=======
-
->>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
-	        	   primaryStage.setScene(nurturePage);
-
-	        	   
-	        	   GameCharacter newGC = new GameCharacter("Martha");
-	        	   CSVTools.writeToCSV(fileName, newGC.toString());
-	           }
-	       });
+	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
+	           });
+	       
 	       amelie.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
-<<<<<<< HEAD
 	        	   txt.setText("You Have Selected Amelie");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+amelieChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
 	       });	       
+	      
 	       
-	       mimi.setOnAction(e-> {
-	    	   
-=======
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
-	        	   txt.setText("You Have Selected Amelie!");
-	        	   
-	        	   GameCharacter newGC = new GameCharacter("Amelie");
-	        	   CSVTools.writeToCSV(fileName, newGC.toString());
-	           }
-	       });
-	       mimi.setOnAction(new EventHandler<ActionEvent>() {
+	       mimi.setOnAction(e->{
 
->>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
-	    	   //The on-click operation
-<<<<<<< HEAD
-	        	   txt.setText("You Have Selected Martha");
+	        	   txt.setText("You Have Selected Mimi");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+mimiChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
-=======
-	           @Override
-	           public void handle(ActionEvent event) {
+	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
 	        	   
-	        	   txt.setText("You Have Selected Mimi!");
-	        	   
-	        	   GameCharacter newGC = new GameCharacter("Mimi");
-	        	   CSVTools.writeToCSV(fileName, newGC.toString());
-	           }
-
->>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 	       });
 	       
 	       ned.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
-<<<<<<< HEAD
-	        	   txt.setText("You Have Selected Martha");
+
+	        	   txt.setText("You Have Selected Ned");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+nedChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
-=======
-
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
-	        	   txt.setText("You Have Selected Ned");
-	        	   
 	        	   GameCharacter newGC = new GameCharacter("Ned");
-	        	   CSVTools.writeToCSV(fileName, newGC.toString());
-	           }
->>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
+	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
+	        	   
 	       });
-	       
 	       holden.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
-<<<<<<< HEAD
-	        	   txt.setText("You Have Selected Martha");
+
+	        	   txt.setText("You Have Selected Holden");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+holdenChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
-=======
-
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
-	        	   txt.setText("You Have Selected Holden");
 	        	   
 	        	   GameCharacter newGC = new GameCharacter("Holden");
-	        	   CSVTools.writeToCSV(fileName, newGC.toString());
-	           }
->>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
+	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
+
 	       });
 
 	       GridPane gameScreen = new GridPane();
@@ -228,8 +179,6 @@ public class Runner extends Application{
 	       primaryStage.show();
 	   }
 	
-	public static void changeScene() {
-		
-	}
+
 
 }
