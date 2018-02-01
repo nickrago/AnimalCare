@@ -8,7 +8,6 @@ public class GameCharacter
 	private String charName;
 	private String charGreeting;
 	private String charImgPath;
-	private String backgroundImgPath;
 	private int charHealth;
 	private int charHunger;
 	private int charCleanliness;
@@ -53,6 +52,7 @@ public class GameCharacter
 		this.backgroundImgPath=charName+"BGImg"+".png";
 		this.daysAlive=daysAlive;
 		this.isAlive=isAlive;
+
 	}
 	public String getCharName()
 	{
@@ -110,10 +110,7 @@ public class GameCharacter
 	{
 		this.daysAlive = daysAlive;
 	}
-	public String getImageBackground()
-	{
-		return backgroundImgPath;
-	}
+	
 	public boolean getIsAlive()
 	{
 		return isAlive;
