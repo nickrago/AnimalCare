@@ -28,9 +28,17 @@ import java.util.Scanner;
 
 public class Runner extends Application{
 	private String charLabel = "";
+
+
+	static String fileName = "characters.csv";
+
 	
 	public static void main(String args[]) {
 		launch(args);
+		
+		//Creates the CSV
+		CSVTools.writeCSV(fileName);
+		List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	}
 	
 	public void start(Stage primaryStage) { 
@@ -104,34 +112,66 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
+
 	        	   primaryStage.setScene(nurturePage);
+
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Martha");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
+	           }
 	       });
 	       amelie.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
-	        	   txt.setText("You Have Selected Amelie");
-	        	   primaryStage.setScene(nurturePage);
-	       });	       
-	       
-	       mimi.setOnAction(e-> {
-	    	   
+	           @Override
+	           public void handle(ActionEvent event) {
+	        	   
+	        	   txt.setText("You Have Selected Amelie!");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Amelie");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
+	           }
+	       });
+	       mimi.setOnAction(new EventHandler<ActionEvent>() {
+
 	    	   //The on-click operation
-	        	   txt.setText("You Have Selected Martha");
-	        	   primaryStage.setScene(nurturePage);
+	           @Override
+	           public void handle(ActionEvent event) {
+	        	   
+	        	   txt.setText("You Have Selected Mimi!");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Mimi");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
+	           }
+
 	       });
 	       
 	       ned.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
-	        	   txt.setText("You Have Selected Martha");
-	        	   primaryStage.setScene(nurturePage);
+
+	           @Override
+	           public void handle(ActionEvent event) {
+	        	   
+	        	   txt.setText("You Have Selected Ned");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Ned");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
+	           }
 	       });
 	       
 	       holden.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
-	        	   txt.setText("You Have Selected Martha");
-	        	   primaryStage.setScene(nurturePage);
+
+	           @Override
+	           public void handle(ActionEvent event) {
+	        	   
+	        	   txt.setText("You Have Selected Holden");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Holden");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
+	           }
 	       });
 
 	       GridPane gameScreen = new GridPane();
