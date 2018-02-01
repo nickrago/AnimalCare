@@ -27,8 +27,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Runner extends Application{
-	private String charLabel = "";
-
 
 	static String fileName = "characters.csv";
 
