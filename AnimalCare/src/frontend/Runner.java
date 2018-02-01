@@ -120,6 +120,7 @@ public class Runner extends Application{
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+marthaChar.getCharImgPath()+"\")");
+	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	           });
 	       
@@ -129,6 +130,7 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Amelie");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+amelieChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
+	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
 	       });	       
 	      
 	       
@@ -138,7 +140,6 @@ public class Runner extends Application{
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+mimiChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
-	        	   
 	       });
 	       
 	       ned.setOnAction(e-> {
@@ -148,7 +149,6 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Ned");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+nedChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
-	        	   GameCharacter newGC = new GameCharacter("Ned");
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   
 	       });
@@ -159,8 +159,6 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Holden");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+holdenChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
-	        	   
-	        	   GameCharacter newGC = new GameCharacter("Holden");
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
 
 	       });
