@@ -27,8 +27,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Runner extends Application{
-	private String charLabel = "";
-
 
 	static String fileName = "characters.csv";
 
@@ -148,7 +146,6 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Ned");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+nedChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
-	        	   GameCharacter newGC = new GameCharacter("Ned");
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   
 	       });
@@ -159,8 +156,6 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Holden");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+holdenChar.getCharImgPath()+"\")");
 	        	   primaryStage.setScene(nurturePage);
-	        	   
-	        	   GameCharacter newGC = new GameCharacter("Holden");
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
 
 	       });
