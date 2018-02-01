@@ -1,18 +1,19 @@
 package frontend;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+
+import backend.GameCharacter;
 
 import java.awt.Image;
+import java.awt.Label;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,27 +26,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import backend.GameCharacter;
-
 public class Runner extends Application{
+	private String charLabel = "";
 
+
+	static String fileName = "characters.csv";
+
+	
 	public static void main(String args[]) {
 		launch(args);
+		
+		//Creates the CSV
+		CSVTools.writeCSV(fileName);
+		List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	}
 	
 	public void start(Stage primaryStage) { 
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
 	              
-	       //Creates the game characters as an object to use their functions
-	       GameCharacter marthaObject = new GameCharacter("Martha");
-	       GameCharacter amelieObject = new GameCharacter("Amelie");
-	       GameCharacter mimiObject = new GameCharacter("Mimi");
-	       GameCharacter nedObject = new GameCharacter("Ned");
-	       GameCharacter holdenObject = new GameCharacter("Holden");
-	       
-	       
-	       
 	       //Creates new button
 	       Button martha = new Button("Choose Martha");
 	       Button amelie = new Button("Choose Amelie");
@@ -54,12 +53,22 @@ public class Runner extends Application{
 	       Button holden = new Button("Choose Holden");
 	       
 	       //Creates text object
-	       Text txt = new Text(0,10,"Button Not Pressed");
-	       
-	       //Creates clickable images
-	       Image marthaImg = new Image(marthaObject.getCharImgPath());
-	       
+	       Text txt = new Text(0,10,"Please select a character");
 	      
+	       //Character Scene
+	       BorderPane characterLayout = new BorderPane();
+	       VBox buttonContainer = new VBox(10);
+	       Button feed = new Button("Feed");
+	       Button clean = new Button("Clean");
+	       Button medicate = new Button("Medicate");
+	       
+	       VBox charName = new VBox();
+	       Label name = new Label(charLabel);
+	       buttonContainer.getChildren().addAll(feed, clean, medicate);
+	       characterLayout.setRight(buttonContainer);
+	       Scene nurturePage = new Scene(characterLayout);
+	       nurturePage.getStylesheets().add("stylesheets/NuturePage.css");
+	       
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(50);
 	       martha.setPrefWidth(100);
@@ -99,22 +108,28 @@ public class Runner extends Application{
 	       
 	       
 	       //Tells the button what to do when clicked
-	       martha.setOnAction(new EventHandler<ActionEvent>() {
-
+	       martha.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
-	           @Override
-	           public void handle(ActionEvent event) {
-	        	   
 	        	   txt.setText("You Have Selected Martha");
+
+	        	   primaryStage.setScene(nurturePage);
+
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Martha");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
-	       amelie.setOnAction(new EventHandler<ActionEvent>() {
-
+	       amelie.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
 	           @Override
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Amelie!");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Amelie");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
 	       mimi.setOnAction(new EventHandler<ActionEvent>() {
@@ -124,35 +139,47 @@ public class Runner extends Application{
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Mimi!");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Mimi");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
-	       });
-	       ned.setOnAction(new EventHandler<ActionEvent>() {
 
+	       });
+	       
+	       ned.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
+
 	           @Override
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Ned");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Ned");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
-	       holden.setOnAction(new EventHandler<ActionEvent>() {
-
+	       
+	       holden.setOnAction(e-> {
+	    	   
 	    	   //The on-click operation
+
 	           @Override
 	           public void handle(ActionEvent event) {
 	        	   
 	        	   txt.setText("You Have Selected Holden");
+	        	   
+	        	   GameCharacter newGC = new GameCharacter("Holden");
+	        	   CSVTools.writeToCSV(fileName, newGC.toString());
 	           }
 	       });
 
-
-	       BorderPane gameScreen = new BorderPane();
+	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
-	       
-	       gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden, txt);
+	       gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
 	       Scene scene = new Scene(gameScreen);
 	       scene.getStylesheets().add("stylesheets/style.css");
 	       
@@ -160,5 +187,9 @@ public class Runner extends Application{
 	       primaryStage.setScene(scene);
 	       primaryStage.show();
 	   }
+	
+	public static void changeScene() {
+		
+	}
 
 }
