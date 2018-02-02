@@ -21,7 +21,7 @@ public class CSVTools {
 	
 	public static List<GameCharacter> pets = new ArrayList<>();
 	
-	public static void writeCSV(String file)
+	public static void writeCSV(String file, List<GameCharacter> pets)
 	{
 		PrintWriter pw = null; 
 		try
