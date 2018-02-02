@@ -1,6 +1,7 @@
 package frontend;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
@@ -33,9 +34,10 @@ public class Runner extends Application{
 //	
 	public static void main(String args[]) {
 		launch(args);
+		
 		//Creates the CSV
+		//CSVTools.writeCSV(fileName);
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
-		CSVTools.writeCSV(fileName, pets);
 	}
 	
 	public void start(Stage primaryStage) { 
@@ -90,6 +92,7 @@ public class Runner extends Application{
 	       holden.setPrefWidth(100);
 	       
 	       //Set the location of the button
+	       /*
 	       martha.setLayoutX(50);
 	       martha.setLayoutY(50);
 	       
@@ -104,6 +107,7 @@ public class Runner extends Application{
 	       
 	       holden.setLayoutX(650);
 	       holden.setLayoutY(50);
+	       */
 	       
 	       
 	       primaryStage.setHeight(500);
@@ -116,7 +120,7 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;\"");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	           });
@@ -125,7 +129,7 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Amelie");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;\"");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
 	       });	       
@@ -134,7 +138,7 @@ public class Runner extends Application{
 	       mimi.setOnAction(e->{
 
 	        	   txt.setText("You Have Selected Mimi");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;\"");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
 	       });
@@ -144,7 +148,7 @@ public class Runner extends Application{
 	    	   //The on-click operation
 
 	        	   txt.setText("You Have Selected Ned");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;\"");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   
@@ -157,7 +161,7 @@ public class Runner extends Application{
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
-
+	        	   
 	       });
 
 	       GridPane gameScreen = new GridPane();
@@ -166,7 +170,12 @@ public class Runner extends Application{
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
-	       gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
+	       //gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
+	       gameScreen.add(martha,1,6);
+	       gameScreen.add(amelie,2,6);
+	       gameScreen.add(mimi,3,6);
+	       gameScreen.add(ned,4,6);
+	       gameScreen.add(holden,5,6);
 	       Scene scene = new Scene(gameScreen);
 	       scene.getStylesheets().add("stylesheets/style.css");
 	       
