@@ -1,6 +1,7 @@
 package frontend;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
@@ -52,11 +53,11 @@ public class Runner extends Application{
 	       GameCharacter holdenChar = new GameCharacter("Holden");
 	              
 	       //Creates new button
-	       Button martha = new Button("Choose Martha");
-	       Button amelie = new Button("Choose Amelie");
-	       Button mimi = new Button("Choose Mimi");
-	       Button ned = new Button("Choose Ned");
-	       Button holden = new Button("Choose Holden");
+	       Button martha = new Button("");
+	       Button amelie = new Button("");
+	       Button mimi = new Button("");
+	       Button ned = new Button("");
+	       Button holden = new Button("");
 	       
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
@@ -67,6 +68,7 @@ public class Runner extends Application{
 	       Button feed = new Button("Feed");
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
+	       Button back = new Button("Go Back");
 	       
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
@@ -76,22 +78,23 @@ public class Runner extends Application{
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
 	       
 	       //Sets the height and width of the button
-	       martha.setPrefHeight(50);
-	       martha.setPrefWidth(100);
+	       martha.setPrefHeight(400);
+	       martha.setPrefWidth(165);
 	       
-	       amelie.setPrefHeight(50);
-	       amelie.setPrefWidth(100);
+	       amelie.setPrefHeight(400);
+	       amelie.setPrefWidth(165);
 	       
-	       mimi.setPrefHeight(50);
-	       mimi.setPrefWidth(100);
+	       mimi.setPrefHeight(400);
+	       mimi.setPrefWidth(110);
 	       
-	       ned.setPrefHeight(50);
-	       ned.setPrefWidth(100);
+	       ned.setPrefHeight(400);
+	       ned.setPrefWidth(200);
 	       
-	       holden.setPrefHeight(50);
-	       holden.setPrefWidth(100);
+	       holden.setPrefHeight(400);
+	       holden.setPrefWidth(130);
 	       
 	       //Set the location of the button
+	       /*
 	       martha.setLayoutX(50);
 	       martha.setLayoutY(50);
 	       
@@ -106,6 +109,7 @@ public class Runner extends Application{
 	       
 	       holden.setLayoutX(650);
 	       holden.setLayoutY(50);
+	       */
 	       
 	       
 	       primaryStage.setHeight(500);
@@ -118,7 +122,7 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;\"");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	           });
@@ -127,7 +131,7 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Amelie");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;\"");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
 	       });	       
@@ -136,7 +140,7 @@ public class Runner extends Application{
 	       mimi.setOnAction(e->{
 
 	        	   txt.setText("You Have Selected Mimi");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;\"");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
 	       });
@@ -146,7 +150,7 @@ public class Runner extends Application{
 	    	   //The on-click operation
 
 	        	   txt.setText("You Have Selected Ned");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;\"");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   
@@ -159,7 +163,6 @@ public class Runner extends Application{
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
-
 	       });
 
 	       GridPane gameScreen = new GridPane();
@@ -168,7 +171,12 @@ public class Runner extends Application{
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
-	       gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
+	       //gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
+	       gameScreen.add(martha,1,6);
+	       gameScreen.add(amelie,2,6);
+	       gameScreen.add(mimi,3,6);
+	       gameScreen.add(ned,4,6);
+	       gameScreen.add(holden,5,6);
 	       Scene scene = new Scene(gameScreen);
 	       scene.getStylesheets().add("stylesheets/style.css");
 	       
