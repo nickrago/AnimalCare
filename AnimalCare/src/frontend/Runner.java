@@ -33,7 +33,6 @@ public class Runner extends Application{
 //	
 	public static void main(String args[]) {
 		launch(args);
-		
 		//Creates the CSV
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
 		CSVTools.writeCSV(fileName, pets);

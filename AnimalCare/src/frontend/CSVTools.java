@@ -51,7 +51,7 @@ public class CSVTools {
 	}
 	
 	public static void writeToCSV(String file, String info)
-	{
+	{ 
 		//writes a new line for each pet
 		try (FileWriter fw = new FileWriter(Paths.get(file).toString(), true);) 
 		{
