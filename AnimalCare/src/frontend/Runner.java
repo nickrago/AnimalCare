@@ -77,19 +77,19 @@ public class Runner extends Application{
 	       
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(50);
-	       martha.setPrefWidth(100);
+	       martha.setPrefWidth(165);
 	       
 	       amelie.setPrefHeight(50);
-	       amelie.setPrefWidth(100);
+	       amelie.setPrefWidth(165);
 	       
 	       mimi.setPrefHeight(50);
-	       mimi.setPrefWidth(100);
+	       mimi.setPrefWidth(110);
 	       
 	       ned.setPrefHeight(50);
-	       ned.setPrefWidth(100);
+	       ned.setPrefWidth(200);
 	       
 	       holden.setPrefHeight(50);
-	       holden.setPrefWidth(100);
+	       holden.setPrefWidth(130);
 	       
 	       //Set the location of the button
 	       /*
