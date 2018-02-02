@@ -35,8 +35,8 @@ public class Runner extends Application{
 		launch(args);
 		
 		//Creates the CSV
-		CSVTools.writeCSV(fileName);
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
+		CSVTools.writeCSV(fileName, pets);
 	}
 	
 	public void start(Stage primaryStage) { 
