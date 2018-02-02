@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.scene.image.*;
+
 public class Runner extends Application{
 
 	static String fileName = "characters.csv";
@@ -34,10 +36,9 @@ public class Runner extends Application{
 //	
 	public static void main(String args[]) {
 		launch(args);
-		
 		//Creates the CSV
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
-//		CSVTools.writeCSV(fileName, pets);
+		CSVTools.writeCSV(fileName, pets);
 	}
 	
 	public void start(Stage primaryStage) { 
@@ -162,7 +163,6 @@ public class Runner extends Application{
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
-	        	   
 	       });
 
 	       GridPane gameScreen = new GridPane();
@@ -183,8 +183,16 @@ public class Runner extends Application{
 	       //Shows
 	       primaryStage.setScene(scene);
 	       primaryStage.show();
-	   }
-	
-
-
+	       
+	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work
+	       long timeStep = System.nanoTime() + 180000000000L;
+	       new AnimationTimer() {
+	    	   public void handle(long now) {
+	    		   if (now >timeStep) {
+	    			   timeStep = now + 180000000000L;
+	    			   currentCharacter.daysAlive++;
+	    		   }
+	    	   }
+	       }.start(); 
+	}
 }
