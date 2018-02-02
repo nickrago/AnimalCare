@@ -68,8 +68,6 @@ public class Runner extends Application{
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
 	       
-	       Image petImg = new Image("");
-	       ImageView displayPet = new ImageView();
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
 	       characterLayout.setRight(buttonContainer);
