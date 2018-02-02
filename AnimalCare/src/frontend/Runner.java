@@ -175,8 +175,16 @@ public class Runner extends Application{
 	       //Shows
 	       primaryStage.setScene(scene);
 	       primaryStage.show();
-	   }
-	
-
-
+	       
+	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work
+	       long timeStep = System.nanoTime() + 180000000000L;
+	       new AnimationTimer() {
+	    	   public void handle(long now) {
+	    		   if (now >timeStep) {
+	    			   timeStep = now + 180000000000L;
+	    			   currentCharacter.daysAlive++;
+	    		   }
+	    	   }
+	       }.start(); 
+	}
 }
