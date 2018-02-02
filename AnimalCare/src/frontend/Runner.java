@@ -183,6 +183,6 @@ public class Runner extends Application{
 	    			   currentCharacter.daysAlive++;
 	    		   }
 	    	   }
-	       }.start();
+	       }.start(); 
 	}
 }
