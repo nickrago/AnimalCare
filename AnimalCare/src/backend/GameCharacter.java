@@ -8,6 +8,7 @@ public class GameCharacter
 	private String charName;
 	private String charGreeting;
 	private String charImgPath;
+	private String backgroundImgPath;
 	private int charHealth;
 	private int charHunger;
 	private int charCleanliness;
@@ -29,6 +30,7 @@ public class GameCharacter
 			}
 		}
 		this.charImgPath=charName+".png";
+		this.backgroundImgPath=charName+"BGImg"+".png";
 		this.charHealth=Utilities.baseHealth[pos];
 		this.charHunger=Utilities.baseHunger[pos];
 		this.charCleanliness=Utilities.baseClean[pos];
