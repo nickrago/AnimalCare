@@ -37,8 +37,8 @@ public class Runner extends Application{
 		launch(args);
 		
 		//Creates the CSV
+		CSVTools.writeCSV(fileName);
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
-		CSVTools.writeCSV(fileName, pets);
 	}
 	
 	public void start(Stage primaryStage) { 
@@ -112,7 +112,7 @@ public class Runner extends Application{
 	       
 	       
 	       primaryStage.setHeight(500);
-	       primaryStage.setWidth(850);
+	       primaryStage.setWidth(800);
 	       
 	       
 	       
@@ -121,7 +121,7 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+marthaChar.getCharImgPath()+"\")");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;\"");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	           });
@@ -130,7 +130,7 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Amelie");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+amelieChar.getCharImgPath()+"\")");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;\"");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
 	       });	       
@@ -139,7 +139,7 @@ public class Runner extends Application{
 	       mimi.setOnAction(e->{
 
 	        	   txt.setText("You Have Selected Mimi");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+mimiChar.getCharImgPath()+"\")");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;\"");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
 	       });
@@ -149,7 +149,7 @@ public class Runner extends Application{
 	    	   //The on-click operation
 
 	        	   txt.setText("You Have Selected Ned");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+nedChar.getCharImgPath()+"\")");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;\"");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   
@@ -159,7 +159,7 @@ public class Runner extends Application{
 	    	   //The on-click operation
 
 	        	   txt.setText("You Have Selected Holden");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"../characterimages/"+holdenChar.getCharImgPath()+"\")");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
 
@@ -167,6 +167,7 @@ public class Runner extends Application{
 
 	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
+	       
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
