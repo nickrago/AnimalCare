@@ -52,11 +52,11 @@ public class Runner extends Application{
 	       GameCharacter holdenChar = new GameCharacter("Holden");
 	              
 	       //Creates new button
-	       Button martha = new Button("Choose Martha");
-	       Button amelie = new Button("Choose Amelie");
-	       Button mimi = new Button("Choose Mimi");
-	       Button ned = new Button("Choose Ned");
-	       Button holden = new Button("Choose Holden");
+	       Button martha = new Button("");
+	       Button amelie = new Button("");
+	       Button mimi = new Button("");
+	       Button ned = new Button("");
+	       Button holden = new Button("");
 	       
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
@@ -67,6 +67,7 @@ public class Runner extends Application{
 	       Button feed = new Button("Feed");
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
+	       Button back = new Button("Go Back");
 	       
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
@@ -76,19 +77,19 @@ public class Runner extends Application{
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
 	       
 	       //Sets the height and width of the button
-	       martha.setPrefHeight(50);
+	       martha.setPrefHeight(400);
 	       martha.setPrefWidth(165);
 	       
-	       amelie.setPrefHeight(50);
+	       amelie.setPrefHeight(400);
 	       amelie.setPrefWidth(165);
 	       
-	       mimi.setPrefHeight(50);
+	       mimi.setPrefHeight(400);
 	       mimi.setPrefWidth(110);
 	       
-	       ned.setPrefHeight(50);
+	       ned.setPrefHeight(400);
 	       ned.setPrefWidth(200);
 	       
-	       holden.setPrefHeight(50);
+	       holden.setPrefHeight(400);
 	       holden.setPrefWidth(130);
 	       
 	       //Set the location of the button
