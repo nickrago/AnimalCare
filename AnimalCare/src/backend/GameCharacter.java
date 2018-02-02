@@ -35,7 +35,7 @@ public class GameCharacter
 	//this constructor is for LOADING CHARACTERS.
 	public GameCharacter(String charName, boolean isAlive, int daysAlive, int charCleanliness, int charHunger, int charHealth)
 	{
-		this.charName=charName;
+		this.charName=charName.toLowerCase();
 		for(int i=0;i<Utilities.names.length;i++)
 		{
 			if(charName.equals(Utilities.names[i]))

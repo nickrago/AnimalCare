@@ -21,7 +21,7 @@ public class CSVTools {
 	
 	public static List<GameCharacter> pets = new ArrayList<>();
 	
-	public static void writeCSV(String file)
+	public static void writeCSV(String file, List<GameCharacter> pets)
 	{
 		PrintWriter pw = null; 
 		try
@@ -40,15 +40,18 @@ public class CSVTools {
 		
 		for (int row = 1; row < pets.size(); row ++)
 		{
-			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
+//			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
+			sb.append(pets.get(row).toString());
 		}
 		
 		pw.write(sb.toString());
+		
+		//make sb go back to empty so it writes over the same line instead of going further
 		pw.close();
 	}
 	
 	public static void writeToCSV(String file, String info)
-	{
+	{ 
 		//writes a new line for each pet
 		try (FileWriter fw = new FileWriter(Paths.get(file).toString(), true);) 
 		{
