@@ -12,20 +12,14 @@ public class Utilities
 	public static int[] baseClean= {100, 100, 80, 90, 70};
 	public void feed(GameCharacter c)
 	{
-		int c1=c.getCharHunger();
-		c1+=10;
-		c.setCharHunger(c1);
+		c.changeHunger(10);
 	}
 	public void med(GameCharacter c)
 	{
-		int c1=c.getCharHealth();
-		c1+=10;
-		c.setCharHealth(c1);
+		c.changeHealth(10);
 	}
 	public void clean(GameCharacter c)
 	{
-		int c1=c.getCharCleanliness();
-		c1+=10;
-		c.setCharCleanliness(c1);
+		c.changeCleanliness(10);
 	}
 }

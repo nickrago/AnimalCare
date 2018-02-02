@@ -7,8 +7,6 @@ public class GameCharacter
 {
 	private String charName;
 	private String charGreeting;
-	private String charImgPath;
-	private String backgroundImgPath;
 	private int charHealth;
 	private int charHunger;
 	private int charCleanliness;
@@ -28,8 +26,6 @@ public class GameCharacter
 				break;
 			}
 		}
-		this.charImgPath=charName+".png";
-		this.backgroundImgPath=charName+"BGImg"+".png";
 		this.charHealth=Utilities.baseHealth[pos];
 		this.charHunger=Utilities.baseHunger[pos];
 		this.charCleanliness=Utilities.baseClean[pos];
@@ -48,8 +44,9 @@ public class GameCharacter
 				break;
 			}
 		}
-		this.charImgPath=charName+".png";
-		this.backgroundImgPath=charName+"BGImg"+".png";
+		this.charCleanliness=charCleanliness;
+		this.charHealth=charHealth;
+		this.charHunger=charHunger;
 		this.daysAlive=daysAlive;
 		this.isAlive=isAlive;
 	}
@@ -65,41 +62,29 @@ public class GameCharacter
 	{
 		return charGreeting;
 	}
-	public void setCharGreeting(String charGreeting)
-	{
-		this.charGreeting = charGreeting;
-	}
-	public String getCharImgPath()
-	{
-		return charImgPath;
-	}
-	public void setCharImgPath(String charImgPath)
-	{
-		this.charImgPath = charImgPath;
-	}
 	public int getCharHealth()
 	{
 		return charHealth;
 	}
-	public void setCharHealth(int charHealth)
+	public void changeHealth(int diff)
 	{
-		this.charHealth = charHealth;
+		this.charHealth+=diff;
 	}
 	public int getCharHunger()
 	{
 		return charHunger;
 	}
-	public void setCharHunger(int charHunger)
+	public void changeHunger(int diff)
 	{
-		this.charHunger = charHunger;
+		this.charHunger+=diff;
 	}
 	public int getCharCleanliness()
 	{
 		return charCleanliness;
 	}
-	public void setCharCleanliness(int charCleanliness)
+	public void changeCleanliness(int diff)
 	{
-		this.charCleanliness = charCleanliness;
+		this.charCleanliness+=diff;
 	}
 	public int getDaysAlive()
 	{
@@ -113,7 +98,7 @@ public class GameCharacter
 	{
 		return isAlive;
 	}
-	public void setAlive(boolean isAlive)
+	public void setIsAlive(boolean isAlive)
 	{
 		this.isAlive = isAlive;
 	}
