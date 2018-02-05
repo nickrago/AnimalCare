@@ -67,7 +67,6 @@ public class Runner extends Application{
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
 	       VBox buttonContainer = new VBox(10);
-	       VBox imageContainer = new VBox(2);
 	       Button feed = new Button("Feed");
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
