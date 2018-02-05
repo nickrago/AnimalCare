@@ -17,6 +17,7 @@ import java.awt.Image;
 import java.awt.Label;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -59,20 +60,22 @@ public class Runner extends Application{
 	       Button ned = new Button("");
 	       Button holden = new Button("");
 	       
+	       
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
-	      
+	       	      
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
 	       VBox buttonContainer = new VBox(10);
+	       VBox imageContainer = new VBox(2);
 	       Button feed = new Button("Feed");
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
-	       Button back = new Button("Go Back");
 	       
-	       
+	       imageContainer.getChildren().addAll(new Button("Cut"), new Button("Copy"), new Button("Paste"));
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
 	       characterLayout.setRight(buttonContainer);
+	       characterLayout.setCenter(imageContainer);
 	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
 	       Scene nurturePage = new Scene(characterLayout);
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
