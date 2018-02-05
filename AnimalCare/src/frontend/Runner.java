@@ -1,6 +1,8 @@
 package frontend;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,8 +13,8 @@ import javafx.scene.layout.*;
 
 import backend.GameCharacter;
 
-import java.awt.Image;
-import java.awt.Label;
+import javafx.scene.image.Image;
+import javafx.scene.control.Label;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,6 +44,8 @@ public class Runner extends Application{
 	public void start(Stage primaryStage) { 
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
+	       int dimX = 2000;
+	       int dimY = 2000;
 	       
 	       //Instances of the characters (Do not delete)
 	       GameCharacter marthaChar = new GameCharacter("Martha");
@@ -62,19 +66,27 @@ public class Runner extends Application{
 	      
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
-	       VBox buttonContainer = new VBox(10);
+	       VBox buttonContainer = new VBox(20);
+	       Label name = new Label("");   
+	       HBox characterName = new HBox(20);
+	       characterName.getChildren().add(name);
+	       characterName.setAlignment(Pos.CENTER);
 	       Pane characterDisplay = new Pane();
 	       Button feed = new Button("Feed");
+	       feed.setPrefSize(200, 100);
 	       Button clean = new Button("Clean");
+	       clean.setPrefSize(200, 100);
 	       Button medicate = new Button("Medicate");
+	       medicate.setPrefSize(200, 100);
 	       Button back = new Button("Go Back");
 	       
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
+	       characterLayout.setTop(characterName);
 	       characterLayout.setCenter(characterDisplay);
 	       characterLayout.setRight(buttonContainer);
 	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
-	       Scene nurturePage = new Scene(characterLayout);
+	       Scene nurturePage = new Scene(characterLayout, dimX, dimY);
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
 	       
 	       //Sets the height and width of the button
@@ -124,6 +136,7 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Martha");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	        	   name.setText("Martha");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	           });
@@ -182,7 +195,7 @@ public class Runner extends Application{
 	       gameScreen.add(mimi,3,6);
 	       gameScreen.add(ned,4,6);
 	       gameScreen.add(holden,5,6);
-	       Scene scene = new Scene(gameScreen);
+	       Scene scene = new Scene(gameScreen, dimX, dimY);
 	       scene.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Shows
