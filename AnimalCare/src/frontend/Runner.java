@@ -198,3 +198,14 @@ public class Runner extends Application{
 	       }.start();
 	}
 }
+
+/*
+ URL resource = getClass().getResource("abcd.mp3");
+ MediaPlayer a =new MediaPlayer(new Media(resource.toString()));
+ a.setOnEndOfMedia(new Runnable() {
+       public void run() {
+         a.seek(Duration.ZERO);
+       }
+   });
+  a.play();
+*/
