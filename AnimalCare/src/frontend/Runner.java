@@ -55,6 +55,8 @@ public class Runner extends Application{
 	       GameCharacter mimiChar = new GameCharacter("Mimi");
 	       GameCharacter nedChar = new GameCharacter("Ned");
 	       GameCharacter holdenChar = new GameCharacter("Holden");
+	       
+	       GameCharacter current = new GameCharacter("Martha");
 	              
 	       //Creates new button
 	       Button martha = new Button("");
@@ -150,6 +152,21 @@ public class Runner extends Application{
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
 	       });
 
+	       feed.setOnAction(e->{
+	    	  
+	    	   	current.changeHunger(10);
+	       });
+	       
+	       clean.setOnAction(e->{
+		    	  
+	    	   	current.changeCleanliness(10);
+	       });
+	       
+	       medicate.setOnAction(e->{
+		    	  
+	    	   	current.changeHealth(10);
+	       });
+       
 	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
 	       
