@@ -38,7 +38,7 @@ public class Runner extends Application{
 		launch(args);
 		//Creates the CSV
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
-		CSVTools.writeCSV(fileName, pets);
+		//CSVTools.writeCSV(fileName, pets);
 	}
 	
 	public void start(Stage primaryStage) { 
@@ -92,24 +92,6 @@ public class Runner extends Application{
 	       
 	       holden.setPrefHeight(400);
 	       holden.setPrefWidth(130);
-	       
-	       //Set the location of the button
-	       /*
-	       martha.setLayoutX(50);
-	       martha.setLayoutY(50);
-	       
-	       amelie.setLayoutX(200);
-	       amelie.setLayoutY(50);
-	       
-	       mimi.setLayoutX(350);
-	       mimi.setLayoutY(50);
-	       
-	       ned.setLayoutX(500);
-	       ned.setLayoutY(50);
-	       
-	       holden.setLayoutX(650);
-	       holden.setLayoutY(50);
-	       */
 	       
 	       
 	       primaryStage.setHeight(500);
@@ -183,7 +165,7 @@ public class Runner extends Application{
 	       //Shows
 	       primaryStage.setScene(scene);
 	       primaryStage.show();
-	       
+	       /*
 	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work
 	       long timeStep = System.nanoTime() + 180000000000L;
 	       new AnimationTimer() {
@@ -194,5 +176,6 @@ public class Runner extends Application{
 	    		   }
 	    	   }
 	       }.start(); 
+	       */
 	}
 }
