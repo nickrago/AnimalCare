@@ -15,7 +15,8 @@ import backend.GameCharacter;
 
 import java.util.ArrayList;
 
-public class CSVTools {
+public class CSVTools
+{
 
 	//create toString method in gameCharacter - back end
 	
@@ -30,13 +31,13 @@ public class CSVTools {
 		}
 		catch (FileNotFoundException e)
 		{
-			System.err.println(e);
+			e.printStackTrace();
 		}
 		
 		StringBuilder sb = new StringBuilder();
 		
 		//headlines
-		sb.append("Character,Current Status,Days Alive,Hygeine Level,Hunger Level,Health Level\n");
+		sb.append("Character,Current Status,Days Alive,Hygiene Level,Hunger Level,Health Level\n");
 		
 		for (int row = 1; row < pets.size(); row ++)
 		{
@@ -55,13 +56,7 @@ public class CSVTools {
 		//writes a new line for each pet
 		try (FileWriter fw = new FileWriter(Paths.get(file).toString(), true);) 
 		{
-			for (String string : info.split(",")) 
-			{
-		 		fw.append(string);
-		 		fw.append(',');
-		 	}
-		 	fw.append('\n');
-		 	fw.flush();
+			fw.append("\n"+info);
 		 	fw.close();
 		} 
 		catch (IOException e) 
