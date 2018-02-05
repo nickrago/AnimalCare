@@ -72,10 +72,8 @@ public class Runner extends Application{
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
 	       
-	       imageContainer.getChildren().addAll(new Button("Cut"), new Button("Copy"), new Button("Paste"));
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
 	       characterLayout.setRight(buttonContainer);
-	       characterLayout.setCenter(imageContainer);
 	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
 	       Scene nurturePage = new Scene(characterLayout);
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
