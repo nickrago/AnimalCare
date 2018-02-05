@@ -30,6 +30,7 @@ import javafx.scene.image.*;
 public class Runner extends Application{
 
 	static String fileName = "characters.csv";
+	long timeStep;
 
 //	
 	public static void main(String args[]) {
@@ -186,14 +187,14 @@ public class Runner extends Application{
 	       primaryStage.show();
 	       
 	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work
-	       /*long timeStep = System.nanoTime() + 180000000000L;
+	       long timeStep = System.nanoTime() + 180000000000L;
 	       new AnimationTimer() {
 	    	   public void handle(long now) {
 	    		   if (now >timeStep) {
 	    			   timeStep = now + 180000000000L;
-	    			   currentCharacter.daysAlive++;
+	    			   //currentCharacter.daysAlive++ or whatever code
 	    		   }
 	    	   }
-	       }.start();*/ 
+	       }.start();
 	}
 }
