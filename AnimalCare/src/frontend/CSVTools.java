@@ -19,9 +19,6 @@ public class CSVTools
 {
 
 	//create toString method in gameCharacter - back end
-	
-	public static List<GameCharacter> pets = new ArrayList<>();
-	
 	public static void writeCSV(String file, List<GameCharacter> pets)
 	{
 		PrintWriter pw = null; 
@@ -50,7 +47,6 @@ public class CSVTools
 		//make sb go back to empty so it writes over the same line instead of going further
 		pw.close();
 	}
-	
 	public static void writeToCSV(String file, String info)
 	{ 
 		//writes a new line for each pet
@@ -64,7 +60,6 @@ public class CSVTools
 		 	e.printStackTrace();
 		}
 	}
-	
 	public static List<GameCharacter> readCSV(String file)
 	{
 		List<GameCharacter> pets = new ArrayList<>();
@@ -77,8 +72,13 @@ public class CSVTools
 			while (line != null)
 			{
 				String info = line;
-				
-				GameCharacter newCharacter = new GameCharacter(info);
+				String[] infoArr=info.split(",");
+				boolean isAlive=false;
+				if(infoArr[1].equals("TRUE"))
+				{
+					isAlive=true;
+				}
+				GameCharacter newCharacter=new GameCharacter(infoArr[0],isAlive,Integer.parseInt(infoArr[2]),Integer.parseInt(infoArr[3]),Integer.parseInt(infoArr[4]),Integer.parseInt(infoArr[5]));
 				pets.add(newCharacter); 
 				line = br.readLine();
 			}
@@ -87,7 +87,6 @@ public class CSVTools
 		{
 			e.printStackTrace();
 		}
-		
 		return pets;
 	}
 }
