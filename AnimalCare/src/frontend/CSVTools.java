@@ -74,7 +74,7 @@ public class CSVTools
 				String info = line;
 				String[] infoArr=info.split(",");
 				boolean isAlive=false;
-				if(infoArr[1].equals("TRUE"))
+				if(infoArr[1].toUpperCase().equals("TRUE"))
 				{
 					isAlive=true;
 				}
