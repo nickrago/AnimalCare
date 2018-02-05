@@ -7,9 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import backend.GameCharacter;
 
@@ -65,6 +63,7 @@ public class Runner extends Application{
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
 	       VBox buttonContainer = new VBox(10);
+	       Pane characterDisplay = new Pane();
 	       Button feed = new Button("Feed");
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
@@ -72,6 +71,7 @@ public class Runner extends Application{
 	       
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
+	       characterLayout.setCenter(characterDisplay);
 	       characterLayout.setRight(buttonContainer);
 	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
 	       Scene nurturePage = new Scene(characterLayout);
@@ -123,6 +123,7 @@ public class Runner extends Application{
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
+	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	           });
@@ -185,7 +186,7 @@ public class Runner extends Application{
 	       primaryStage.show();
 	       
 	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work
-	       long timeStep = System.nanoTime() + 180000000000L;
+	       /*long timeStep = System.nanoTime() + 180000000000L;
 	       new AnimationTimer() {
 	    	   public void handle(long now) {
 	    		   if (now >timeStep) {
@@ -193,6 +194,6 @@ public class Runner extends Application{
 	    			   currentCharacter.daysAlive++;
 	    		   }
 	    	   }
-	       }.start(); 
+	       }.start();*/ 
 	}
 }
