@@ -78,19 +78,19 @@ public class Runner extends Application{
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
 	       
 	       //Sets the height and width of the button
-	       martha.setPrefHeight(400);
-	       martha.setPrefWidth(165);
+	       martha.setPrefHeight(1000);
+	       martha.setPrefWidth(250);
 	       
-	       amelie.setPrefHeight(400);
+	       amelie.setPrefHeight(1000);
 	       amelie.setPrefWidth(165);
 	       
-	       mimi.setPrefHeight(400);
+	       mimi.setPrefHeight(1000);
 	       mimi.setPrefWidth(110);
 	       
-	       ned.setPrefHeight(400);
+	       ned.setPrefHeight(1000);
 	       ned.setPrefWidth(200);
 	       
-	       holden.setPrefHeight(400);
+	       holden.setPrefHeight(1000);
 	       holden.setPrefWidth(130);
 	       
 	       //Set the location of the button
