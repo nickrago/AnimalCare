@@ -95,4 +95,18 @@ public class CSVTools {
 		
 		return pets;
 	}
+	
+	public static void clearCSV(String file)
+	{
+		PrintWriter pw = null;
+		try
+		{
+			pw = new PrintWriter(new File(file));
+		}
+		catch (FileNotFoundException e)
+		{
+			System.err.println(e);
+		}
+		pw.close();
+	}
 }
