@@ -8,6 +8,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
+import javafx.scene.media.*;
+import javafx.application.Application;
+import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
+import java.io.File;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
+
 
 import backend.GameCharacter;
 
@@ -20,11 +31,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import javafx.scene.image.*;
 
 public class Runner extends Application{
@@ -41,8 +52,21 @@ public class Runner extends Application{
 	}
 	
 	public void start(Stage primaryStage) { 
+		
+			
+		  
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
+	      
+	       //Starts main music loop
+	       URL resource = getClass().getResource("animalforest.mp3");
+	       MediaPlayer titleScreen =new MediaPlayer(new Media(resource.toString()));
+	       titleScreen.setOnEndOfMedia(new Runnable() {
+	             public void run() {
+	            	 titleScreen.seek(Duration.ZERO);
+	             }
+	         });
+	       titleScreen.play();
 	       
 	       //Instances of the characters (Do not delete)
 	       GameCharacter marthaChar = new GameCharacter("Martha");
@@ -200,12 +224,12 @@ public class Runner extends Application{
 }
 
 /*
- URL resource = getClass().getResource("abcd.mp3");
- MediaPlayer a =new MediaPlayer(new Media(resource.toString()));
- a.setOnEndOfMedia(new Runnable() {
-       public void run() {
-         a.seek(Duration.ZERO);
-       }
-   });
-  a.play();
+URL resource = getClass().getResource("abcd.mp3");
+MediaPlayer a =new MediaPlayer(new Media(resource.toString()));
+a.setOnEndOfMedia(new Runnable() {
+      public void run() {
+        a.seek(Duration.ZERO);
+      }
+  });
+ a.play();
 */
