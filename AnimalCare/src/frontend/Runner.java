@@ -33,6 +33,7 @@ import javafx.scene.image.*;
 public class Runner extends Application{
 
 	static String fileName = "characters.csv";
+	long timeStep;
 
 //	
 	public static void main(String args[]) {
@@ -67,17 +68,21 @@ public class Runner extends Application{
 	       
 	       
 	       //Creates text object
-	       Text txt = new Text(0,10,"Please select a character");
+	       Text txt = new Text(0,10,"");
+	       Text daysAlive = new Text(0,10,"Days Alive: ");
 	       	      
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
 	       VBox buttonContainer = new VBox(10);
+	       VBox leftContainer = new VBox(10);
 	       Button feed = new Button("Feed");
 	       Button clean = new Button("Clean");
 	       Button medicate = new Button("Medicate");
 	       
-	       buttonContainer.getChildren().addAll(feed, clean, medicate);
+	       buttonContainer.getChildren().addAll(feed, clean, medicate, daysAlive);
+	       leftContainer.getChildren().addAll(daysAlive);
 	       characterLayout.setRight(buttonContainer);
+	       characterLayout.setLeft(leftContainer);
 	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
 	       Scene nurturePage = new Scene(characterLayout);
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
@@ -185,17 +190,17 @@ public class Runner extends Application{
 	       //Shows
 	       primaryStage.setScene(scene);
 	       primaryStage.show();
-	       /*
+	       
 	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work
-	       long timeStep = System.nanoTime() + 180000000000L;
+	       timeStep = System.nanoTime() + 180000000000L;
 	       new AnimationTimer() {
 	    	   public void handle(long now) {
 	    		   if (now >timeStep) {
 	    			   timeStep = now + 180000000000L;
-	    			   currentCharacter.daysAlive++;
+	    			   System.out.println("hi");
+	    			   //currentCharacter.daysAlive++ or whatever code
 	    		   }
 	    	   }
-	       }.start(); 
-	       */
+	       }.start();
 	}
 }
