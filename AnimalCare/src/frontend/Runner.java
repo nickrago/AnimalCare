@@ -33,6 +33,7 @@ public class Runner extends Application{
 
 	static String fileName = "characters.csv";
 	long timeStep;
+	int daysAlive = 0;
 
 //	
 	public static void main(String args[]) {
@@ -64,6 +65,7 @@ public class Runner extends Application{
 	       
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
+	       Text days = new Text(0,10, "Days Alive: " + daysAlive);
 	      
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
@@ -74,18 +76,21 @@ public class Runner extends Application{
 	       characterName.setAlignment(Pos.CENTER);
 	       Pane characterDisplay = new Pane();
 	       Button feed = new Button("Feed");
-	       feed.setPrefSize(200, 100);
+	       feed.setPrefSize(150, 100);
 	       Button clean = new Button("Clean");
-	       clean.setPrefSize(200, 100);
+	       clean.setPrefSize(150, 100);
 	       Button medicate = new Button("Medicate");
-	       medicate.setPrefSize(200, 100);
-	       Button back = new Button("Go Back");
+	       medicate.setPrefSize(150, 100);
+	       
+	       VBox daysAliveBox = new VBox(10);
+	       daysAliveBox.getChildren().addAll(days);
 	       
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
 	       characterLayout.setTop(characterName);
 	       characterLayout.setCenter(characterDisplay);
 	       characterLayout.setRight(buttonContainer);
+	       characterLayout.setLeft(daysAliveBox);
 	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
 	       Scene nurturePage = new Scene(characterLayout, dimX, dimY);
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
@@ -93,37 +98,14 @@ public class Runner extends Application{
 	       //Sets the height and width of the button
 	       martha.setPrefHeight(1000);
 	       martha.setPrefWidth(250);
-	       
 	       amelie.setPrefHeight(1000);
 	       amelie.setPrefWidth(165);
-	       
 	       mimi.setPrefHeight(1000);
 	       mimi.setPrefWidth(110);
-	       
 	       ned.setPrefHeight(1000);
 	       ned.setPrefWidth(200);
-	       
 	       holden.setPrefHeight(1000);
 	       holden.setPrefWidth(130);
-	       
-	       //Set the location of the button
-	       /*
-	       martha.setLayoutX(50);
-	       martha.setLayoutY(50);
-	       
-	       amelie.setLayoutX(200);
-	       amelie.setLayoutY(50);
-	       
-	       mimi.setLayoutX(350);
-	       mimi.setLayoutY(50);
-	       
-	       ned.setLayoutX(500);
-	       ned.setLayoutY(50);
-	       
-	       holden.setLayoutX(650);
-	       holden.setLayoutY(50);
-	       */
-	       
 	       
 	       primaryStage.setHeight(500);
 	       primaryStage.setWidth(800);
@@ -190,7 +172,6 @@ public class Runner extends Application{
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
-	       //gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
 	       gameScreen.add(martha,1,6);
 	       gameScreen.add(amelie,2,6);
 	       gameScreen.add(mimi,3,6);
@@ -203,14 +184,15 @@ public class Runner extends Application{
 	       primaryStage.setScene(scene);
 	       primaryStage.show();
 	       
-	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work
+	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work 
 	       timeStep = System.nanoTime() + 180000000000L;
 	       new AnimationTimer() {
 	    	   public void handle(long now) {
 	    		   if (now >timeStep) {
 	    			   timeStep = now + 180000000000L;
-	    			   System.out.println("hi");
-	    			   //currentCharacter.daysAlive++ or whatever code
+	    			   daysAlive++;
+	    			   days.setText("Days Alive: " + daysAlive);
+	    			   System.out.println(daysAlive);
 	    		   }
 	    	   }
 	       }.start();
