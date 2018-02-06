@@ -10,6 +10,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
+import javafx.scene.media.*;
+import javafx.application.Application;
+import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
+import java.io.File;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
 
 import backend.GameCharacter;
 
@@ -25,11 +35,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import javafx.scene.image.*;
 
 public class Runner extends Application{
@@ -49,8 +59,21 @@ public class Runner extends Application{
 	}
 	
 	public void start(Stage primaryStage) { 
+		
+			
+		  
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
+	      
+	       //Starts main music loop
+	       URL resource = getClass().getResource("animalforest.mp3");
+	       MediaPlayer titleScreen =new MediaPlayer(new Media(resource.toString()));
+	       titleScreen.setOnEndOfMedia(new Runnable() {
+	             public void run() {
+	            	 titleScreen.seek(Duration.ZERO);
+	             }
+	         });
+	       titleScreen.play();
 	       int dimX = 2000;
 	       int dimY = 2000;
 	       
@@ -69,7 +92,6 @@ public class Runner extends Application{
 	       Button mimi = new Button("");
 	       Button ned = new Button("");
 	       Button holden = new Button("");
-	       
 	       
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
@@ -115,7 +137,7 @@ public class Runner extends Application{
 	       ned.setPrefWidth(200);
 	       holden.setPrefHeight(1000);
 	       holden.setPrefWidth(130);
-	       
+      
 	       primaryStage.setHeight(500);
 	       primaryStage.setWidth(800);
 	       
@@ -137,7 +159,9 @@ public class Runner extends Application{
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Amelie");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;");
+
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
 	       });	       
@@ -147,7 +171,9 @@ public class Runner extends Application{
 
 	        	   txt.setText("You Have Selected Mimi");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;");
+
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
 	       });
@@ -158,7 +184,9 @@ public class Runner extends Application{
 
 	        	   txt.setText("You Have Selected Ned");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;");
+
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   
@@ -195,18 +223,22 @@ public class Runner extends Application{
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
+
 	       gameScreen.add(martha,1,6);
 	       gameScreen.add(amelie,2,6);
 	       gameScreen.add(mimi,3,6);
 	       gameScreen.add(ned,4,6);
 	       gameScreen.add(holden,5,6);
+
 	       Scene scene = new Scene(gameScreen, dimX, dimY);
+
 	       scene.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Shows
 	       primaryStage.setScene(scene);
 	       primaryStage.show();
 	       
+
 	       //Timer for setting daily events : 60000000000L
 	       timeStep = System.nanoTime() + 60000000000L;
 	       new AnimationTimer() {
@@ -215,8 +247,20 @@ public class Runner extends Application{
 	    			   timeStep = now + 60000000000L;
 	    			   daysAlive+=1;
 	    			   days.setText("Days Alive: " + daysAlive);
+
 	    		   }
 	    	   }
 	       }.start();
 	}
 }
+
+/*
+URL resource = getClass().getResource("abcd.mp3");
+MediaPlayer a =new MediaPlayer(new Media(resource.toString()));
+a.setOnEndOfMedia(new Runnable() {
+      public void run() {
+        a.seek(Duration.ZERO);
+      }
+  });
+ a.play();
+*/

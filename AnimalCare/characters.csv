@@ -1,9 +1,1 @@
-Character,Current Status,Days Alive,Hygeine Level,Hunger Level,Health Level
-Martha,true,0,100,100,110,
-Mimi,true,0,90,100,100,
-Martha,true,0,100,100,110,
-Amelie,true,0,100,120,100,
-Amelie,true,0,100,120,100,
-Martha,true,0,100,100,110,
-Martha,true,0,100,100,110,
-Ned,true,0,70,80,90,
+Character,Current Status,Days Alive,Hygiene Level,Hunger Level,Health Level,

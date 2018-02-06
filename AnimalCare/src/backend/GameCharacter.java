@@ -92,18 +92,18 @@ public class GameCharacter
 	}
 	public void setDaysAlive(int daysAlive)
 	{
-		this.daysAlive = daysAlive;
+		this.daysAlive=daysAlive;
 	}
 	public boolean getIsAlive()
 	{
 		return isAlive;
 	}
-	public void setIsAlive(boolean isAlive)
+	public void changeIsAlive(boolean isAlive)
 	{
-		this.isAlive = isAlive;
+		this.isAlive=isAlive;
 	}
 	public String toString()
 	{ 
-		return "" + this.charName + "," + this.isAlive + "," + this.daysAlive + "," + this.charCleanliness + "," + this.charHunger + "," + this.charHealth;
+		return this.charName + "," + this.isAlive + "," + this.daysAlive + "," + this.charCleanliness + "," + this.charHunger + "," + this.charHealth;
 	}
 }
