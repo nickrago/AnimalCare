@@ -15,6 +15,8 @@ import backend.GameCharacter;
 
 import javafx.scene.image.Image;
 import javafx.scene.control.Label;
+
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -66,7 +68,8 @@ public class Runner extends Application{
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
 	       Text days = new Text(0,10, "Days Alive: " + daysAlive);
-	      
+	       days.setFill(Color.RED);
+	       
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
 	       VBox buttonContainer = new VBox(20);
@@ -76,11 +79,11 @@ public class Runner extends Application{
 	       characterName.setAlignment(Pos.CENTER);
 	       Pane characterDisplay = new Pane();
 	       Button feed = new Button("Feed");
-	       feed.setPrefSize(150, 100);
+	       feed.setPrefSize(200, 100);
 	       Button clean = new Button("Clean");
-	       clean.setPrefSize(150, 100);
+	       clean.setPrefSize(200, 100);
 	       Button medicate = new Button("Medicate");
-	       medicate.setPrefSize(150, 100);
+	       medicate.setPrefSize(200, 100);
 	       
 	       VBox daysAliveBox = new VBox(10);
 	       daysAliveBox.getChildren().addAll(days);
@@ -119,7 +122,6 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Martha");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-	        	   name.setText("Martha");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	           });
@@ -185,11 +187,11 @@ public class Runner extends Application{
 	       primaryStage.show();
 	       
 	       //Timer for setting daily events, Timer is functional but not doing anything yet, needs work 
-	       timeStep = System.nanoTime() + 180000000000L;
+	       timeStep = System.nanoTime() + 60000000000L;
 	       new AnimationTimer() {
 	    	   public void handle(long now) {
 	    		   if (now >timeStep) {
-	    			   timeStep = now + 180000000000L;
+	    			   timeStep = now + 60000000000L;
 	    			   daysAlive++;
 	    			   days.setText("Days Alive: " + daysAlive);
 	    			   System.out.println(daysAlive);
