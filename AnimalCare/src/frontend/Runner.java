@@ -1,34 +1,21 @@
 package frontend;
-import javafx.animation.AnimationTimer;
-import javafx.application.Application;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import java.util.List;
 
 import backend.GameCharacter;
-
-import java.awt.Image;
-import java.awt.Label;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-import javafx.scene.image.*;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Runner extends Application{
 
@@ -48,6 +35,11 @@ public class Runner extends Application{
 	public void start(Stage primaryStage) { 
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
+	       int dimX = 1000;
+	       int dimY = 1000;
+	       
+	       primaryStage.setHeight(1000);
+	       primaryStage.setWidth(1500);
 	       
 	       //Instances of the characters (Do not delete)
 	       GameCharacter marthaChar = new GameCharacter("Martha");
@@ -55,15 +47,13 @@ public class Runner extends Application{
 	       GameCharacter mimiChar = new GameCharacter("Mimi");
 	       GameCharacter nedChar = new GameCharacter("Ned");
 	       GameCharacter holdenChar = new GameCharacter("Holden");
-	       
-	       GameCharacter current = new GameCharacter("Martha");
 	              
 	       //Creates new button
-	       Button martha = new Button("");
-	       Button amelie = new Button("");
-	       Button mimi = new Button("");
-	       Button ned = new Button("");
-	       Button holden = new Button("");
+	       Button martha = new Button("Martha");
+	       Button amelie = new Button("Amelie");
+	       Button mimi = new Button("Mimi");
+	       Button ned = new Button("Ned");
+	       Button holden = new Button("Holden");
 	       
 	       
 	       //Creates text object
@@ -71,45 +61,58 @@ public class Runner extends Application{
 	       	      
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
-	       VBox buttonContainer = new VBox(10);
+	       VBox buttonContainer = new VBox(20);
+	       Label name = new Label("");   
+	       HBox characterName = new HBox(20);
+	       characterName.getChildren().add(name);
+	       characterName.setAlignment(Pos.CENTER);
+	       Pane characterDisplay = new Pane();
 	       Button feed = new Button("Feed");
+	       feed.setPrefSize(200, 100);
 	       Button clean = new Button("Clean");
+	       clean.setPrefSize(200, 100);
 	       Button medicate = new Button("Medicate");
+	       medicate.setPrefSize(200, 100);
+	       Button back = new Button("Go Back");
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
+	       characterLayout.setTop(characterName);
+	       characterLayout.setCenter(characterDisplay);
 	       characterLayout.setRight(buttonContainer);
 	       characterLayout.getStylesheets().add("stylesheets/NurturePage.css");
-	       Scene nurturePage = new Scene(characterLayout);
+	       Scene nurturePage = new Scene(characterLayout, dimX, dimY);
 	       nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
 	       
 	       //Sets the height and width of the button
-	       martha.setPrefHeight(400);
-	       martha.setPrefWidth(165);
+	       martha.setPrefHeight(100);
+	       martha.setPrefWidth(200);
 	       
-	       amelie.setPrefHeight(400);
-	       amelie.setPrefWidth(165);
+	       amelie.setPrefHeight(100);
+	       amelie.setPrefWidth(200);
 	       
-	       mimi.setPrefHeight(400);
-	       mimi.setPrefWidth(110);
+	       mimi.setPrefHeight(100);
+	       mimi.setPrefWidth(200);
 	       
-	       ned.setPrefHeight(400);
+	       ned.setPrefHeight(100);
 	       ned.setPrefWidth(200);
 	       
-	       holden.setPrefHeight(400);
-	       holden.setPrefWidth(130);
+	       holden.setPrefHeight(100);
+	       holden.setPrefWidth(200);
 	       
 	       
-	       primaryStage.setHeight(500);
-	       primaryStage.setWidth(800);
+	      
 	       
 	       
 	       
-	       //Tells the button what to do when clicked
+	     //Tells the button what to do when clicked
 	       martha.setOnAction(e-> {
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
+	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	        	   //iv.setImage(marthaImg);
+	        	   name.setText("Martha");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	           });
@@ -119,6 +122,7 @@ public class Runner extends Application{
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Amelie");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;");
+	        	   characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
 	       });	       
@@ -128,6 +132,7 @@ public class Runner extends Application{
 
 	        	   txt.setText("You Have Selected Mimi");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;");
+	        	   characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
 	       });
@@ -138,6 +143,7 @@ public class Runner extends Application{
 
 	        	   txt.setText("You Have Selected Ned");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;");
+	        	   characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   
@@ -148,37 +154,39 @@ public class Runner extends Application{
 
 	        	   txt.setText("You Have Selected Holden");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
+	        	   characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
 	       });
 
 	       feed.setOnAction(e->{
 	    	  
-	    	   	current.changeHunger(10);
+	    	   	//current.changeHunger(10);
 	       });
 	       
 	       clean.setOnAction(e->{
 		    	  
-	    	   	current.changeCleanliness(10);
+	    	   	//current.changeCleanliness(10);
 	       });
 	       
 	       medicate.setOnAction(e->{
 		    	  
-	    	   	current.changeHealth(10);
+	    	   	//current.changeHealth(10);
+	    	   
 	       });
        
-	       GridPane gameScreen = new GridPane();
+	       AnchorPane gameScreen = new AnchorPane();
 	       gameScreen.setId("gamescreen");
 	       
 	       gameScreen.getStylesheets().add("stylesheets/style.css");
 	       
 	       //Sets the GUI and adds button to the scene
-	       //gameScreen.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
-	       gameScreen.add(martha,1,6);
-	       gameScreen.add(amelie,2,6);
-	       gameScreen.add(mimi,3,6);
-	       gameScreen.add(ned,4,6);
-	       gameScreen.add(holden,5,6);
+	       //grid.getChildren().addAll(martha, amelie, mimi, ned, holden); //, txt);
+	       HBox buttons = new HBox(50, martha, amelie, mimi, ned, holden);
+	       buttons.setPadding(new Insets(0, 10, 10, 10));
+	       
+	       gameScreen.getChildren().addAll(buttons); // Add grid from Example 1-5
+	       AnchorPane.setBottomAnchor(buttons, 10.0);
 	       Scene scene = new Scene(gameScreen);
 	       scene.getStylesheets().add("stylesheets/style.css");
 	       
