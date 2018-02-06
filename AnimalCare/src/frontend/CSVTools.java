@@ -49,7 +49,6 @@ public class CSVTools
 	}
 	public static void writeToCSV(String file, String info)
 	{ 
-		//writes a new line for each pet
 		try (FileWriter fw = new FileWriter(Paths.get(file).toString(), true);) 
 		{
 			fw.append("\n"+info);
@@ -88,5 +87,19 @@ public class CSVTools
 			e.printStackTrace();
 		}
 		return pets;
+	}
+	
+	public static void clearCSV(String file)
+	{
+		PrintWriter pw = null;
+		try
+		{
+			pw = new PrintWriter(new File(file));
+		}
+		catch (FileNotFoundException e)
+		{
+			System.err.println(e);
+		}
+		pw.close();
 	}
 }
