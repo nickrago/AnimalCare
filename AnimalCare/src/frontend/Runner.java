@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -35,14 +36,16 @@ public class Runner extends Application{
 
 	static String fileName = "characters.csv";
 	long timeStep;
-	int daysAlive = 0;
 
 //	
 	public static void main(String args[]) {
 		launch(args);
+		
+		//CSVTools.clearCSV(fileName);
+		
 		//Creates the CSV
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
-		CSVTools.writeCSV(fileName, pets);
+		//CSVTools.writeCSV(fileName, pets);
 	}
 	
 	public void start(Stage primaryStage) { 
@@ -57,6 +60,8 @@ public class Runner extends Application{
 	       GameCharacter mimiChar = new GameCharacter("Mimi");
 	       GameCharacter nedChar = new GameCharacter("Ned");
 	       GameCharacter holdenChar = new GameCharacter("Holden");
+	       
+	       GameCharacter current = new GameCharacter("Martha");
 	              
 	       //Creates new button
 	       Button martha = new Button("");
@@ -64,6 +69,7 @@ public class Runner extends Application{
 	       Button mimi = new Button("");
 	       Button ned = new Button("");
 	       Button holden = new Button("");
+	       
 	       
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
@@ -168,6 +174,21 @@ public class Runner extends Application{
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
 	       });
 
+	       feed.setOnAction(e->{
+	    	  
+	    	   	current.changeHunger(10);
+	       });
+	       
+	       clean.setOnAction(e->{
+		    	  
+	    	   	current.changeCleanliness(10);
+	       });
+	       
+	       medicate.setOnAction(e->{
+		    	  
+	    	   	current.changeHealth(10);
+	       });
+       
 	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
 	       
