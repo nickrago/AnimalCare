@@ -49,7 +49,11 @@ public class Runner extends Application{
 	//static int pos = pets.size() - 1;
 	long timeStep;
 	int daysAlive;
-	boolean
+	boolean amelieSelected = false;
+	boolean marthaSelected = false;
+	boolean holdenSelected = false;
+	boolean mimiSelected = false;
+	boolean nedSelected = false;
 
 //	
 	public static void main(String args[]) {
@@ -158,6 +162,7 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
+	        	   marthaSelected = true;
 	           });
 	       
 	       amelie.setOnAction(e-> {
@@ -170,6 +175,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
+	        	   amelieSelected = true;
 	       });	       
 	      
 	       
@@ -182,6 +188,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
+	        	   mimiSelected = true;
 	       });
 	       
 	       ned.setOnAction(e-> {
@@ -195,6 +202,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
+	        	   nedSelected = true;
 	        	   
 	       });
 	       holden.setOnAction(e-> {
@@ -206,12 +214,22 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
+	        	   holdenSelected = true;
 	       });
 
 	       feed.setOnAction(e->{
 		    	  
 	    	   	Utilities.feed(setCharacter());
 	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
+	    	   	if(marthaSelected == true) {
+	    	   		characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/eat.png\")");
+	    	   	}
+	    	   	if(holdenSelected == true);
+	    	   	if(mimiSelected == true);
+	    	   	if(amelieSelected == true);
+	    	   	if(nedSelected == true);
+	    	   
+	    	   	
 	       });
 	       
 	       clean.setOnAction(e->{
