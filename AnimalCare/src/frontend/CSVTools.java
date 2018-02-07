@@ -36,7 +36,7 @@ public class CSVTools {
 		StringBuilder sb = new StringBuilder();
 		
 		//headlines
-		sb.append("Character,Current Status,Days Alive,Hygeine Level,Hunger Level,Health Level\n");
+		sb.append("Character,Current Status,Days Alive,Hygiene Level,Hunger Level,Health Level\n");
 		
 		for (int row = 1; row < pets.size(); row ++)
 		{
