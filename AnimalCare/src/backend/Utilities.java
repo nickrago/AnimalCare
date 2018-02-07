@@ -10,15 +10,15 @@ public class Utilities
 	public static int[] baseHealth= {100, 110, 80, 100, 90};
 	public static int[] baseHunger= {120, 100, 110, 100, 80};
 	public static int[] baseClean= {100, 100, 80, 90, 70};
-	public void feed(GameCharacter c)
+	public static void feed(GameCharacter c)
 	{
 		c.changeHunger(10);
 	}
-	public void med(GameCharacter c)
+	public static void med(GameCharacter c)
 	{
 		c.changeHealth(10);
 	}
-	public void clean(GameCharacter c)
+	public static void clean(GameCharacter c)
 	{
 		c.changeCleanliness(10);
 	}

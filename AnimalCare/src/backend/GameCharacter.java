@@ -104,6 +104,6 @@ public class GameCharacter
 	}
 	public String toString()
 	{ 
-		return this.charName + "," + this.isAlive + "," + this.daysAlive + "," + this.charCleanliness + "," + this.charHunger + "," + this.charHealth;
+		return this.charName + "," + this.isAlive + "," + this.daysAlive + "," + this.charCleanliness + "," + this.charHunger + "," + this.charHealth + "\n";
 	}
 }

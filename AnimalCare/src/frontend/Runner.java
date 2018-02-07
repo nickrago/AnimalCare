@@ -22,7 +22,7 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
 import backend.GameCharacter;
-
+import backend.Utilities;
 import javafx.scene.image.Image;
 import javafx.scene.control.Label;
 
@@ -45,13 +45,15 @@ import javafx.scene.image.*;
 public class Runner extends Application{
 
 	static String fileName = "characters.csv";
+	static List<GameCharacter> pets = CSVTools.readCSV(fileName);
+	static int pos = pets.size() - 1;
 	long timeStep;
 
 //	
 	public static void main(String args[]) {
 		launch(args);
 		
-		//CSVTools.clearCSV(fileName);
+		CSVTools.clearCSV(fileName);
 		
 		//Creates the CSV
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
@@ -203,18 +205,21 @@ public class Runner extends Application{
 	       });
 
 	       feed.setOnAction(e->{
-	    	  
-	    	   	current.changeHunger(10);
+		    	  
+	    	   	Utilities.feed(setCharacter());
+	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
 	       });
 	       
 	       clean.setOnAction(e->{
 		    	  
-	    	   	current.changeCleanliness(10);
+	    	   	Utilities.clean(setCharacter());
+	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
 	       });
 	       
 	       medicate.setOnAction(e->{
 		    	  
-	    	   	current.changeHealth(10);
+	    	   	Utilities.med(setCharacter());
+	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
 	       });
        
 	       GridPane gameScreen = new GridPane();
@@ -251,6 +256,13 @@ public class Runner extends Application{
 	    		   }
 	    	   }
 	       }.start();
+	}
+	
+	//sets the character to a variable so we don't need different buttons for each character
+	public static GameCharacter setCharacter()
+	{
+		GameCharacter current = pets.get(pos);
+		return current;
 	}
 }
 
