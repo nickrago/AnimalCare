@@ -45,9 +45,11 @@ import javafx.scene.image.*;
 public class Runner extends Application{
 
 	static String fileName = "characters.csv";
-	static List<GameCharacter> pets = CSVTools.readCSV(fileName);
-	static int pos = pets.size() - 1;
+	//static List<GameCharacter> pets = CSVTools.readCSV(fileName);
+	//static int pos = pets.size() - 1;
 	long timeStep;
+	int daysAlive;
+	boolean
 
 //	
 	public static void main(String args[]) {
@@ -67,6 +69,7 @@ public class Runner extends Application{
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
 	      
+	       /*
 	       //Starts main music loop
 	       URL resource = getClass().getResource("animalforest.mp3");
 	       MediaPlayer titleScreen =new MediaPlayer(new Media(resource.toString()));
@@ -76,6 +79,7 @@ public class Runner extends Application{
 	             }
 	         });
 	       titleScreen.play();
+	        */
 	       int dimX = 2000;
 	       int dimY = 2000;
 	       
@@ -86,7 +90,7 @@ public class Runner extends Application{
 	       GameCharacter nedChar = new GameCharacter("Ned");
 	       GameCharacter holdenChar = new GameCharacter("Holden");
 	       
-	       GameCharacter current = new GameCharacter("Martha");
+	       //GameCharacter current = new GameCharacter("Martha");
 	              
 	       //Creates new button
 	       Button martha = new Button("");
