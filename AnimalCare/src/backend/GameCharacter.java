@@ -12,6 +12,7 @@ public class GameCharacter
 	private int charCleanliness;
 	private int daysAlive;
 	private boolean isAlive;
+	private boolean isSelected;
 	//this constructor is for making NEW CHARACTERS.
 	public GameCharacter(String charName) 
 	{
@@ -31,6 +32,7 @@ public class GameCharacter
 		this.charCleanliness=Utilities.baseClean[pos];
 		this.daysAlive=0;
 		this.isAlive=true;
+		this.isSelected= false;
 	}
 	//this constructor is for LOADING CHARACTERS.
 	public GameCharacter(String charName, boolean isAlive, int daysAlive, int charCleanliness, int charHunger, int charHealth)
@@ -97,6 +99,12 @@ public class GameCharacter
 	public boolean getIsAlive()
 	{
 		return isAlive;
+	}
+	public boolean isSelected() {
+		return isSelected;
+	}
+	public void setSelected(boolean isSelected) {
+		this.isSelected = isSelected;
 	}
 	public void changeIsAlive(boolean isAlive)
 	{

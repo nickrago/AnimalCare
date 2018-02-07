@@ -49,11 +49,11 @@ public class Runner extends Application{
 	//static int pos = pets.size() - 1;
 	long timeStep;
 	int daysAlive;
-	boolean amelieSelected = false;
+	/*boolean amelieSelected = false;
 	boolean marthaSelected = false;
 	boolean holdenSelected = false;
 	boolean mimiSelected = false;
-	boolean nedSelected = false;
+	boolean nedSelected = false;*/
 
 //	
 	public static void main(String args[]) {
@@ -162,7 +162,7 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
-	        	   marthaSelected = true;
+	        	   marthaChar.setSelected(true);
 	           });
 	       
 	       amelie.setOnAction(e-> {
@@ -175,7 +175,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
-	        	   amelieSelected = true;
+	        	   amelieChar.setSelected(true);
 	       });	       
 	      
 	       
@@ -188,7 +188,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
-	        	   mimiSelected = true;
+	        	   mimiChar.setSelected(true);
 	       });
 	       
 	       ned.setOnAction(e-> {
@@ -202,7 +202,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
-	        	   nedSelected = true;
+	        	   nedChar.setSelected(true);
 	        	   
 	       });
 	       holden.setOnAction(e-> {
@@ -214,34 +214,34 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
-	        	   holdenSelected = true;
+	        	   holdenChar.setSelected(true);
 	       });
 
 	       feed.setOnAction(e->{
-		    	  
-	    	   	Utilities.feed(setCharacter());
-	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
+		    	  Boolean animalSelected
+	    	   	//Utilities.feed(setCharacter());
+	    	   	//CSVTools.writeToCSV(fileName, setCharacter().toString());
 	    	   	if(marthaSelected == true) {
-	    	   		characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/eat.png\")");
+	    	   		characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	    	   	}
 	    	   	if(holdenSelected == true);
 	    	   	if(mimiSelected == true);
 	    	   	if(amelieSelected == true);
 	    	   	if(nedSelected == true);
 	    	   
-	    	   	
+	    	   	switch(Ga)
 	       });
 	       
 	       clean.setOnAction(e->{
 		    	  
-	    	   	Utilities.clean(setCharacter());
-	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
+	    	   	/*Utilities.clean(setCharacter());
+	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());*/
 	       });
 	       
 	       medicate.setOnAction(e->{
 		    	  
-	    	   	Utilities.med(setCharacter());
-	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
+	    	   	/*Utilities.med(setCharacter());
+	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());*/
 	       });
        
 	       GridPane gameScreen = new GridPane();
@@ -281,10 +281,18 @@ public class Runner extends Application{
 	}
 	
 	//sets the character to a variable so we don't need different buttons for each character
-	public static GameCharacter setCharacter()
+	/*public static GameCharacter setCharacter()
 	{
 		GameCharacter current = pets.get(pos);
 		return current;
+	}*/
+	
+	public static void updateFeed(GameCharacter animal) {
+		switch(animal)
+		{
+			case:
+				
+		}
 	}
 }
 
