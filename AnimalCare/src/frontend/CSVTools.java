@@ -1,5 +1,6 @@
 package frontend;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -17,7 +18,22 @@ import java.util.ArrayList;
 
 public class CSVTools
 {
-
+	//test code
+	/*public static void main(String[] args)
+	{
+		GameCharacter c=new GameCharacter("Holden");
+		writeToCSV("characters.csv",c.toString());
+		List<GameCharacter> list=readCSV("characters.csv");
+		for(GameCharacter x:list)
+		{
+			System.out.println(x.getCharName());
+			System.out.println(x.getIsAlive());
+			System.out.println(x.getDaysAlive());
+			System.out.println(x.getCharCleanliness());
+			System.out.println(x.getCharHunger());
+			System.out.println(x.getCharHealth());
+		}
+	}*/
 	//create toString method in gameCharacter - back end
 	public static void writeCSV(String file, List<GameCharacter> pets)
 	{
@@ -30,47 +46,43 @@ public class CSVTools
 		{
 			e.printStackTrace();
 		}
-		
-		StringBuilder sb = new StringBuilder();
-		
+		StringBuilder sb=new StringBuilder();
 		//headlines
 		sb.append("Character,Current Status,Days Alive,Hygiene Level,Hunger Level,Health Level\n");
 		
-		for (int row = 1; row < pets.size(); row ++)
+		for (int row=1; row<pets.size(); row++)
 		{
-//			sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
+			//sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
 			sb.append(pets.get(row).toString());
 		}
-		
 		pw.write(sb.toString());
-		
 		//make sb go back to empty so it writes over the same line instead of going further
 		pw.close();
 	}
 	public static void writeToCSV(String file, String info)
 	{ 
-		try (FileWriter fw = new FileWriter(Paths.get(file).toString(), true);) 
+		File csv=new File(file);
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(csv, true)))
 		{
-			fw.append("\n"+info);
-		 	fw.close();
-		} 
-		catch (IOException e) 
+			bw.append("\n"+info);
+			bw.close();
+		}
+		catch (IOException e)
 		{
-		 	e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	public static List<GameCharacter> readCSV(String file)
 	{
-		List<GameCharacter> pets = new ArrayList<>();
-		
+		List<GameCharacter> pets=new ArrayList<>();
 		Path path = Paths.get(file);
-		try(BufferedReader br = Files.newBufferedReader(path,StandardCharsets.US_ASCII))
+		try(BufferedReader br=Files.newBufferedReader(path,StandardCharsets.US_ASCII))
 		{	
-			String line = br.readLine();
-			
-			while (line != null)
+			String line=br.readLine();
+			line=br.readLine();
+			while (line!=null)
 			{
-				String info = line;
+				String info=line;
 				String[] infoArr=info.split(",");
 				boolean isAlive=false;
 				if(infoArr[1].toUpperCase().equals("TRUE"))
@@ -79,7 +91,7 @@ public class CSVTools
 				}
 				GameCharacter newCharacter=new GameCharacter(infoArr[0],isAlive,Integer.parseInt(infoArr[2]),Integer.parseInt(infoArr[3]),Integer.parseInt(infoArr[4]),Integer.parseInt(infoArr[5]));
 				pets.add(newCharacter); 
-				line = br.readLine();
+				line=br.readLine();
 			}
 		}
 		catch(IOException e)
@@ -88,7 +100,6 @@ public class CSVTools
 		}
 		return pets;
 	}
-	
 	public static void clearCSV(String file)
 	{
 		PrintWriter pw = null;
@@ -98,7 +109,7 @@ public class CSVTools
 		}
 		catch (FileNotFoundException e)
 		{
-			System.err.println(e);
+			e.printStackTrace();
 		}
 		pw.close();
 	}
