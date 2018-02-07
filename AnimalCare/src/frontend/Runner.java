@@ -222,7 +222,9 @@ public class Runner extends Application{
 	    	   	Utilities.feed(setCharacter());
 	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
 	    	   	if(marthaSelected == true) {
-	    	   		characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/eat.png\")");
+	    	   		//characterDisplay.setStyle(null);
+	    	   		//characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	    	   		System.out.println(marthaSelected);
 	    	   	}
 	    	   	if(holdenSelected == true);
 	    	   	if(mimiSelected == true);
