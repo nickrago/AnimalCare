@@ -74,6 +74,9 @@ public class Runner extends Application{
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
 	       Text days = new Text(0,10, "Days Alive: " + daysAlive);
+	       Text hunger = new Text(0,20, "");
+	       Text cleanliness = new Text(0,30, "");
+	       Text health = new Text(0,40, "");
 	       days.setFill(Color.RED);
 	       
 	       //Character Scene
