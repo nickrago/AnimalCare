@@ -22,7 +22,7 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
 import backend.GameCharacter;
-
+import backend.Utilities;
 import javafx.scene.image.Image;
 import javafx.scene.control.Label;
 
@@ -45,13 +45,21 @@ import javafx.scene.image.*;
 public class Runner extends Application{
 
 	static String fileName = "characters.csv";
+	//static List<GameCharacter> pets = CSVTools.readCSV(fileName);
+	//static int pos = pets.size() - 1;
 	long timeStep;
+	int daysAlive;
+	boolean amelieSelected = false;
+	boolean marthaSelected = false;
+	boolean holdenSelected = false;
+	boolean mimiSelected = false;
+	boolean nedSelected = false;
 
 //	
 	public static void main(String args[]) {
 		launch(args);
 		
-		//CSVTools.clearCSV(fileName);
+		CSVTools.clearCSV(fileName);
 		
 		//Creates the CSV
 		List<GameCharacter> pets = CSVTools.readCSV(fileName);
@@ -65,6 +73,7 @@ public class Runner extends Application{
 		   //Sets the title of the window
 	       primaryStage.setTitle("Hello World!");
 	      
+	       /*
 	       //Starts main music loop
 	       URL resource = getClass().getResource("animalforest.mp3");
 	       MediaPlayer titleScreen =new MediaPlayer(new Media(resource.toString()));
@@ -74,6 +83,7 @@ public class Runner extends Application{
 	             }
 	         });
 	       titleScreen.play();
+	        */
 	       int dimX = 2000;
 	       int dimY = 2000;
 	       
@@ -84,7 +94,7 @@ public class Runner extends Application{
 	       GameCharacter nedChar = new GameCharacter("Ned");
 	       GameCharacter holdenChar = new GameCharacter("Holden");
 	       
-	       GameCharacter current = new GameCharacter("Martha");
+	       //GameCharacter current = new GameCharacter("Martha");
 	              
 	       //Creates new button
 	       Button martha = new Button("");
@@ -152,6 +162,7 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
+	        	   marthaSelected = true;
 	           });
 	       
 	       amelie.setOnAction(e-> {
@@ -164,6 +175,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
+	        	   amelieSelected = true;
 	       });	       
 	      
 	       
@@ -176,6 +188,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
+	        	   mimiSelected = true;
 	       });
 	       
 	       ned.setOnAction(e-> {
@@ -189,6 +202,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
+	        	   nedSelected = true;
 	        	   
 	       });
 	       holden.setOnAction(e-> {
@@ -200,21 +214,36 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
+	        	   holdenSelected = true;
 	       });
 
 	       feed.setOnAction(e->{
-	    	  
-	    	   	current.changeHunger(10);
+		    	  
+	    	   	Utilities.feed(setCharacter());
+	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
+	    	   	if(marthaSelected == true) {
+	    	   		//characterDisplay.setStyle(null);
+	    	   		//characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	    	   		System.out.println(marthaSelected);
+	    	   	}
+	    	   	if(holdenSelected == true);
+	    	   	if(mimiSelected == true);
+	    	   	if(amelieSelected == true);
+	    	   	if(nedSelected == true);
+	    	   
+	    	   	
 	       });
 	       
 	       clean.setOnAction(e->{
 		    	  
-	    	   	current.changeCleanliness(10);
+	    	   	Utilities.clean(setCharacter());
+	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
 	       });
 	       
 	       medicate.setOnAction(e->{
 		    	  
-	    	   	current.changeHealth(10);
+	    	   	Utilities.med(setCharacter());
+	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
 	       });
        
 	       GridPane gameScreen = new GridPane();
@@ -251,6 +280,13 @@ public class Runner extends Application{
 	    		   }
 	    	   }
 	       }.start();
+	}
+	
+	//sets the character to a variable so we don't need different buttons for each character
+	public static GameCharacter setCharacter()
+	{
+		GameCharacter current = pets.get(pos);
+		return current;
 	}
 }
 
