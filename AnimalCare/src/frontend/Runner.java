@@ -58,15 +58,9 @@ public class Runner extends Application{
 	         });
 	       titleScreen.play();
 	        */
-	       int dimX = 2000;
-	       int dimY = 2000;
+	       int dimX = 1000;
+	       int dimY = 1000;
 	       
-	       //Instances of the characters (Do not delete)
-	       GameCharacter marthaChar = new GameCharacter("Martha");
-	       GameCharacter amelieChar = new GameCharacter("Amelie");
-	       GameCharacter mimiChar = new GameCharacter("Mimi");
-	       GameCharacter nedChar = new GameCharacter("Ned");
-	       GameCharacter holdenChar = new GameCharacter("Holden");
 	       
 	       //GameCharacter current = new GameCharacter("Martha");
 	              
@@ -122,8 +116,8 @@ public class Runner extends Application{
 	       holden.setPrefHeight(1000);
 	       holden.setPrefWidth(130);
       
-	       primaryStage.setHeight(500);
-	       primaryStage.setWidth(800);
+	       primaryStage.setHeight(dimY);
+	       primaryStage.setWidth(dimX);
 	       
 	       
 	       
