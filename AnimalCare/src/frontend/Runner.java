@@ -1,5 +1,4 @@
 package frontend;
-import java.util.List;
 
 import backend.GameCharacter;
 import javafx.animation.AnimationTimer;
@@ -243,7 +242,16 @@ public class Runner extends Application{
 	       }.start();
 	}
 	
-
+	/**
+	 * Changes the character display based on the activity and the character currently selected.
+	 * @param action
+	 * 			An action from the Enum "Actions" 
+	 * @param characterDisplay
+	 * 			the display to be manipulated in displaying the Game Character
+	 * @return void
+	 * 
+	 * 
+	 */ 
 	
 	public static void initAction(Actions action, Pane characterDisplay) {
 		Animals[] petCollection = Animals.values();
