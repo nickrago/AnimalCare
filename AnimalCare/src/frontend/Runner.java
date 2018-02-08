@@ -49,11 +49,18 @@ public class Runner extends Application{
 	//static int pos = pets.size() - 1;
 	long timeStep;
 	int daysAlive;
-	boolean amelieSelected = false;
+	
 	boolean marthaSelected = false;
+	boolean amelieSelected = false;
 	boolean holdenSelected = false;
 	boolean mimiSelected = false;
 	boolean nedSelected = false;
+	
+	static GameCharacter marthaChar = new GameCharacter("Martha");
+    static GameCharacter amelieChar = new GameCharacter("Amelie");
+    static GameCharacter mimiChar = new GameCharacter("Mimi");
+    static GameCharacter nedChar = new GameCharacter("Ned");
+    static GameCharacter holdenChar = new GameCharacter("Holden");
 
 //	
 	public static void main(String args[]) {
@@ -88,11 +95,7 @@ public class Runner extends Application{
 	       int dimY = 2000;
 	       
 	       //Instances of the characters (Do not delete)
-	       GameCharacter marthaChar = new GameCharacter("Martha");
-	       GameCharacter amelieChar = new GameCharacter("Amelie");
-	       GameCharacter mimiChar = new GameCharacter("Mimi");
-	       GameCharacter nedChar = new GameCharacter("Ned");
-	       GameCharacter holdenChar = new GameCharacter("Holden");
+	       
 	       
 	       //GameCharacter current = new GameCharacter("Martha");
 	              
@@ -162,7 +165,7 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
-	        	   marthaSelected = true;
+	        	   marthaChar.setSelected(true);
 	           });
 	       
 	       amelie.setOnAction(e-> {
@@ -175,7 +178,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
-	        	   amelieSelected = true;
+	        	   amelieChar.setSelected(true);
 	       });	       
 	      
 	       
@@ -188,7 +191,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
-	        	   mimiSelected = true;
+	        	   mimiChar.setSelected(true);
 	       });
 	       
 	       ned.setOnAction(e-> {
@@ -202,7 +205,7 @@ public class Runner extends Application{
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
-	        	   nedSelected = true;
+	        	   nedChar.setSelected(true);
 	        	   
 	       });
 	       holden.setOnAction(e-> {
@@ -214,36 +217,23 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
-	        	   holdenSelected = true;
+	        	   holdenChar.setSelected(true);
 	       });
 
 	       feed.setOnAction(e->{
-		    	  
-	    	   	Utilities.feed(setCharacter());
-	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
-	    	   	if(marthaSelected == true) {
-	    	   		//characterDisplay.setStyle(null);
-	    	   		//characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-	    	   		System.out.println(marthaSelected);
-	    	   	}
-	    	   	if(holdenSelected == true);
-	    	   	if(mimiSelected == true);
-	    	   	if(amelieSelected == true);
-	    	   	if(nedSelected == true);
+
+	    	   initAction(Actions.FEED, characterDisplay);
 	    	   
-	    	   	
 	       });
 	       
 	       clean.setOnAction(e->{
 		    	  
-	    	   	Utilities.clean(setCharacter());
-	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
+	    	   initAction(Actions.CLEAN, characterDisplay);
 	       });
 	       
 	       medicate.setOnAction(e->{
 		    	  
-	    	   	Utilities.med(setCharacter());
-	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());
+	    	   initAction(Actions.MEDICATE, characterDisplay);
 	       });
        
 	       GridPane gameScreen = new GridPane();
@@ -283,12 +273,121 @@ public class Runner extends Application{
 	}
 	
 	//sets the character to a variable so we don't need different buttons for each character
-	public static GameCharacter setCharacter()
+	/*public static GameCharacter setCharacter()
 	{
 		GameCharacter current = pets.get(pos);
 		return current;
+	}*/
+	
+	public static void initAction(Actions action, Pane characterDisplay) {
+		Animals[] petCollection = Animals.values();
+		switch (action) {
+		case FEED:
+			for (int i = 0; i < petCollection.length; i++) {
+				switch (petCollection[i]) {
+				case MARTHA:
+					if (marthaChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case AMELIE:
+					characterDisplay.setStyle(
+							"-fx-background-image: url(\"ameliecharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					break;
+				case MIMI:
+					characterDisplay.setStyle(
+							"-fx-background-image: url(\"mimicharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					break;
+				case NED:
+					characterDisplay.setStyle(
+							"-fx-background-image: url(\"nedcharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					break;
+				case HOLDEN:
+					characterDisplay.setStyle(
+							"-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					break;
+				}
+			}
+			break;
+
+		case CLEAN:
+			for (int i = 0; i < petCollection.length; i++) {
+				switch (petCollection[i]) {
+				case MARTHA:
+					if (marthaChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case AMELIE:
+					if (amelieChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"ameliecharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case MIMI:
+					if (mimiChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"mimicharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case NED:
+					if (nedChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"nedcharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case HOLDEN:
+					if (holdenChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				}
+			}
+			break;
+
+		case MEDICATE:
+			for (int i = 0; i < petCollection.length; i++) {
+				switch (petCollection[i]) {
+				case MARTHA:
+					if (marthaChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"marthacharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case AMELIE:
+					if (amelieChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"ameliecharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case MIMI:
+					if (mimiChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"mimicharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case NED:
+					if (nedChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"nedcharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case HOLDEN:
+					if (holdenChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"holdencharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				}
+			}
+			break;
+		}
 	}
 }
+
 
 /*
 URL resource = getClass().getResource("abcd.mp3");
