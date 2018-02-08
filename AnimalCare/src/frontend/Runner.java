@@ -78,6 +78,7 @@ public class Runner extends Application{
 	       Text cleanliness = new Text(0,30, "");
 	       Text health = new Text(0,40, "");
 	       days.setFill(Color.RED);
+	       hunger.setFill(Color.BLACK);
 	       
 	       //Character Scene
 	       BorderPane characterLayout = new BorderPane();
@@ -95,7 +96,7 @@ public class Runner extends Application{
 	       medicate.setPrefSize(200, 100);
 	       
 	       VBox daysAliveBox = new VBox(10);
-	       daysAliveBox.getChildren().addAll(days);
+	       daysAliveBox.getChildren().addAll(days,hunger);
 	       
 	       
 	       buttonContainer.getChildren().addAll(feed, clean, medicate);
@@ -132,8 +133,18 @@ public class Runner extends Application{
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
+	        	   
+	        	   int maxHunger = marthaChar.getCharHunger();
+	        	   int maxClean = marthaChar.getCharCleanliness();
+	        	   int maxHealth = marthaChar.getCharHealth();
+	        	   
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	        	   marthaChar.setSelected(true);
+	        	   
+	        	   while(marthaChar.isSelected())
+	        	   {
+		        	   hunger.setText("Hunger: " + marthaChar.getCharHunger() + "/" + maxHunger);
+	        	   }
 	           });
 	       
 	       amelie.setOnAction(e-> {
