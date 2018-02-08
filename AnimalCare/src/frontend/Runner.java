@@ -192,20 +192,20 @@ public class Runner extends Application{
 	        	   holdenChar.setSelected(true);
 	       });
 
-	       feed.setOnAction(e->{
-		    	  
-	    	   initAction(Actions.FEED, characterDisplay);	
-	       });
-	       
-	       clean.setOnAction(e->{
-		    	  
-	    	   initAction(Actions.CLEAN, characterDisplay);
-	       });
-	       
-	       medicate.setOnAction(e->{
-		    	  
-	    	   initAction(Actions.MEDICATE, characterDisplay);
-	       });
+		feed.setOnAction(e -> {
+
+			initAction(Actions.FEED, characterDisplay);
+		});
+
+		clean.setOnAction(e -> {
+
+			initAction(Actions.CLEAN, characterDisplay);
+		});
+
+		medicate.setOnAction(e -> {
+
+			initAction(Actions.MEDICATE, characterDisplay);
+		});
        
 	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
