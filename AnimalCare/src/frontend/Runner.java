@@ -221,29 +221,19 @@ public class Runner extends Application{
 	       });
 
 	       feed.setOnAction(e->{
-		    	 	    	   	//Utilities.feed(setCharacter());
-	    	   	//CSVTools.writeToCSV(fileName, setCharacter().toString());
-	    	   /*	if(marthaSelected == true) {
-	    	   		characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-	    	   	}
-	    	   	if(holdenSelected == true);
-	    	   	if(mimiSelected == true);
-	    	   	if(amelieSelected == true);
-	    	   	if(nedSelected == true);*/
+
 	    	   initAction(Actions.FEED, characterDisplay);
 	    	   
 	       });
 	       
 	       clean.setOnAction(e->{
 		    	  
-	    	   	/*Utilities.clean(setCharacter());
-	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());*/
+	    	   initAction(Actions.CLEAN, characterDisplay);
 	       });
 	       
 	       medicate.setOnAction(e->{
 		    	  
-	    	   	/*Utilities.med(setCharacter());
-	    	   	CSVTools.writeToCSV(fileName, setCharacter().toString());*/
+	    	   initAction(Actions.MEDICATE, characterDisplay);
 	       });
        
 	       GridPane gameScreen = new GridPane();
