@@ -25,21 +25,19 @@ public class Runner extends Application{
 	long timeStep;
 	int daysAlive;
 	
-	
 	static GameCharacter marthaChar = new GameCharacter("Martha");
     static GameCharacter amelieChar = new GameCharacter("Amelie");
     static GameCharacter mimiChar = new GameCharacter("Mimi");
     static GameCharacter nedChar = new GameCharacter("Ned");
     static GameCharacter holdenChar = new GameCharacter("Holden");
 
-//	
 	public static void main(String args[]) {
 		launch(args);
 		
-		CSVTools.clearCSV(fileName);
+		//CSVTools.clearCSV(fileName);
 		
 		//Creates the CSV
-		List<GameCharacter> pets = CSVTools.readCSV(fileName);
+		//List<GameCharacter> pets = CSVTools.readCSV(fileName);
 		//CSVTools.writeCSV(fileName, pets);
 	}
 	
@@ -65,7 +63,11 @@ public class Runner extends Application{
 	       int dimY = 2000;
 	       
 	       //Instances of the characters (Do not delete)
-	       
+	       GameCharacter marthaChar = new GameCharacter("Martha");
+	       GameCharacter amelieChar = new GameCharacter("Amelie");
+	       GameCharacter mimiChar = new GameCharacter("Mimi");
+	       GameCharacter nedChar = new GameCharacter("Ned");
+	       GameCharacter holdenChar = new GameCharacter("Holden");
 	       
 	       //GameCharacter current = new GameCharacter("Martha");
 	              
@@ -191,9 +193,8 @@ public class Runner extends Application{
 	       });
 
 	       feed.setOnAction(e->{
-
-	    	   initAction(Actions.FEED, characterDisplay);
-	    	   
+		    	  
+	    	   initAction(Actions.FEED, characterDisplay);	
 	       });
 	       
 	       clean.setOnAction(e->{
@@ -242,12 +243,7 @@ public class Runner extends Application{
 	       }.start();
 	}
 	
-	//sets the character to a variable so we don't need different buttons for each character
-	/*public static GameCharacter setCharacter()
-	{
-		GameCharacter current = pets.get(pos);
-		return current;
-	}*/
+
 	
 	public static void initAction(Actions action, Pane characterDisplay) {
 		Animals[] petCollection = Animals.values();
@@ -364,9 +360,9 @@ public class Runner extends Application{
 			}
 			break;
 		}
+
 	}
 }
-
 
 /*
 URL resource = getClass().getResource("abcd.mp3");
