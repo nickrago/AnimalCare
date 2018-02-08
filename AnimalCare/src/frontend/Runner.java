@@ -1,46 +1,20 @@
 package frontend;
+
+import backend.GameCharacter;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.layout.*;
-import javafx.scene.media.*;
-import javafx.application.Application;
-import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
-import java.io.File;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
-
-import backend.GameCharacter;
-import backend.Utilities;
-import javafx.scene.image.Image;
-import javafx.scene.control.Label;
-
-import java.awt.Font;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URL;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import javafx.scene.image.*;
 
 public class Runner extends Application{
 
@@ -50,26 +24,19 @@ public class Runner extends Application{
 	long timeStep;
 	int daysAlive;
 	
-	boolean marthaSelected = false;
-	boolean amelieSelected = false;
-	boolean holdenSelected = false;
-	boolean mimiSelected = false;
-	boolean nedSelected = false;
-	
 	static GameCharacter marthaChar = new GameCharacter("Martha");
     static GameCharacter amelieChar = new GameCharacter("Amelie");
     static GameCharacter mimiChar = new GameCharacter("Mimi");
     static GameCharacter nedChar = new GameCharacter("Ned");
     static GameCharacter holdenChar = new GameCharacter("Holden");
 
-//	
 	public static void main(String args[]) {
 		launch(args);
 		
-		CSVTools.clearCSV(fileName);
+		//CSVTools.clearCSV(fileName);
 		
 		//Creates the CSV
-		List<GameCharacter> pets = CSVTools.readCSV(fileName);
+		//List<GameCharacter> pets = CSVTools.readCSV(fileName);
 		//CSVTools.writeCSV(fileName, pets);
 	}
 	
@@ -91,10 +58,8 @@ public class Runner extends Application{
 	         });
 	       titleScreen.play();
 	        */
-	       int dimX = 2000;
-	       int dimY = 2000;
-	       
-	       //Instances of the characters (Do not delete)
+	       int dimX = 1000;
+	       int dimY = 1000;
 	       
 	       
 	       //GameCharacter current = new GameCharacter("Martha");
@@ -109,6 +74,9 @@ public class Runner extends Application{
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
 	       Text days = new Text(0,10, "Days Alive: " + daysAlive);
+	       Text hunger = new Text(0,20, "");
+	       Text cleanliness = new Text(0,30, "");
+	       Text health = new Text(0,40, "");
 	       days.setFill(Color.RED);
 	       
 	       //Character Scene
@@ -151,8 +119,8 @@ public class Runner extends Application{
 	       holden.setPrefHeight(1000);
 	       holden.setPrefWidth(130);
       
-	       primaryStage.setHeight(500);
-	       primaryStage.setWidth(800);
+	       primaryStage.setHeight(dimY);
+	       primaryStage.setWidth(dimX);
 	       
 	       
 	       
@@ -220,21 +188,20 @@ public class Runner extends Application{
 	        	   holdenChar.setSelected(true);
 	       });
 
-	       feed.setOnAction(e->{
+		feed.setOnAction(e -> {
 
-	    	   initAction(Actions.FEED, characterDisplay);
-	    	   
-	       });
-	       
-	       clean.setOnAction(e->{
-		    	  
-	    	   initAction(Actions.CLEAN, characterDisplay);
-	       });
-	       
-	       medicate.setOnAction(e->{
-		    	  
-	    	   initAction(Actions.MEDICATE, characterDisplay);
-	       });
+			initAction(Actions.FEED, characterDisplay);
+		});
+
+		clean.setOnAction(e -> {
+
+			initAction(Actions.CLEAN, characterDisplay);
+		});
+
+		medicate.setOnAction(e -> {
+
+			initAction(Actions.MEDICATE, characterDisplay);
+		});
        
 	       GridPane gameScreen = new GridPane();
 	       gameScreen.setId("gamescreen");
@@ -272,46 +239,21 @@ public class Runner extends Application{
 	       }.start();
 	}
 	
-	//sets the character to a variable so we don't need different buttons for each character
-	/*public static GameCharacter setCharacter()
-	{
-		GameCharacter current = pets.get(pos);
-		return current;
-	}*/
+	/**
+	 * Changes the character display based on the activity and the character currently selected.
+	 * @param action
+	 * 			An action from the Enum "Actions" 
+	 * @param characterDisplay
+	 * 			the display to be manipulated in displaying the Game Character
+	 * @return void
+	 * 
+	 * 
+	 */ 
 	
 	public static void initAction(Actions action, Pane characterDisplay) {
 		Animals[] petCollection = Animals.values();
 		switch (action) {
 		case FEED:
-			for (int i = 0; i < petCollection.length; i++) {
-				switch (petCollection[i]) {
-				case MARTHA:
-					if (marthaChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case AMELIE:
-					characterDisplay.setStyle(
-							"-fx-background-image: url(\"ameliecharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					break;
-				case MIMI:
-					characterDisplay.setStyle(
-							"-fx-background-image: url(\"mimicharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					break;
-				case NED:
-					characterDisplay.setStyle(
-							"-fx-background-image: url(\"nedcharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					break;
-				case HOLDEN:
-					characterDisplay.setStyle(
-							"-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					break;
-				}
-			}
-			break;
-
-		case CLEAN:
 			for (int i = 0; i < petCollection.length; i++) {
 				switch (petCollection[i]) {
 				case MARTHA:
@@ -333,10 +275,9 @@ public class Runner extends Application{
 					}
 					break;
 				case NED:
-					if (nedChar.isSelected()) {
+					if (nedChar.isSelected())
 						characterDisplay.setStyle(
 								"-fx-background-image: url(\"nedcharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
 					break;
 				case HOLDEN:
 					if (holdenChar.isSelected()) {
@@ -347,6 +288,45 @@ public class Runner extends Application{
 				}
 			}
 			break;
+
+		case CLEAN:
+			for (int i = 0; i < petCollection.length; i++) {
+				switch (petCollection[i]) {
+				case MARTHA:
+					if (marthaChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"marthacharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case AMELIE:
+					if (amelieChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"ameliecharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case MIMI:
+					if (mimiChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"mimicharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case NED:
+					if (nedChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"nedcharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				case HOLDEN:
+					if (holdenChar.isSelected()) {
+						characterDisplay.setStyle(
+								"-fx-background-image: url(\"holdencharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+					}
+					break;
+				}
+			}
+			break;
+			
+			
 
 		case MEDICATE:
 			for (int i = 0; i < petCollection.length; i++) {
@@ -385,9 +365,9 @@ public class Runner extends Application{
 			}
 			break;
 		}
+
 	}
 }
-
 
 /*
 URL resource = getClass().getResource("abcd.mp3");

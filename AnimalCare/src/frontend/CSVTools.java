@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class CSVTools
 {
 	//test code
-	/*public static void main(String[] args)
+	public static void main(String[] args)
 	{
-		GameCharacter c=new GameCharacter("Holden");
+		/*GameCharacter c=new GameCharacter("Holden");
 		writeToCSV("characters.csv",c.toString());
 		List<GameCharacter> list=readCSV("characters.csv");
 		for(GameCharacter x:list)
@@ -32,8 +32,8 @@ public class CSVTools
 			System.out.println(x.getCharCleanliness());
 			System.out.println(x.getCharHunger());
 			System.out.println(x.getCharHealth());
-		}
-	}*/
+		}*/
+	}
 	//create toString method in gameCharacter - back end
 	public static void writeCSV(String file, List<GameCharacter> pets)
 	{
@@ -49,7 +49,6 @@ public class CSVTools
 		StringBuilder sb=new StringBuilder();
 		//headlines
 		sb.append("Character,Current Status,Days Alive,Hygiene Level,Hunger Level,Health Level\n");
-		
 		for (int row=1; row<pets.size(); row++)
 		{
 			//sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());
@@ -89,7 +88,7 @@ public class CSVTools
 				{
 					isAlive=true;
 				}
-				//GameCharacter newCharacter=new GameCharacter(infoArr[0],isAlive,Integer.parseInt(infoArr[2]),Integer.parseInt(infoArr[3]),Integer.parseInt(infoArr[4]),Integer.parseInt(infoArr[5]));
+				GameCharacter newCharacter=new GameCharacter(infoArr[0],isAlive,Integer.parseInt(infoArr[2]),Integer.parseInt(infoArr[3]),Integer.parseInt(infoArr[4]),Integer.parseInt(infoArr[5]));
 				pets.add(newCharacter); 
 				line=br.readLine();
 			}
