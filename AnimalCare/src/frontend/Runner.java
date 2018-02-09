@@ -143,18 +143,9 @@ public class Runner extends Application{
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	        	   marthaChar.setSelected(true);
 	        	   
-//	        	   while(marthaChar.isSelected())
-//	        	   {
 		        	   hunger.setText("Hunger: " + marthaChar.getCharHunger() + "/" + maxHunger);
-//	        	   }
-//	        	   while(marthaChar.isSelected())
-//	        	   {
 		        	   cleanliness.setText("Hygiene: " + marthaChar.getCharCleanliness() + "/" + maxClean);
-//	        	   }
-//	        	   while(marthaChar.isSelected())
-//	        	   {
 		        	   health.setText("Health: " + marthaChar.getCharHealth() + "/" + maxHealth);
-//	        	   }
 	           });
 	       
 	       amelie.setOnAction(e-> {
@@ -166,8 +157,17 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 
 	        	   primaryStage.setScene(nurturePage);
+	        	   
+	        	   int maxHunger = amelieChar.getCharHunger();
+	        	   int maxClean = amelieChar.getCharCleanliness();
+	        	   int maxHealth = amelieChar.getCharHealth();
+
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
 	        	   amelieChar.setSelected(true);
+	        	   
+	        	   hunger.setText("Hunger: " + amelieChar.getCharHunger() + "/" + maxHunger);
+	        	   cleanliness.setText("Hygiene: " + amelieChar.getCharCleanliness() + "/" + maxClean);
+	        	   health.setText("Health: " + amelieChar.getCharHealth() + "/" + maxHealth);
 	       });	       
 	      
 	       
@@ -179,8 +179,17 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 
 	        	   primaryStage.setScene(nurturePage);
+	        	   
+	        	   int maxHunger = mimiChar.getCharHunger();
+	        	   int maxClean = mimiChar.getCharCleanliness();
+	        	   int maxHealth = mimiChar.getCharHealth();
+	        	   
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
 	        	   mimiChar.setSelected(true);
+	        	   
+	        	   hunger.setText("Hunger: " + mimiChar.getCharHunger() + "/" + maxHunger);
+	        	   cleanliness.setText("Hygiene: " + mimiChar.getCharCleanliness() + "/" + maxClean);
+	        	   health.setText("Health: " + mimiChar.getCharHealth() + "/" + maxHealth);
 	       });
 	       
 	       ned.setOnAction(e-> {
@@ -193,9 +202,17 @@ public class Runner extends Application{
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 
 	        	   primaryStage.setScene(nurturePage);
+	        	   
+	        	   int maxHunger = nedChar.getCharHunger();
+	        	   int maxClean = nedChar.getCharCleanliness();
+	        	   int maxHealth = nedChar.getCharHealth();
+	        	   
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   nedChar.setSelected(true);
 	        	   
+	        	   hunger.setText("Hunger: " + nedChar.getCharHunger() + "/" + maxHunger);
+	        	   cleanliness.setText("Hygiene: " + nedChar.getCharCleanliness() + "/" + maxClean);
+	        	   health.setText("Health: " + nedChar.getCharHealth() + "/" + maxHealth); 
 	       });
 	       holden.setOnAction(e-> {
 	    	   
@@ -205,8 +222,17 @@ public class Runner extends Application{
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
 	        	   characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 	        	   primaryStage.setScene(nurturePage);
+	        	   
+	        	   int maxHunger = holdenChar.getCharHunger();
+	        	   int maxClean = holdenChar.getCharCleanliness();
+	        	   int maxHealth = holdenChar.getCharHealth();
+	        	   
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
 	        	   holdenChar.setSelected(true);
+	        	   
+	        	   hunger.setText("Hunger: " + holdenChar.getCharHunger() + "/" + maxHunger);
+	        	   cleanliness.setText("Hygiene: " + holdenChar.getCharCleanliness() + "/" + maxClean);
+	        	   health.setText("Health: " + holdenChar.getCharHealth() + "/" + maxHealth); 
 	       });
 
 		feed.setOnAction(e -> {
