@@ -195,7 +195,6 @@ public class Runner extends Application{
 	        	   health.setText("Health: " + amelieChar.getCharHealth() + "/" + maxHealth);
 	       });	       
 	      
-	       
 	       mimi.setOnAction(e->{
 
 	        	   txt.setText("You Have Selected Mimi");
@@ -384,6 +383,28 @@ public class Runner extends Application{
 	    		   }
 	    	   }
 	       }.start();
+	       
+	       //when program ends
+	       if (marthaChar.getIsAlive())
+	       {
+	    	   marthaChar.changeIsAlive(false);
+	       }
+	       if (amelieChar.getIsAlive())
+	       {
+	    	   amelieChar.changeIsAlive(false);
+	       }
+	       if (mimiChar.getIsAlive())
+	       {
+	    	   mimiChar.changeIsAlive(false);
+	       }
+	       if (nedChar.getIsAlive())
+	       {
+	    	   nedChar.changeIsAlive(false); 
+	       }
+	       if (holdenChar.getIsAlive())
+	       {
+	    	   holdenChar.changeIsAlive(false);
+	       }
 	}
 	
 	/**
