@@ -59,7 +59,7 @@ public class Runner extends Application{
 	       titleScreen.play();
 	        */
 	       int dimX = 1000;
-	       int dimY = 1000;
+	       int dimY = 700;
 	       
 	       
 	       //GameCharacter current = new GameCharacter("Martha");
