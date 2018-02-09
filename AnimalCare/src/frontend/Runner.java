@@ -22,6 +22,7 @@ public class Runner extends Application{
 	//static List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	//static int pos = pets.size() - 1;
 	long timeStep;
+	long timeThree;
 	int daysAlive;
 	
 	static GameCharacter marthaChar = new GameCharacter("Martha");
@@ -60,6 +61,7 @@ public class Runner extends Application{
 	        */
 	       int dimX = 1000;
 	       int dimY = 700;
+	       
 	       
 	       
 	       //GameCharacter current = new GameCharacter("Martha");
@@ -125,6 +127,29 @@ public class Runner extends Application{
 	       primaryStage.setHeight(dimY);
 	       primaryStage.setWidth(dimX);
 	       
+	       //timer for swapping images
+           
+           AnimationTimer feedTimer = new AnimationTimer() {
+               public void handle(long now) {
+                       if(now > timeThree) {
+                           if(marthaChar.isSelected()) {
+                                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            }
+                            if(holdenChar.isSelected()) {
+                                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            };
+                            if(mimiChar.isSelected()) {
+                                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            };
+                            if(amelieChar.isSelected()) {
+                                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            };
+                            if(nedChar.isSelected()) {
+                                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            };
+                            this.stop();
+                   }
+           }};
 	       
 	       
 	       //Tells the button what to do when clicked
@@ -238,16 +263,91 @@ public class Runner extends Application{
 		feed.setOnAction(e -> {
 
 			initAction(Actions.FEED, characterDisplay);
+			if(marthaChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            }
+            if(holdenChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(mimiChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(amelieChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(nedChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
 		});
 
 		clean.setOnAction(e -> {
 
 			initAction(Actions.CLEAN, characterDisplay);
+			if(marthaChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            }
+            if(holdenChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(mimiChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(amelieChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(nedChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
 		});
 
 		medicate.setOnAction(e -> {
 
 			initAction(Actions.MEDICATE, characterDisplay);
+			if(marthaChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            }
+            if(holdenChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(mimiChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(amelieChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
+            if(nedChar.isSelected()) {
+                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                timeThree = System.nanoTime() + 3000000000L;
+                feedTimer.start();
+            };
 		});
        
 	       GridPane gameScreen = new GridPane();
