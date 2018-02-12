@@ -12,14 +12,14 @@ public class Utilities
 	public static int[] baseClean= {100, 100, 80, 90, 70};
 	public static void feed(GameCharacter c)
 	{
-		c.changeHunger(10);
+		c.changeHunger(5);
 	}
 	public static void med(GameCharacter c)
 	{
-		c.changeHealth(10);
+		c.changeHealth(5);
 	}
 	public static void clean(GameCharacter c)
 	{
-		c.changeCleanliness(10);
+		c.changeCleanliness(5);
 	}
 }

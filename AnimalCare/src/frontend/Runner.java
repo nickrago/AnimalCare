@@ -167,8 +167,8 @@ public class Runner extends Application
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Martha");
 	        	   maxHunger = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxClean = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxHealth = Utilities.baseHunger[currentChar.getPos()];
+	        	   maxClean = Utilities.baseClean[currentChar.getPos()];
+	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
 	        	   //currentChar.setSelected(true);
@@ -191,8 +191,8 @@ public class Runner extends Application
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Amelie");
 	        	   maxHunger = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxClean = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxHealth = Utilities.baseHunger[currentChar.getPos()];
+	        	   maxClean = Utilities.baseClean[currentChar.getPos()];
+	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
 	        	   //amelieChar.setSelected(true);
@@ -214,8 +214,8 @@ public class Runner extends Application
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Mimi");
 	        	   maxHunger = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxClean = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxHealth = Utilities.baseHunger[currentChar.getPos()];
+	        	   maxClean = Utilities.baseClean[currentChar.getPos()];
+	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
 	        	   //mimiChar.setSelected(true);
@@ -239,8 +239,8 @@ public class Runner extends Application
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Ned");
 	        	   maxHunger = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxClean = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxHealth = Utilities.baseHunger[currentChar.getPos()];
+	        	   maxClean = Utilities.baseClean[currentChar.getPos()];
+	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
 	        	   //nedChar.setSelected(true);
@@ -261,8 +261,8 @@ public class Runner extends Application
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Holden");
 	        	   maxHunger = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxClean = Utilities.baseHunger[currentChar.getPos()];
-	        	   maxHealth = Utilities.baseHunger[currentChar.getPos()];
+	        	   maxClean = Utilities.baseClean[currentChar.getPos()];
+	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
 	        	   //holdenChar.setSelected(true);
@@ -275,30 +275,39 @@ public class Runner extends Application
 	       });
 
 		feed.setOnAction(e -> {
-			String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
- 		   characterDisplay.setStyle(cString);
- 		  timeThree = System.nanoTime() + 3000000000L;
-          feedTimer.start();
-          Utilities.feed(currentChar);
-          hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
+			if(currentChar.getCharHunger()<maxHunger-5)
+			{
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+		 		   characterDisplay.setStyle(cString);
+		 		  timeThree = System.nanoTime() + 3000000000L;
+		          feedTimer.start();
+		          Utilities.feed(currentChar);
+		          hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
+			}
 		});
 
 		clean.setOnAction(e -> {
-			String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
-	 		   characterDisplay.setStyle(cString);
-	 		  timeThree = System.nanoTime() + 3000000000L;
-	          feedTimer.start();
-	          Utilities.clean(currentChar);
-       	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
+			if(currentChar.getCharHunger()<maxClean-5)
+			{
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+		 		   characterDisplay.setStyle(cString);
+		 		  timeThree = System.nanoTime() + 3000000000L;
+		          feedTimer.start();
+		          Utilities.feed(currentChar);
+		          hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
+			}
 		});
 
 		medicate.setOnAction(e -> {
-			String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
-	 		   characterDisplay.setStyle(cString);
-	 		  timeThree = System.nanoTime() + 3000000000L;
-	          feedTimer.start();
-	          Utilities.med(currentChar);
-       	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
+			if(currentChar.getCharHunger()<maxHealth-5)
+			{
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+		 		   characterDisplay.setStyle(cString);
+		 		  timeThree = System.nanoTime() + 3000000000L;
+		          feedTimer.start();
+		          Utilities.feed(currentChar);
+		          hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
+			}
 		});
        
 	       GridPane gameScreen = new GridPane();
@@ -372,120 +381,6 @@ public class Runner extends Application
 	 * 
 	 */ 
 	
-	/*public static void initAction(Actions action, Pane characterDisplay) {
-		Animals[] petCollection = Animals.values();
-		switch (action) {
-		case FEED:
-			for (int i = 0; i < petCollection.length; i++) {
-				switch (petCollection[i]) {
-				case MARTHA:
-					if (marthaChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case AMELIE:
-					if (amelieChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"ameliecharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case MIMI:
-					if (mimiChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"mimicharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case NED:
-					if (nedChar.isSelected())
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"nedcharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					break;
-				case HOLDEN:
-					if (holdenChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				}
-			}
-			break;
-		case CLEAN:
-			for (int i = 0; i < petCollection.length; i++) {
-				switch (petCollection[i]) {
-				case MARTHA:
-					if (marthaChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"marthacharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case AMELIE:
-					if (amelieChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"ameliecharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case MIMI:
-					if (mimiChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"mimicharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case NED:
-					if (nedChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"nedcharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case HOLDEN:
-					if (holdenChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"holdencharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				}
-			}
-			break;
-			
-			
-		case MEDICATE:
-			for (int i = 0; i < petCollection.length; i++) {
-				switch (petCollection[i]) {
-				case MARTHA:
-					if (marthaChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"marthacharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case AMELIE:
-					if (amelieChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"ameliecharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case MIMI:
-					if (mimiChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"mimicharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case NED:
-					if (nedChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"nedcharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				case HOLDEN:
-					if (holdenChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"holdencharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-					}
-					break;
-				}
-			}
-			break;
-		}
-	}*/
 }
 /*
 URL resource = getClass().getResource("abcd.mp3");
