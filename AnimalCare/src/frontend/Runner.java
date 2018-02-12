@@ -29,12 +29,6 @@ public class Runner extends Application
 	int maxHunger=0;
 	int maxHealth=0;
 	int maxClean=0;
-	/*static GameCharacter marthaChar = new GameCharacter("Martha");
-    static GameCharacter amelieChar = new GameCharacter("Amelie");
-    static GameCharacter mimiChar = new GameCharacter("Mimi");
-    static GameCharacter nedChar = new GameCharacter("Ned");
-    static GameCharacter holdenChar = new GameCharacter("Holden");
-	*/
 	GameCharacter currentChar;
 	public static void main(String args[])
 	{
@@ -64,9 +58,6 @@ public class Runner extends Application
 	       int dimX = 1000;
 	       int dimY = 700;
 	       
-	       
-	       
-	       //GameCharacter current = new GameCharacter("Martha");
 	              
 	       //Creates new button
 	       Button martha = new Button("");
@@ -153,7 +144,7 @@ public class Runner extends Application
             		   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 		        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 		        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-		        	   timeDec=System.nanoTime()+30000000000L;
+		        	   timeDec=System.nanoTime()+15000000000L;
                    }
            }};
 	       
@@ -171,12 +162,12 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //currentChar.setSelected(true);
+	        	  
 	        	   
 		        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 		        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 		        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-		        	   timeDec=System.nanoTime()+30000000000L;
+		        	   timeDec=System.nanoTime()+15000000000L;
 		        	   decTimer.start();
 	           });
 	       
@@ -195,12 +186,12 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //amelieChar.setSelected(true);
+	        	
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   timeDec=System.nanoTime()+15000000000L;
 	        	   decTimer.start();
 	       });	       
 	      
@@ -218,12 +209,12 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //mimiChar.setSelected(true);
+	        	  
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   timeDec=System.nanoTime()+15000000000L;
 	        	   decTimer.start();
 	       });
 	       
@@ -243,12 +234,12 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //nedChar.setSelected(true);
+	        	  
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   timeDec=System.nanoTime()+15000000000L;
 	        	   decTimer.start();
 	       });
 	       holden.setOnAction(e-> {
@@ -265,17 +256,17 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //holdenChar.setSelected(true);
+	        	   
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   timeDec=System.nanoTime()+15000000000L;
 	        	   decTimer.start();
 	       });
 
 		feed.setOnAction(e -> {
-			if(currentChar.getCharHunger()<maxHunger-5)
+			if(currentChar.getCharHunger()<=maxHunger-5)
 			{
 				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 		 		   characterDisplay.setStyle(cString);
@@ -287,7 +278,7 @@ public class Runner extends Application
 		});
 
 		clean.setOnAction(e -> {
-			if(currentChar.getCharHunger()<maxClean-5)
+			if(currentChar.getCharCleanliness()<=maxClean-5)
 			{
 				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 		 		   characterDisplay.setStyle(cString);
@@ -299,7 +290,7 @@ public class Runner extends Application
 		});
 
 		medicate.setOnAction(e -> {
-			if(currentChar.getCharHunger()<maxHealth-5)
+			if(currentChar.getCharHealth()<=maxHealth-5)
 			{
 				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 		 		   characterDisplay.setStyle(cString);
@@ -369,17 +360,6 @@ public class Runner extends Application
 	    	   holdenChar.changeIsAlive(false);
 	       }*/
 	}
-	
-	/**
-	 * Changes the character display based on the activity and the character currently selected.
-	 * @param action
-	 * 			An action from the Enum "Actions" 
-	 * @param characterDisplay
-	 * 			the display to be manipulated in displaying the Game Character
-	 * @return void
-	 * 
-	 * 
-	 */ 
 	
 }
 /*
