@@ -560,6 +560,3 @@ a.setOnEndOfMedia(new Runnable() {
   });
  a.play();
 */
-  });
- a.play();
-*/
