@@ -10,12 +10,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -33,6 +31,7 @@ public class Runner extends Application
 	int maxHunger=0;
 	int maxHealth=0;
 	int maxClean=0;
+	
 	/*static GameCharacter marthaChar = new GameCharacter("Martha");
     static GameCharacter amelieChar = new GameCharacter("Amelie");
     static GameCharacter mimiChar = new GameCharacter("Mimi");
@@ -90,9 +89,6 @@ public class Runner extends Application
 	       int dimX = 1000;
 	       int dimY = 700;
 	       
-	       
-	       
-	       //GameCharacter current = new GameCharacter("Martha");
 	              
 	       //Creates new button
 	       Button martha = new Button("");
@@ -201,7 +197,7 @@ public class Runner extends Application
             		   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 		        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 		        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-		        	   timeDec=System.nanoTime()+30000000000L;
+		        	   timeDec=System.nanoTime()+15000000000L;
                    }
            }};
 	       
@@ -211,7 +207,7 @@ public class Runner extends Application
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch; -fx-background-repeat: no-repeat; -fx-background-position: center;");
-	        	   characterDisplay.setImage(marthaImg);
+	        	   //characterDisplay.setImage(marthaImg);
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Martha");
 	        	   maxHunger = Utilities.baseHunger[currentChar.getPos()];
@@ -219,12 +215,12 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //currentChar.setSelected(true);
+	        	  
 	        	   
 		        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 		        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 		        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-		        	   timeDec=System.nanoTime()+30000000000L;
+		        	   timeDec=System.nanoTime()+15000000000L;
 		        	   decTimer.start();
 	           });
 	       
@@ -234,7 +230,7 @@ public class Runner extends Application
 	        	   txt.setText("You Have Selected Amelie");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;");
 
-	        	   characterDisplay.setImage(amelieImg);
+	        	   //characterDisplay.setImage(amelieImg);
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Amelie");
@@ -243,12 +239,12 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //amelieChar.setSelected(true);
+	        	
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   timeDec=System.nanoTime()+15000000000L;
 	        	   decTimer.start();
 	       });	       
 	      
@@ -257,7 +253,7 @@ public class Runner extends Application
 	        	   txt.setText("You Have Selected Mimi");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;");
 
-	        	   characterDisplay.setImage(mimiImg);
+	        	   //characterDisplay.setImage(mimiImg);
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Mimi");
@@ -266,12 +262,12 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //mimiChar.setSelected(true);
+	        	  
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   timeDec=System.nanoTime()+15000000000L;
 	        	   decTimer.start();
 	       });
 	       
@@ -282,7 +278,7 @@ public class Runner extends Application
 	        	   txt.setText("You Have Selected Ned");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;");
 
-	        	   characterDisplay.setImage(nedImg);
+	        	   //characterDisplay.setImage(nedImg);
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Ned");
@@ -291,12 +287,12 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //nedChar.setSelected(true);
+	        	  
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   timeDec=System.nanoTime()+15000000000L;
 	        	   decTimer.start();
 	       });
 	       holden.setOnAction(e-> {
@@ -306,7 +302,7 @@ public class Runner extends Application
 	        	   txt.setText("You Have Selected Holden");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
 	        	   
-	        	   characterDisplay.setImage(holdenImg);
+	        	   //characterDisplay.setImage(holdenImg);
 	        	   
 	        	   primaryStage.setScene(nurturePage);
 	        	   currentChar=new GameCharacter("Holden");
@@ -315,17 +311,17 @@ public class Runner extends Application
 	        	   maxHealth = Utilities.baseHealth[currentChar.getPos()];
 	        	   
 	        	   CSVTools.writeToCSV(fileName, currentChar.toString());
-	        	   //holdenChar.setSelected(true);
+	        	   
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   timeDec=System.nanoTime()+15000000000L;
 	        	   decTimer.start();
 	       });
 
 		feed.setOnAction(e -> {
-			if(currentChar.getCharHunger()<maxHunger-5)
+			if(currentChar.getCharHunger()<=maxHunger-5)
 			{
 				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 		 		   characterDisplay.setStyle(cString);
@@ -337,7 +333,7 @@ public class Runner extends Application
 		});
 
 		clean.setOnAction(e -> {
-			if(currentChar.getCharHunger()<maxClean-5)
+			if(currentChar.getCharCleanliness()<=maxClean-5)
 			{
 				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 		 		   characterDisplay.setStyle(cString);
@@ -349,7 +345,7 @@ public class Runner extends Application
 		});
 
 		medicate.setOnAction(e -> {
-			if(currentChar.getCharHunger()<maxHealth-5)
+			if(currentChar.getCharHealth()<=maxHealth-5)
 			{
 				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 		 		   characterDisplay.setStyle(cString);
@@ -420,6 +416,7 @@ public class Runner extends Application
 	       }*/
 	}
 	
+
 	/**
 	 * Changes the character display based on the activity and the character currently selected.
 	 * @param action
