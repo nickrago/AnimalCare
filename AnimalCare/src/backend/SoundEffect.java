@@ -81,9 +81,12 @@ public class SoundEffect {
 			}		    
 		}
 	}
-	
-	 
-	
+	/*
+	public SoundEffect(String filePath) {
+		this.soundFile = new Media(filePath);
+	    this.soundPlayer = new MediaPlayer(soundFile);
+	}
+	*/
 	public void play(){
 	    soundPlayer.play();
 	}
@@ -93,7 +96,8 @@ public class SoundEffect {
 	}
 	
 	public static void main(String[] args) {
-		SoundEffect test = new SoundEffect("eat3.mp3", true);
+		String uriString = new File("C:\\Users\\BT_1N3_18\\git\\AnimalCare\\Say\\AnimalCare\\src\\sound\\news.mp3").toURI().toString();
+		SoundEffect test = new SoundEffect(uriString, true);
 		test.play();
 	}
 }
@@ -109,3 +113,7 @@ titleScreen.setOnEndOfMedia(new Runnable() {
 });
 titleScreen.play();
 */
+
+//String uriString = new File("C:\\Users\\BT_1N3_18\\git\\AnimalCare\\Say\\AnimalCare\\src\\sound\\animalforest.mp3").toURI().toString();
+//SoundEffect test = new SoundEffect(uriString, true);
+//test.play();
