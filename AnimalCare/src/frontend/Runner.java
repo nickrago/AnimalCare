@@ -7,6 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -30,6 +32,12 @@ public class Runner extends Application{
     static GameCharacter mimiChar = new GameCharacter("Mimi");
     static GameCharacter nedChar = new GameCharacter("Ned");
     static GameCharacter holdenChar = new GameCharacter("Holden");
+    
+    static Image marthaImg = new Image("./marthacharacterimages/main.png", true);
+    static Image amelieImg = new Image("./ameliecharacterimages/main.png", true);
+    static Image mimiImg = new Image("./mimicharacterimages/main.png", true);
+    static Image nedImg = new Image("./nedcharacterimages/main.png", true);
+    static Image holdenImg = new Image("./holdencharacterimages/main.png", true);
 
 	public static void main(String args[]) {
 		launch(args);
@@ -91,7 +99,7 @@ public class Runner extends Application{
 	       HBox characterName = new HBox(20);
 	       characterName.getChildren().add(name);
 	       characterName.setAlignment(Pos.CENTER);
-	       Pane characterDisplay = new Pane();
+	       ImageView characterDisplay = new ImageView();
 	       Button feed = new Button("Feed");
 	       feed.setPrefSize(200, 100);
 	       Button clean = new Button("Clean");
@@ -133,7 +141,7 @@ public class Runner extends Application{
                public void handle(long now) {
                        if(now > timeThree) {
                            if(marthaChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                                characterDisplay.setImage(marthaImg);
                             }
                             if(holdenChar.isSelected()) {
                                 characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
@@ -158,7 +166,7 @@ public class Runner extends Application{
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
-	        	   characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	        	   characterDisplay.setImage(marthaImg);
 	        	   primaryStage.setScene(nurturePage);
 	        	   
 	        	   int maxHunger = marthaChar.getCharHunger();
@@ -418,7 +426,7 @@ public class Runner extends Application{
 	 * 
 	 */ 
 	
-	public static void initAction(Actions action, Pane characterDisplay) {
+	public static void initAction(Actions action, ImageView characterDisplay) {
 		Animals[] petCollection = Animals.values();
 		switch (action) {
 		case FEED:
