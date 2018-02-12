@@ -23,6 +23,7 @@ public class Runner extends Application
 	//static List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	//static int pos = pets.size() - 1;
 	long timeStep;
+	long timeDec;
 	long timeThree;
 	int daysAlive=0;
 	int maxHunger=0;
@@ -138,25 +139,23 @@ public class Runner extends Application
                    {
             		   String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
             		   characterDisplay.setStyle(cString);
-            		   /*if(marthaChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                            }
-                            if(holdenChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                            };
-                            if(mimiChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                            };
-                            if(amelieChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                            };
-                            if(nedChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                            };*/
-                            this.stop();
                    }
            }};
-	       
+           AnimationTimer decTimer = new AnimationTimer()
+           {
+        	   public void handle(long now)
+               {
+            	   if(now > timeDec)
+                   {
+            		   currentChar.changeCleanliness(-10);
+            		   currentChar.changeHealth(-10);
+            		   currentChar.changeHunger(-10);
+            		   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
+		        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
+		        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
+		        	   timeDec=System.nanoTime()+30000000000L;
+                   }
+           }};
 	       
 	       //Tells the button what to do when clicked
 	       martha.setOnAction(e-> {
@@ -177,6 +176,8 @@ public class Runner extends Application
 		        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 		        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 		        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
+		        	   timeDec=System.nanoTime()+30000000000L;
+		        	   decTimer.start();
 	           });
 	       
 	       amelie.setOnAction(e-> {
@@ -199,6 +200,8 @@ public class Runner extends Application
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
+	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   decTimer.start();
 	       });	       
 	      
 	       mimi.setOnAction(e->{
@@ -220,6 +223,8 @@ public class Runner extends Application
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
+	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   decTimer.start();
 	       });
 	       
 	       ned.setOnAction(e-> {
@@ -242,7 +247,9 @@ public class Runner extends Application
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
-	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth); 
+	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
+	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   decTimer.start();
 	       });
 	       holden.setOnAction(e-> {
 	    	   
@@ -262,7 +269,9 @@ public class Runner extends Application
 	        	   
 	        	   hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 	        	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
-	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth); 
+	        	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
+	        	   timeDec=System.nanoTime()+30000000000L;
+	        	   decTimer.start();
 	       });
 
 		feed.setOnAction(e -> {
@@ -270,32 +279,8 @@ public class Runner extends Application
  		   characterDisplay.setStyle(cString);
  		  timeThree = System.nanoTime() + 3000000000L;
           feedTimer.start();
-			/*initAction(Actions.FEED, characterDisplay);
-			if(marthaChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            }
-            if(holdenChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(mimiChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(amelieChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(nedChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };*/
+          Utilities.feed(currentChar);
+          hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 		});
 
 		clean.setOnAction(e -> {
@@ -303,32 +288,8 @@ public class Runner extends Application
 	 		   characterDisplay.setStyle(cString);
 	 		  timeThree = System.nanoTime() + 3000000000L;
 	          feedTimer.start();
-			/*initAction(Actions.CLEAN, characterDisplay);
-			if(marthaChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            }
-            if(holdenChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(mimiChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(amelieChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(nedChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };*/
+	          Utilities.clean(currentChar);
+       	   cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 		});
 
 		medicate.setOnAction(e -> {
@@ -336,32 +297,8 @@ public class Runner extends Application
 	 		   characterDisplay.setStyle(cString);
 	 		  timeThree = System.nanoTime() + 3000000000L;
 	          feedTimer.start();
-			/*initAction(Actions.MEDICATE, characterDisplay);
-			if(marthaChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            }
-            if(holdenChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(mimiChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(amelieChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };
-            if(nedChar.isSelected()) {
-                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-                timeThree = System.nanoTime() + 3000000000L;
-                feedTimer.start();
-            };*/
+	          Utilities.med(currentChar);
+       	   health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
 		});
        
 	       GridPane gameScreen = new GridPane();
