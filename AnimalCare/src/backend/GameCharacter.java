@@ -12,6 +12,7 @@ public class GameCharacter
 	private int charCleanliness;
 	private int daysAlive;
 	private boolean isAlive;
+	private int pos;
 	private boolean isSelected;
 	//this constructor is for making NEW CHARACTERS.
 	public GameCharacter(String charName) 
@@ -27,6 +28,7 @@ public class GameCharacter
 				break;
 			}
 		}
+		this.pos=pos;
 		this.charHealth=Utilities.baseHealth[pos];
 		this.charHunger=Utilities.baseHunger[pos];
 		this.charCleanliness=Utilities.baseClean[pos];
