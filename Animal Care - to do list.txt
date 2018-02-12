@@ -1,0 +1,9 @@
+﻿ANIMAL CARE
+To-Do List
+
+
+February 12, 2018
+* Decrement Health, Hunger and Hygiene Values - Nick and Amir
+* Fix CSV documenting - Dana
+* Add background ambient music - Anis
+* Edit display for character selection - Justin
