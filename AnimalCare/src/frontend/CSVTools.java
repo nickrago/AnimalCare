@@ -112,4 +112,9 @@ public class CSVTools
 		}
 		pw.close();
 	}
+	
+	public static void update(String file, int row, List<GameCharacter> pets)
+	{
+		
+	}
 }
