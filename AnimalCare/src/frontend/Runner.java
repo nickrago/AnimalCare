@@ -1,5 +1,7 @@
 package frontend;
 
+import java.util.HashMap;
+
 import backend.GameCharacter;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -27,17 +29,31 @@ public class Runner extends Application{
 	long timeThree;
 	int daysAlive;
 	
+	static int diff = 5;
+	
 	static GameCharacter marthaChar = new GameCharacter("Martha");
     static GameCharacter amelieChar = new GameCharacter("Amelie");
     static GameCharacter mimiChar = new GameCharacter("Mimi");
     static GameCharacter nedChar = new GameCharacter("Ned");
     static GameCharacter holdenChar = new GameCharacter("Holden");
     
+
     static Image marthaImg = new Image("./marthacharacterimages/main.png", true);
     static Image amelieImg = new Image("./ameliecharacterimages/main.png", true);
     static Image mimiImg = new Image("./mimicharacterimages/main.png", true);
     static Image nedImg = new Image("./nedcharacterimages/main.png", true);
     static Image holdenImg = new Image("./holdencharacterimages/main.png", true);
+    
+    static HashMap<String,Image>characterImages = new HashMap<>(5);
+
+	private static int maxHunger;
+	private static int maxClean;
+	private static int maxHealth;
+	
+	public static Text hunger;
+	public static Text cleanliness;
+	public static Text health;
+
 
 	public static void main(String args[]) {
 		launch(args);
@@ -84,9 +100,9 @@ public class Runner extends Application{
 	       //Creates text object
 	       Text txt = new Text(0,10,"Please select a character");
 	       Text days = new Text(0,10, "Days Alive: " + daysAlive);
-	       Text hunger = new Text(0,20, "");
-	       Text cleanliness = new Text(0,30, "");
-	       Text health = new Text(0,40, "");
+	       hunger = new Text(0,20, "");
+	       cleanliness = new Text(0,30, "");
+	       health = new Text(0,40, "");
 	       days.setFill(Color.RED);
 	       hunger.setFill(Color.BLACK);
 	       cleanliness.setFill(Color.BLACK);
@@ -144,16 +160,16 @@ public class Runner extends Application{
                                 characterDisplay.setImage(marthaImg);
                             }
                             if(holdenChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            	characterDisplay.setImage(holdenImg);
                             };
                             if(mimiChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            	characterDisplay.setImage(mimiImg);
                             };
                             if(amelieChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            	characterDisplay.setImage(amelieImg);
                             };
                             if(nedChar.isSelected()) {
-                                characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+                            	characterDisplay.setImage(nedImg);
                             };
                             this.stop();
                    }
@@ -165,13 +181,13 @@ public class Runner extends Application{
 	    	   
 	    	   //The on-click operation
 	        	   txt.setText("You Have Selected Martha");
-	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
+	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch; -fx-background-repeat: no-repeat; -fx-background-position: center;");
 	        	   characterDisplay.setImage(marthaImg);
 	        	   primaryStage.setScene(nurturePage);
 	        	   
-	        	   int maxHunger = marthaChar.getCharHunger();
-	        	   int maxClean = marthaChar.getCharCleanliness();
-	        	   int maxHealth = marthaChar.getCharHealth();
+	        	    maxHunger = marthaChar.getCharHunger();
+	        	    maxClean = marthaChar.getCharCleanliness();
+	        	    maxHealth = marthaChar.getCharHealth();
 	        	   
 	        	   CSVTools.writeToCSV(fileName, marthaChar.toString());
 	        	   marthaChar.setSelected(true);
@@ -187,13 +203,13 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Amelie");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/amelie.png\"); -fx-background-size: stretch;");
 
-	        	   characterDisplay.setStyle("-fx-background-image: url(\"ameliecharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	        	   characterDisplay.setImage(amelieImg);
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   
-	        	   int maxHunger = amelieChar.getCharHunger();
-	        	   int maxClean = amelieChar.getCharCleanliness();
-	        	   int maxHealth = amelieChar.getCharHealth();
+	        	    maxHunger = amelieChar.getCharHunger();
+	        	    maxClean = amelieChar.getCharCleanliness();
+	        	    maxHealth = amelieChar.getCharHealth();
 
 	        	   CSVTools.writeToCSV(fileName, amelieChar.toString());
 	        	   amelieChar.setSelected(true);
@@ -208,13 +224,13 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Mimi");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/mimi.png\"); -fx-background-size: stretch;");
 
-	        	   characterDisplay.setStyle("-fx-background-image: url(\"mimicharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	        	   characterDisplay.setImage(mimiImg);
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   
-	        	   int maxHunger = mimiChar.getCharHunger();
-	        	   int maxClean = mimiChar.getCharCleanliness();
-	        	   int maxHealth = mimiChar.getCharHealth();
+	        	    maxHunger = mimiChar.getCharHunger();
+	        	    maxClean = mimiChar.getCharCleanliness();
+	        	    maxHealth = mimiChar.getCharHealth();
 	        	   
 	        	   CSVTools.writeToCSV(fileName, mimiChar.toString());
 	        	   mimiChar.setSelected(true);
@@ -231,13 +247,13 @@ public class Runner extends Application{
 	        	   txt.setText("You Have Selected Ned");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/ned.png\"); -fx-background-size: stretch;");
 
-	        	   characterDisplay.setStyle("-fx-background-image: url(\"nedcharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	        	   characterDisplay.setImage(nedImg);
 
 	        	   primaryStage.setScene(nurturePage);
 	        	   
-	        	   int maxHunger = nedChar.getCharHunger();
-	        	   int maxClean = nedChar.getCharCleanliness();
-	        	   int maxHealth = nedChar.getCharHealth();
+	        	    maxHunger = nedChar.getCharHunger();
+	        	    maxClean = nedChar.getCharCleanliness();
+	        	    maxHealth = nedChar.getCharHealth();
 	        	   
 	        	   CSVTools.writeToCSV(fileName, nedChar.toString());
 	        	   nedChar.setSelected(true);
@@ -252,12 +268,14 @@ public class Runner extends Application{
 
 	        	   txt.setText("You Have Selected Holden");
 	        	   characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
-	        	   characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+	        	   
+	        	   characterDisplay.setImage(holdenImg);
+	        	   
 	        	   primaryStage.setScene(nurturePage);
 	        	   
-	        	   int maxHunger = holdenChar.getCharHunger();
-	        	   int maxClean = holdenChar.getCharCleanliness();
-	        	   int maxHealth = holdenChar.getCharHealth();
+	        	    maxHunger = holdenChar.getCharHunger();
+	        	    maxClean = holdenChar.getCharCleanliness();
+	        	    maxHealth = holdenChar.getCharHealth();
 	        	   
 	        	   CSVTools.writeToCSV(fileName, holdenChar.toString());
 	        	   holdenChar.setSelected(true);
@@ -426,7 +444,7 @@ public class Runner extends Application{
 	 * 
 	 */ 
 	
-	public static void initAction(Actions action, ImageView characterDisplay) {
+	public static void initAction(Actions action, HashMap<String, Image> characterImages) {
 		Animals[] petCollection = Animals.values();
 		switch (action) {
 		case FEED:
@@ -434,31 +452,36 @@ public class Runner extends Application{
 				switch (petCollection[i]) {
 				case MARTHA:
 					if (marthaChar.isSelected()) {
-						characterDisplay.setStyle(
-								"-fx-background-image: url(\"marthacharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						characterImage = new Image("./marthacharacterimages/main.png", true);
+						marthaChar.changeHunger(diff);
 					}
 					break;
 				case AMELIE:
 					if (amelieChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"ameliecharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						amelieChar.changeHunger(diff);
 					}
 					break;
 				case MIMI:
 					if (mimiChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"mimicharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						mimiChar.changeHunger(diff);
 					}
 					break;
 				case NED:
 					if (nedChar.isSelected())
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"nedcharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						nedChar.changeHunger(diff);
 					break;
 				case HOLDEN:
 					if (holdenChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"holdencharacterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						holdenChar.changeHunger(diff);
+						hunger.setText("Hunger: " + holdenChar.getCharHunger() + "/" + maxHunger);
 					}
 					break;
 				}
@@ -470,32 +493,37 @@ public class Runner extends Application{
 				switch (petCollection[i]) {
 				case MARTHA:
 					if (marthaChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"marthacharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						marthaChar.changeCleanliness(diff);
 					}
 					break;
 				case AMELIE:
 					if (amelieChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"ameliecharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						amelieChar.changeCleanliness(diff);
 					}
 					break;
 				case MIMI:
 					if (mimiChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"mimicharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						mimiChar.changeCleanliness(diff);
 					}
 					break;
 				case NED:
 					if (nedChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"nedcharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						nedChar.changeCleanliness(diff);
 					}
 					break;
 				case HOLDEN:
 					if (holdenChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"holdencharacterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						holdenChar.changeCleanliness(diff);
 					}
 					break;
 				}
@@ -509,32 +537,37 @@ public class Runner extends Application{
 				switch (petCollection[i]) {
 				case MARTHA:
 					if (marthaChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"marthacharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						marthaChar.changeHealth(diff);
 					}
 					break;
 				case AMELIE:
 					if (amelieChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"ameliecharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						amelieChar.changeHealth(diff);
 					}
 					break;
 				case MIMI:
 					if (mimiChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"mimicharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						mimiChar.changeHealth(diff);
 					}
 					break;
 				case NED:
 					if (nedChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"nedcharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						nedChar.changeHealth(diff);
 					}
 					break;
 				case HOLDEN:
 					if (holdenChar.isSelected()) {
-						characterDisplay.setStyle(
+						characterImage.setStyle(
 								"-fx-background-image: url(\"holdencharacterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+						holdenChar.changeHealth(diff);
 					}
 					break;
 				}
