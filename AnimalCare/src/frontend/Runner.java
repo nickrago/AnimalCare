@@ -154,7 +154,17 @@ public class Runner extends Application
 					hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 					cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 					health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-					timeDec=System.nanoTime()+15000000000L;
+					//check the character's status
+					if(Utilities.checkPulse(currentChar))
+					{
+						//if still breathing, keep decreasing stats
+						timeDec=System.nanoTime()+15000000000L;
+					}
+					else
+					{
+						//if not, RIP, show game over screen.
+						
+					}
 				}
 			}
 		};

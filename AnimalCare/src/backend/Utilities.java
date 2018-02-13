@@ -22,4 +22,21 @@ public class Utilities
 	{
 		c.changeCleanliness(5);
 	}
+	public static boolean checkPulse(GameCharacter c)
+	{
+		boolean pulse=true;
+		if(c.getCharHunger()<0)
+		{
+			pulse=false;
+		}
+		if(c.getCharCleanliness()<0)
+		{
+			pulse=false;
+		}
+		if(c.getCharHealth()<0)
+		{
+			pulse=false;
+		}
+		return pulse;
+	}
 }
