@@ -33,6 +33,7 @@ public class GameCharacter
 		this.charCleanliness=Utilities.baseClean[pos];
 		this.daysAlive=0;
 		this.isAlive=true;
+		
 	}
 	//this constructor is for LOADING CHARACTERS.
 	public GameCharacter(String charName, boolean isAlive, int daysAlive, int charCleanliness, int charHunger, int charHealth)

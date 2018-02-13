@@ -1,5 +1,7 @@
 package frontend;
 
+import backend.Action;
+
 /*
 *	Authors: Nick Ragovski, Amir Hasan, Dana Ravvin, Anis Tarafdar, Justin Fagan
 *	Description: Runner for Tamagachi application.
@@ -13,6 +15,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -27,6 +31,9 @@ public class Runner extends Application
 	static String fileName = "characters.csv";
 	//static List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	//static int pos = pets.size() - 1;
+	GameCharacter currentChar;
+	static Image characterImage;
+	//String charImgPath = "./"+currentChar.getCharName().toLowerCase()+"characterimages/main.png";
 	long timeStep;
 	long timeDec;
 	long timeThree;
@@ -34,7 +41,9 @@ public class Runner extends Application
 	int maxHunger=0;
 	int maxHealth=0;
 	int maxClean=0;
-	GameCharacter currentChar;
+	
+	
+	
 	public static void main(String args[])
 	{
 		launch(args);
@@ -89,13 +98,14 @@ public class Runner extends Application
 		HBox characterName = new HBox(20);
 		characterName.getChildren().add(name);
 		characterName.setAlignment(Pos.CENTER);
-		Pane characterDisplay = new Pane();
+		ImageView characterDisplay = new ImageView();
 		Button feed = new Button("Feed");
 		feed.setPrefSize(200, 100);
 		Button clean = new Button("Clean");
 		clean.setPrefSize(200, 100);
 		Button medicate = new Button("Medicate");
 		medicate.setPrefSize(200, 100);
+		
 		
 		VBox daysAliveBox = new VBox(10);
 		daysAliveBox.getChildren().addAll(days,hunger,cleanliness,health);
@@ -160,9 +170,13 @@ public class Runner extends Application
 			//The on-click operation
 			txt.setText("You Have Selected Martha");
 			characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
-			characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+			String cString= currentChar.getCharName().toLowerCase()+"characterimages/main.png";
+			//characterDisplay.setStyle(cString);
+			
 			primaryStage.setScene(nurturePage);
 			currentChar=new GameCharacter("Martha");
+			characterImage= new Image(cString, true);
+			characterDisplay.setImage(characterImage);
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
@@ -262,8 +276,9 @@ public class Runner extends Application
 		{
 			if(currentChar.getCharHunger()<=maxHunger-5)
 			{
-				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
-				characterDisplay.setStyle(cString);
+				/*String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				characterDisplay.setStyle(cString);*/
+				changeImage(currentChar, Action.EAT);
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.feed(currentChar);
@@ -354,6 +369,34 @@ public class Runner extends Application
 		if (holdenChar.getIsAlive())
 		{
 			holdenChar.changeIsAlive(false);
+		}*/
+	
+	}
+	public static void initAction(GameCharacter pet, Action action)
+	{
+		
+	}
+	public static void changeImage(GameCharacter pet, Action action) 
+	{
+		String charImagePath = "./"+pet.getCharName().toLowerCase()+"characterimages/"+action.toString().toLowerCase()+".png";
+		characterImage = new Image(charImagePath, true);
+		/*switch(pet.getCharName())
+		{
+			case "Martha":
+				
+				break;
+			case "Amelie":
+				
+				break;
+			case "Mimi":
+					
+				break;
+			case "Ned":
+				
+				break;
+			case "Holden":
+				
+				break;
 		}*/
 	}
 }
