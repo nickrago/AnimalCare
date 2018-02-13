@@ -1,5 +1,5 @@
 package backend;
-/**
+/*
 *	Authors: Justin Fagan, Amir Hasan, Anis Tarafdar
 *	Description: GameCharacter represents the animal that the player cares for.
 */
@@ -12,7 +12,7 @@ public class GameCharacter
 	private int charCleanliness;
 	private int daysAlive;
 	private boolean isAlive;
-	private boolean isSelected;
+	private int pos;
 	//this constructor is for making NEW CHARACTERS.
 	public GameCharacter(String charName) 
 	{
@@ -27,12 +27,12 @@ public class GameCharacter
 				break;
 			}
 		}
+		this.pos=pos;
 		this.charHealth=Utilities.baseHealth[pos];
 		this.charHunger=Utilities.baseHunger[pos];
 		this.charCleanliness=Utilities.baseClean[pos];
 		this.daysAlive=0;
 		this.isAlive=true;
-		this.isSelected= false;
 	}
 	//this constructor is for LOADING CHARACTERS.
 	public GameCharacter(String charName, boolean isAlive, int daysAlive, int charCleanliness, int charHunger, int charHealth)
@@ -100,15 +100,13 @@ public class GameCharacter
 	{
 		return isAlive;
 	}
-	public boolean isSelected() {
-		return isSelected;
-	}
-	public void setSelected(boolean isSelected) {
-		this.isSelected = isSelected;
-	}
 	public void changeIsAlive(boolean isAlive)
 	{
 		this.isAlive=isAlive;
+	}
+	public int getPos()
+	{
+		return pos;
 	}
 	public String toString()
 	{ 
