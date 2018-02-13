@@ -171,7 +171,7 @@ public class Runner extends Application
 					if(Utilities.checkPulse(currentChar))
 					{
 						//if still breathing, keep decreasing stats
-						timeDec=System.nanoTime()+15000000000L;
+						timeDec=System.nanoTime()+10000000000L;
 					}
 					else
 					{
@@ -352,7 +352,7 @@ public class Runner extends Application
 		primaryStage.show();
 		
 		//Timer for setting daily events : 60000000000L (60 seconds)
-		timeStep = System.nanoTime() + 60000000000L;
+		timeStep = System.nanoTime() + 20000000000L;
 	}
 }
 /*
