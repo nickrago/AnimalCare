@@ -103,6 +103,7 @@ public class Runner extends Application
 		
 		VBox daysAliveBox = new VBox(10);
 		daysAliveBox.getChildren().addAll(days,hunger,cleanliness,health);
+		daysAliveBox.setStyle("-fx-background-color: #FFFFFF;");
 		
 		
 		buttonContainer.getChildren().addAll(feed, clean, medicate);
