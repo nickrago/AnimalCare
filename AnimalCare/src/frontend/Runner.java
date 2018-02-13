@@ -1,7 +1,5 @@
 package frontend;
 
-import backend.Action;
-
 /*
 *	Authors: Nick Ragovski, Amir Hasan, Dana Ravvin, Anis Tarafdar, Justin Fagan
 *	Description: Runner for Tamagachi application.
@@ -26,20 +24,36 @@ import javafx.stage.Stage;
 
 public class Runner extends Application {
 	static String fileName = "characters.csv";
+<<<<<<< HEAD
 	// static List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	// static int pos = pets.size() - 1;
 	GameCharacter currentChar;
 	// String charImgPath =
 	// "./"+currentChar.getCharName().toLowerCase()+"characterimages/main.png";
 	static long timeStep;
+=======
+	//static List<GameCharacter> pets = CSVTools.readCSV(fileName);
+	//static int pos = pets.size() - 1;
+	long timeStep;
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 	long timeDec;
 	long timeThree;
+<<<<<<< HEAD
 	int daysAlive = 0;
 	int maxHunger = 0;
 	int maxHealth = 0;
 	int maxClean = 0;
 
 	public static void main(String args[]) {
+=======
+	int daysAlive=0;
+	int maxHunger=0;
+	int maxHealth=0;
+	int maxClean=0;
+	GameCharacter currentChar;
+	public static void main(String args[])
+	{
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 		launch(args);
 		// CSVTools.clearCSV(fileName);
 		// Creates the CSV
@@ -95,7 +109,11 @@ public class Runner extends Application {
 		clean.setPrefSize(200, 100);
 		Button medicate = new Button("Medicate");
 		medicate.setPrefSize(200, 100);
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 		VBox daysAliveBox = new VBox(10);
 		daysAliveBox.getChildren().addAll(days, hunger, cleanliness, health);
 		daysAliveBox.setStyle("-fx-background-color: #FFFFFF;");
@@ -134,11 +152,22 @@ public class Runner extends Application {
 				}
 			}
 		};
+<<<<<<< HEAD
 		// increments the daysAlive stat.
 		AnimationTimer dTimer = new AnimationTimer() {
 			public void handle(long now) {
 				if (now > timeStep) {
 					timeStep = now + 20000000000L;
+=======
+		//increments the daysAlive stat.
+		AnimationTimer dTimer= new AnimationTimer()
+		{
+			public void handle(long now)
+			{
+				if(now > timeStep)
+				{
+					timeStep=now + 60000000000L;
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 					daysAlive += 1;
 					days.setText("Days Alive: " + daysAlive);
 				}
@@ -155,6 +184,7 @@ public class Runner extends Application {
 					hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 					cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 					health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
+<<<<<<< HEAD
 					// check the character's status
 					if (Utilities.checkPulse(currentChar)) {
 						// if still breathing, keep decreasing stats
@@ -163,6 +193,19 @@ public class Runner extends Application {
 						// if not, RIP, show game over screen.
 						dTimer.stop();
 						GridPane deathScreen = new GridPane();
+=======
+					//check the character's status
+					if(Utilities.checkPulse(currentChar))
+					{
+						//if still breathing, keep decreasing stats
+						timeDec=System.nanoTime()+10000000000L;
+					}
+					else
+					{
+						//if not, RIP, show game over screen.
+						dTimer.stop();
+						GridPane deathScreen = new GridPane(); 
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 						deathScreen.setId("deathScreen");
 						deathScreen.getStylesheets().add("stylesheets/DeathPage.css");
 						Scene deathPage = new Scene(deathScreen, dimX, dimY);
@@ -171,6 +214,7 @@ public class Runner extends Application {
 				}
 			}
 		};
+<<<<<<< HEAD
 
 		// Tells the button what to do when clicked
 		martha.setOnAction(e -> {
@@ -180,6 +224,15 @@ public class Runner extends Application {
 			characterDisplay.setStyle(
 					"-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 
+=======
+		//Tells the button what to do when clicked
+		martha.setOnAction(e->
+		{
+			//The on-click operation
+			txt.setText("You Have Selected Martha");
+			characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
+			characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 			primaryStage.setScene(nurturePage);
 			currentChar = new GameCharacter("Martha");
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
@@ -277,32 +330,62 @@ public class Runner extends Application {
 			timeDec = System.nanoTime() + 10000000000L;
 			decTimer.start();
 		});
+<<<<<<< HEAD
 
 		feed.setOnAction(e -> {
 			if (currentChar.getCharHunger() <= maxHunger - 5) {
 
 				initAction(currentChar, Action.EAT, characterDisplay);
+=======
+		
+		feed.setOnAction(e->
+		{
+			if(currentChar.getCharHunger()<=maxHunger-5)
+			{
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				characterDisplay.setStyle(cString);
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.feed(currentChar);
 				hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			}
 		});
+<<<<<<< HEAD
 
 		clean.setOnAction(e -> {
 
 			if (currentChar.getCharCleanliness() <= maxClean - 5) {
 				initAction(currentChar, Action.SHOWER, characterDisplay);
+=======
+		
+		clean.setOnAction(e->
+		{
+			if(currentChar.getCharCleanliness()<=maxClean-5)
+			{
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				characterDisplay.setStyle(cString);
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.clean(currentChar);
 				cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			}
 		});
+<<<<<<< HEAD
 
 		medicate.setOnAction(e -> {
 			if (currentChar.getCharHealth() <= maxHealth - 5) {
 				initAction(currentChar, Action.MEDICATE, characterDisplay);
+=======
+		
+		medicate.setOnAction(e->
+		{
+			if(currentChar.getCharHealth()<=maxHealth-5)
+			{
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				characterDisplay.setStyle(cString);
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.med(currentChar);
@@ -330,9 +413,15 @@ public class Runner extends Application {
 		// Shows
 		primaryStage.setScene(scene);
 		primaryStage.show();
+<<<<<<< HEAD
 
 		// Timer for setting daily events : 60000000000L (60 seconds)
+=======
+		
+		//Timer for setting daily events : 60000000000L (60 seconds)
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 		timeStep = System.nanoTime() + 60000000000L;
+<<<<<<< HEAD
 		new AnimationTimer() {
 			public void handle(long now) {
 				if (now > timeStep) {
@@ -360,10 +449,27 @@ public class Runner extends Application {
 				+ ".png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 		characterDisplay.setStyle(cString);
 		timeStep = System.nanoTime() + 20000000000L;
+=======
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
 	}
 }
 /*
+<<<<<<< HEAD
  * URL resource = getClass().getResource("abcd.mp3"); MediaPlayer a =new
  * MediaPlayer(new Media(resource.toString())); a.setOnEndOfMedia( new
  * Runnable() { public void run() { a.seek(Duration.ZERO); } }); a.play();
  */
+=======
+URL resource = getClass().getResource("abcd.mp3");
+MediaPlayer a =new MediaPlayer(new Media(resource.toString()));
+a.setOnEndOfMedia(
+	new Runnable()
+	{
+		public void run()
+		{
+			a.seek(Duration.ZERO);
+		}
+	});
+a.play();
+*/
+>>>>>>> branch 'master' of https://github.com/nickrago/AnimalCare.git
