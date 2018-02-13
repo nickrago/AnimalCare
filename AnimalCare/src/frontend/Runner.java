@@ -162,8 +162,10 @@ public class Runner extends Application
 					}
 					else
 					{
-						//if not, RIP, show game over screen.
-						
+						Scene deathPage = new Scene(characterLayout, dimX, dimY); nurturePage.getStylesheets().add("stylesheets/DeathPage.css"); 
+						GridPane deathScreen = new GridPane(); 
+						deathScreen.setId("deathScreen");
+						primaryStage.setScene(deathPage);
 					}
 				}
 			}
