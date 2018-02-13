@@ -1,7 +1,5 @@
 package frontend;
 
-import backend.Action;
-
 /*
 *	Authors: Nick Ragovski, Amir Hasan, Dana Ravvin, Anis Tarafdar, Justin Fagan
 *	Description: Runner for Tamagachi application.
@@ -15,8 +13,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -32,18 +28,14 @@ public class Runner extends Application
 	static String fileName = "characters.csv";
 	//static List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	//static int pos = pets.size() - 1;
-	GameCharacter currentChar;
-	//String charImgPath = "./"+currentChar.getCharName().toLowerCase()+"characterimages/main.png";
-	static long timeStep;
+	long timeStep;
 	long timeDec;
 	long timeThree;
 	int daysAlive=0;
 	int maxHunger=0;
 	int maxHealth=0;
 	int maxClean=0;
-	
-	
-	
+	GameCharacter currentChar;
 	public static void main(String args[])
 	{
 		launch(args);
@@ -109,7 +101,6 @@ public class Runner extends Application
 		Button medicate = new Button("Medicate");
 		medicate.setPrefSize(200, 100);
 		
-		
 		VBox daysAliveBox = new VBox(10);
 		daysAliveBox.getChildren().addAll(days,hunger,cleanliness,health);
 		daysAliveBox.setStyle("-fx-background-color: #FFFFFF;");
@@ -125,16 +116,16 @@ public class Runner extends Application
 		nurturePage.getStylesheets().add("stylesheets/NurturePage.css");
 		
 		//Sets the height and width of the button
-		martha.setPrefHeight(800);
-		martha.setPrefWidth(200);
-		amelie.setPrefHeight(800);
-		amelie.setPrefWidth(200);
-		mimi.setPrefHeight(800);
-		mimi.setPrefWidth(200);
-		ned.setPrefHeight(800);
+		martha.setPrefHeight(1000);
+		martha.setPrefWidth(250);
+		amelie.setPrefHeight(1000);
+		amelie.setPrefWidth(165);
+		mimi.setPrefHeight(1000);
+		mimi.setPrefWidth(110);
+		ned.setPrefHeight(1000);
 		ned.setPrefWidth(200);
-		holden.setPrefHeight(800);
-		holden.setPrefWidth(200);
+		holden.setPrefHeight(1000);
+		holden.setPrefWidth(130);
 		
 		primaryStage.setHeight(dimY);
 		primaryStage.setWidth(dimX);
@@ -158,7 +149,7 @@ public class Runner extends Application
 			{
 				if(now > timeStep)
 				{
-					timeStep=now + 20000000000L;
+					timeStep=now + 60000000000L;
 					daysAlive += 1;
 					days.setText("Days Alive: " + daysAlive);
 				}
@@ -202,8 +193,6 @@ public class Runner extends Application
 			txt.setText("You Have Selected Martha");
 			characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/martha.png\"); -fx-background-size: stretch;");
 			characterDisplay.setStyle("-fx-background-image: url(\"marthacharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-			//characterDisplay.setStyle(cString);
-			
 			primaryStage.setScene(nurturePage);
 			currentChar=new GameCharacter("Martha");
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
@@ -306,9 +295,8 @@ public class Runner extends Application
 		{
 			if(currentChar.getCharHunger()<=maxHunger-5)
 			{
-				/*String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
-				characterDisplay.setStyle(cString);*/
-				initAction(currentChar, Action.EAT, characterDisplay);
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				characterDisplay.setStyle(cString);
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.feed(currentChar);
@@ -318,10 +306,10 @@ public class Runner extends Application
 		
 		clean.setOnAction(e->
 		{
-			
 			if(currentChar.getCharCleanliness()<=maxClean-5)
 			{
-				initAction(currentChar, Action.SHOWER, characterDisplay);
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				characterDisplay.setStyle(cString);
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.clean(currentChar);
@@ -333,7 +321,8 @@ public class Runner extends Application
 		{
 			if(currentChar.getCharHealth()<=maxHealth-5)
 			{
-				initAction(currentChar, Action.MEDICATE, characterDisplay);
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				characterDisplay.setStyle(cString);
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.med(currentChar);
@@ -364,48 +353,6 @@ public class Runner extends Application
 		
 		//Timer for setting daily events : 60000000000L (60 seconds)
 		timeStep = System.nanoTime() + 60000000000L;
-		new AnimationTimer()
-		{
-			public void handle(long now)
-			{
-				if(now > timeStep)
-				{
-					timeStep=now + 60000000000L;
-					daysAlive += 1;
-					days.setText("Days Alive: " + daysAlive);
-				}
-			}
-		}.start();
-		
-		//when program ends
-		/*
-		if (marthaChar.getIsAlive())
-		{
-			marthaChar.changeIsAlive(false);
-		}
-		if (amelieChar.getIsAlive())
-		{
-			amelieChar.changeIsAlive(false);
-		}
-		if (mimiChar.getIsAlive())
-		{
-			mimiChar.changeIsAlive(false);
-		}
-		if (nedChar.getIsAlive())
-		{
-			nedChar.changeIsAlive(false); 
-		}
-		if (holdenChar.getIsAlive())
-		{
-			holdenChar.changeIsAlive(false);
-		}*/
-	
-	}
-	public static void initAction(GameCharacter pet, Action action, Pane characterDisplay)
-	{
-		String cString="-fx-background-image: url(\""+pet.getCharName().toLowerCase()+"characterimages/"+action.toString().toLowerCase()+".png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
-		characterDisplay.setStyle(cString);
-		timeStep = System.nanoTime() + 20000000000L;
 	}
 }
 /*
