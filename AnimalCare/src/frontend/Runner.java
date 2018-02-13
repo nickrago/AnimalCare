@@ -149,7 +149,7 @@ public class Runner extends Application
 			{
 				if(now > timeStep)
 				{
-					timeStep=now + 60000000000L;
+					timeStep=now + 20000000000L;
 					daysAlive += 1;
 					days.setText("Days Alive: " + daysAlive);
 				}
@@ -205,7 +205,7 @@ public class Runner extends Application
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			timeDec=System.nanoTime()+15000000000L;
+			timeDec=System.nanoTime()+10000000000L;
 			decTimer.start();
 		});
 		
@@ -226,7 +226,7 @@ public class Runner extends Application
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			timeDec=System.nanoTime()+15000000000L;
+			timeDec=System.nanoTime()+10000000000L;
 			decTimer.start();
 		});
 		
@@ -246,7 +246,7 @@ public class Runner extends Application
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			timeDec=System.nanoTime()+15000000000L;
+			timeDec=System.nanoTime()+10000000000L;
 			decTimer.start();
 		});
 		
@@ -267,7 +267,7 @@ public class Runner extends Application
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			timeDec=System.nanoTime()+15000000000L;
+			timeDec=System.nanoTime()+10000000000L;
 			decTimer.start();
 		});
 		holden.setOnAction(e->
@@ -287,7 +287,7 @@ public class Runner extends Application
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			timeDec=System.nanoTime()+15000000000L;
+			timeDec=System.nanoTime()+10000000000L;
 			decTimer.start();
 		});
 		
