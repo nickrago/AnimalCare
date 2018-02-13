@@ -177,6 +177,11 @@ public class Runner extends Application
 					{
 						//if not, RIP, show game over screen.
 						dTimer.stop();
+						GridPane deathScreen = new GridPane(); 
+						deathScreen.setId("deathScreen");
+						deathScreen.getStylesheets().add("stylesheets/DeathPage.css"); 
+						Scene deathPage = new Scene(deathScreen, dimX, dimY);
+						primaryStage.setScene(deathPage);
 					}
 				}
 			}
@@ -194,6 +199,7 @@ public class Runner extends Application
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
 			dTimer.start();
+			currentChar.changeHunger(-100);
 			CSVTools.writeToCSV(fileName, currentChar.toString());
 			
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
