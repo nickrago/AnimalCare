@@ -280,7 +280,7 @@ public class Runner extends Application
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.clean(currentChar);
-				cleanliness.setText("Hygiene: " + currentChar.getCharHunger() + "/" + maxClean);
+				cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			}
 		});
 		
@@ -293,7 +293,7 @@ public class Runner extends Application
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
 				Utilities.med(currentChar);
-				health.setText("Health: " + currentChar.getCharHunger() + "/" + maxHealth);
+				health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
 			}
 		});
 		
