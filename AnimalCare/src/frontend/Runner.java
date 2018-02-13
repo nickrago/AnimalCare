@@ -162,9 +162,10 @@ public class Runner extends Application
 					}
 					else
 					{
-						Scene deathPage = new Scene(characterLayout, dimX, dimY); nurturePage.getStylesheets().add("stylesheets/DeathPage.css"); 
 						GridPane deathScreen = new GridPane(); 
 						deathScreen.setId("deathScreen");
+						deathScreen.getStylesheets().add("stylesheets/DeathPage.css"); 
+						Scene deathPage = new Scene(deathScreen, dimX, dimY);
 						primaryStage.setScene(deathPage);
 					}
 				}
@@ -183,6 +184,8 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
+			
+			currentChar.changeHunger(-100);
 			
 			CSVTools.writeToCSV(fileName, currentChar.toString());
 			
