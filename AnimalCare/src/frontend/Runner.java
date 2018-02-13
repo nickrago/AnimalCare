@@ -275,7 +275,7 @@ public class Runner extends Application
 		{
 			if(currentChar.getCharCleanliness()<=maxClean-5)
 			{
-				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/shower.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 				characterDisplay.setStyle(cString);
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
@@ -288,7 +288,7 @@ public class Runner extends Application
 		{
 			if(currentChar.getCharHealth()<=maxHealth-5)
 			{
-				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/eat.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
+				String cString="-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/medicate.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 				characterDisplay.setStyle(cString);
 				timeThree = System.nanoTime() + 3000000000L;
 				feedTimer.start();
