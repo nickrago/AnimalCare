@@ -142,6 +142,19 @@ public class Runner extends Application
 				}
 			}
 		};
+		//increments the daysAlive stat.
+		AnimationTimer dTimer= new AnimationTimer()
+		{
+			public void handle(long now)
+			{
+				if(now > timeStep)
+				{
+					timeStep=now + 60000000000L;
+					daysAlive += 1;
+					days.setText("Days Alive: " + daysAlive);
+				}
+			}
+		};
 		AnimationTimer decTimer = new AnimationTimer()
 		{
 			public void handle(long now)
@@ -163,12 +176,11 @@ public class Runner extends Application
 					else
 					{
 						//if not, RIP, show game over screen.
-						
+						dTimer.stop();
 					}
 				}
 			}
 		};
-		
 		//Tells the button what to do when clicked
 		martha.setOnAction(e->
 		{
@@ -181,7 +193,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			
+			dTimer.start();
 			CSVTools.writeToCSV(fileName, currentChar.toString());
 			
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
@@ -202,7 +214,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			
+			dTimer.start();
 			CSVTools.writeToCSV(fileName, currentChar.toString());
 			
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
@@ -222,7 +234,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			
+			dTimer.start();
 			CSVTools.writeToCSV(fileName, currentChar.toString());
 			
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
@@ -243,7 +255,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			
+			dTimer.start();
 			CSVTools.writeToCSV(fileName, currentChar.toString());
 			
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
@@ -263,7 +275,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			
+			dTimer.start();
 			CSVTools.writeToCSV(fileName, currentChar.toString());
 			
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
@@ -335,41 +347,6 @@ public class Runner extends Application
 		
 		//Timer for setting daily events : 60000000000L (60 seconds)
 		timeStep = System.nanoTime() + 60000000000L;
-		new AnimationTimer()
-		{
-			public void handle(long now)
-			{
-				if(now > timeStep)
-				{
-					timeStep=now + 60000000000L;
-					daysAlive += 1;
-					days.setText("Days Alive: " + daysAlive);
-				}
-			}
-		}.start();
-		
-		//when program ends
-		/*
-		if (marthaChar.getIsAlive())
-		{
-			marthaChar.changeIsAlive(false);
-		}
-		if (amelieChar.getIsAlive())
-		{
-			amelieChar.changeIsAlive(false);
-		}
-		if (mimiChar.getIsAlive())
-		{
-			mimiChar.changeIsAlive(false);
-		}
-		if (nedChar.getIsAlive())
-		{
-			nedChar.changeIsAlive(false); 
-		}
-		if (holdenChar.getIsAlive())
-		{
-			holdenChar.changeIsAlive(false);
-		}*/
 	}
 }
 /*
