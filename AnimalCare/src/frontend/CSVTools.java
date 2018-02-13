@@ -48,7 +48,7 @@ public class CSVTools
 		}
 		StringBuilder sb=new StringBuilder();
 		//headlines
-		sb.append("Character,Current Status,Days Alive,Hygiene Level,Hunger Level,Health Level\n");
+		sb.append("Character,Current Status,Days Alive,Hygiene Level,Hunger Level,Health Level");
 		for (int row=1; row<pets.size(); row++)
 		{
 			//sb.append(pets.get(row).getCharName() + "," + pets.get(row).getIsAlive() + "," + pets.get(row).getDaysAlive() + "," + pets.get(row).getCharCleanliness() + "," + pets.get(row).getCharHunger() + "," + pets.get(row).getCharHealth());

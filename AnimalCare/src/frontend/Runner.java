@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.ArrayList;
 
 public class Runner extends Application
 {
@@ -45,6 +46,9 @@ public class Runner extends Application
 	}
 	public void start(Stage primaryStage)
 	{ 
+		/*CSVTools.clearCSV(fileName);
+		CSVTools.writeCSV(fileName, new ArrayList());
+		*/
 		//Sets the title of the window
 		primaryStage.setTitle("Hello World!");
 		/*
