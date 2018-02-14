@@ -93,9 +93,9 @@ public class GameCharacter
 	{
 		return daysAlive;
 	}
-	public void setDaysAlive(int daysAlive)
+	public void changeDaysAlive(int diff)
 	{
-		this.daysAlive=daysAlive;
+		this.daysAlive+=diff;
 	}
 	public boolean getIsAlive()
 	{
