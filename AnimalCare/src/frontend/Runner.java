@@ -47,7 +47,7 @@ public class Runner extends Application
 	//currentChar is the character that the player selects.
 	GameCharacter currentChar;
 	
-	List<GameCharacter> pets = CSVTools.readCSV(fileName);
+	static List<GameCharacter> pets = CSVTools.readCSV(fileName);
 	
 	public static void main(String args[])
 	{
@@ -113,7 +113,7 @@ public class Runner extends Application
 		//Puts the stats into their own region of the screen.
 		VBox daysAliveBox = new VBox(10);
 		daysAliveBox.getChildren().addAll(back, days,hunger,cleanliness,health);
-		daysAliveBox.setStyle("-fx-background-color: #FFFFFF;");
+		//daysAliveBox.setStyle("-fx-background-color: #FFFFFF;");
 		
 		buttonContainer.getChildren().addAll(feed, clean, medicate);
 		characterLayout.setTop(characterName);
@@ -204,19 +204,19 @@ public class Runner extends Application
 		{
 			currentChar=new GameCharacter("Martha");
 			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			//The max stats are set from the Utilities class file.
+			/*//The max stats are set from the Utilities class file.
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			/*test code
+			test code
 			currentChar.changeHunger(-100);
-			*/
+			
 			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			//Sets the text fields for the stats.
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());
+			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
 			//Starts the timer for decreasing the stats of the character.
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
@@ -230,14 +230,14 @@ public class Runner extends Application
 		{
 			currentChar=new GameCharacter("Amelie");
 			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			maxHunger = Utilities.baseHunger[currentChar.getPos()];
+			/*maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
 			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());
+			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			timeDay = System.nanoTime() + day;
@@ -248,14 +248,14 @@ public class Runner extends Application
 		{
 			currentChar=new GameCharacter("Mimi");
 			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			maxHunger = Utilities.baseHunger[currentChar.getPos()];
+			/*maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
 			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());
+			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			timeDay = System.nanoTime() + day;
@@ -266,14 +266,14 @@ public class Runner extends Application
 		{
 			currentChar=new GameCharacter("Ned");
 			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			maxHunger = Utilities.baseHunger[currentChar.getPos()];
+			/*maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
 			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());
+			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			timeDay = System.nanoTime() + day;
@@ -284,7 +284,7 @@ public class Runner extends Application
 		{
 			currentChar = new GameCharacter("Holden");
 			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			txt.setText("You Have Selected Holden");
+			/*txt.setText("You Have Selected Holden");
 			characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
 			characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
 			primaryStage.setScene(nurturePage);
@@ -296,7 +296,7 @@ public class Runner extends Application
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());
+			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			timeDay = System.nanoTime() + day;
@@ -386,7 +386,7 @@ public class Runner extends Application
 		maxHunger = Utilities.baseHunger[currentChar.getPos()];
 		maxClean = Utilities.baseClean[currentChar.getPos()];
 		maxHealth = Utilities.baseHealth[currentChar.getPos()];
-		CSVTools.writeToCSV(fileName, currentChar.toString(), null);
+		CSVTools.writeToCSV(fileName, currentChar.toString(), pets);
 		hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 		cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 		health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
