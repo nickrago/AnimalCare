@@ -30,6 +30,7 @@ public class Runner extends Application
 	long timeStep;
 	long timeDec;
 	long timeThree;
+	long timeM;
 	int daysAlive=0;
 	int maxHunger=0;
 	int maxHealth=0;
@@ -63,10 +64,23 @@ public class Runner extends Application
 		int dimX = 1000;
 		int dimY = 700;
 		
-		String titleURI = new File("C:\\Users\\BT_1N3_18\\git\\AnimalCare\\AnimalCare\\src\\frontend\\animalforest.mp3").toURI().toString();
+		String titleURI = new File("src/frontend/animalforest.mp3").toURI().toString();
 		SoundEffect title = new SoundEffect(titleURI, true);
 		title.play();
-		
+		timeM=System.nanoTime()+1000000000L;
+		AnimationTimer mTimer = new AnimationTimer()
+		{
+			public void handle(long now)
+			{
+				if(now > timeM)
+				{
+					double t=title.soundPlayer.getCurrentTime().toSeconds();
+					timeM=System.nanoTime()+1000000000L;
+					System.out.println(t);
+				}
+			}
+		};
+		mTimer.start();
 		//Creates new button
 		Button martha = new Button("");
 		Button amelie = new Button("");

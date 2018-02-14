@@ -17,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.Map;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -31,19 +32,32 @@ import javafx.util.Duration;
 public class SoundEffect{
 	
 	private Media soundFile;
-	private MediaPlayer soundPlayer;
+	public MediaPlayer soundPlayer;
 	private Clip soundFX;
 	
 	public SoundEffect(String filePath, boolean loop) {
-		if(loop = true) {
+		if(loop == true) {
 			this.soundFile = new Media(filePath);
 		    this.soundPlayer = new MediaPlayer(soundFile);
-		    this.soundPlayer.setOnEndOfMedia(new Runnable() {
+		    this.soundPlayer.setOnReady(new Runnable() {
+
 		        public void run() {
-		        	soundPlayer.seek(Duration.ZERO);
+
+		            System.out.println("Duration: "+soundFile.getDuration().toSeconds());
+
+		            // display media's metadata
+		            for (Map.Entry<String, Object> entry : soundFile.getMetadata().entrySet()){
+		                System.out.println(entry.getKey() + ": " + entry.getValue());
+		            }
+
 		        }
-		     });
-		if(loop = false) {
+		    /*this.soundPlayer.setStopTime(Duration.minutes(1.0));/*setOnEndOfMedia(new Runnable() {
+		      public void run() {
+		        	soundPlayer.seek(Duration.ONE);
+		        }
+		     });*/
+		});}
+		else{
 			this.soundFile = new Media(filePath);
 			this.soundPlayer = new MediaPlayer(soundFile);
 			this.soundPlayer.setCycleCount(1);
@@ -54,7 +68,7 @@ public class SoundEffect{
 		        }
 			});		    
 		}
-	}
+	
 	}
 	/*
 	public SoundEffect(String filePath) {
@@ -63,7 +77,7 @@ public class SoundEffect{
 	}
 	*/
 	public void play(){
-	    soundPlayer.play();
+		soundPlayer.play();
 	}
 
 	//public void start(){
@@ -75,11 +89,11 @@ public class SoundEffect{
 	    soundFX.stop();
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		String uriString = new File("C:\\Users\\BT_1N3_18\\git\\AnimalCare\\Say\\AnimalCare\\src\\sound\\news.mp3").toURI().toString();
 		SoundEffect test = new SoundEffect(uriString, true);
 		test.play();
-	}
+	}*/
 }
 
 /*
