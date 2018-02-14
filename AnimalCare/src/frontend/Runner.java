@@ -162,6 +162,7 @@ public class Runner extends Application
 					timeDay=now + day;
 					currentChar.changeDaysAlive(1);
 					days.setText("Days Alive: " + currentChar.getDaysAlive());
+					CSVTools.update(fileName, currentChar.toString());
 				}
 			}
 		};
@@ -188,6 +189,7 @@ public class Runner extends Application
 					{
 						//if not, RIP, show game over screen.
 						dTimer.stop();
+						CSVTools.update(fileName, currentChar.toString());
 						GridPane deathScreen = new GridPane(); 
 						deathScreen.setId("deathScreen");
 						deathScreen.getStylesheets().add("stylesheets/DeathPage.css"); 
