@@ -62,7 +62,7 @@ public class CSVTools
 	* @param file - The name/path of the csv file.
 	* @param info - The comma-separated information of one character retrieved by calling the toString() function on it.
 	*/
-	public static void writeToCSV(String file, String info)
+	public static void writeToCSV(String file, String info, List<GameCharacter> pets)
 	{
 		//Creates a File object according to the filename specified in the file parameter.
 		File csv=new File(file);
@@ -75,6 +75,11 @@ public class CSVTools
 		catch (IOException e)
 		{
 			e.printStackTrace();
+		}
+		StringBuilder sb=new StringBuilder();
+		for (int row=1; row<pets.size(); row++)
+		{
+			sb.append(pets.get(row).toString());
 		}
 	}
 	/**
@@ -110,6 +115,10 @@ public class CSVTools
 		}
 		return pets;
 	}
+	/**
+	* Clears the CSV file - used for testing.
+	* @param file - The name/path of the csv file.
+	*/
 	public static void clearCSV(String file)
 	{
 		PrintWriter pw = null;
@@ -123,9 +132,16 @@ public class CSVTools
 		}
 		pw.close();
 	}
-	
-	public static void update(String file, int row, List<GameCharacter> pets)
+	/**
+	* Writes a new line to the CSV file.
+	* @param file - The name/path of the csv file.
+	* @param info - The comma-separated information of one character retrieved by calling the toString() function on it.
+	*/
+	public static void update(String file, String info)
 	{
-		
+		List<GameCharacter> pets = readCSV(file);
+		int row = pets.size();
+		pets.remove(pets.get(row-1));
+		writeToCSV(file, info, pets);
 	}
 }
