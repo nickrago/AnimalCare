@@ -111,7 +111,7 @@ public class GameCharacter
 	}
 	public String toString()
 	{
-		//Converts the data of the character into a comma-delimited string.
+		//Converts the data of the character into a comma-separated string.
 		//Also, do not add "\n" to this string. it makes no sense conceptually to put it in this function.
 		//It makes more sense to put "\n" in the CSVTools file when creating a new line.
 		return this.charName + "," + this.isAlive + "," + this.daysAlive + "," + this.charCleanliness + "," + this.charHunger + "," + this.charHealth;

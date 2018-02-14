@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class CSVTools
 {
 	//test code
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
-		/*GameCharacter c=new GameCharacter("Holden");
+		GameCharacter c=new GameCharacter("Holden");
 		writeToCSV("characters.csv",c.toString());
 		List<GameCharacter> list=readCSV("characters.csv");
 		for(GameCharacter x:list)
@@ -32,8 +32,8 @@ public class CSVTools
 			System.out.println(x.getCharCleanliness());
 			System.out.println(x.getCharHunger());
 			System.out.println(x.getCharHealth());
-		}*/
-	}
+		}
+	}*/
 	//create toString method in gameCharacter - back end
 	public static void writeCSV(String file, List<GameCharacter> pets)
 	{
@@ -57,11 +57,18 @@ public class CSVTools
 		//make sb go back to empty so it writes over the same line instead of going further
 		pw.close();
 	}
+	/**
+	* Writes a new line to the CSV file.
+	* @param file - The name/path of the csv file.
+	* @param info - The comma-separated information of one character retrieved by calling the toString() function on it.
+	*/
 	public static void writeToCSV(String file, String info)
-	{ 
+	{
+		//Creates a File object according to the filename specified in the file parameter.
 		File csv=new File(file);
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(csv, true)))
 		{
+			//Adds the information of the character on a new line.
 			bw.append("\n"+info);
 			bw.close();
 		}
@@ -70,12 +77,17 @@ public class CSVTools
 			e.printStackTrace();
 		}
 	}
+	/**
+	* Retrieves all characters from the csv data file.
+	* @param file - The name/path of the csv file.
+	* @return A List containing all characters listed in the csv file.
+	*/
 	public static List<GameCharacter> readCSV(String file)
 	{
 		List<GameCharacter> pets=new ArrayList<>();
 		Path path = Paths.get(file);
 		try(BufferedReader br=Files.newBufferedReader(path,StandardCharsets.US_ASCII))
-		{	
+		{
 			String line=br.readLine();
 			line=br.readLine();
 			while (line!=null)
