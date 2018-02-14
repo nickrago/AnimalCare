@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Runner extends Application
 {
@@ -44,6 +45,9 @@ public class Runner extends Application
 	int maxClean=0;
 	//currentChar is the character that the player selects.
 	GameCharacter currentChar;
+	
+	List<GameCharacter> pets = CSVTools.readCSV(fileName);
+	
 	public static void main(String args[])
 	{
 		launch(args);
@@ -206,7 +210,7 @@ public class Runner extends Application
 			/*test code
 			currentChar.changeHunger(-100);
 			*/
-			CSVTools.writeToCSV(fileName, currentChar.toString());
+			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			//Sets the text fields for the stats.
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
@@ -230,7 +234,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			CSVTools.writeToCSV(fileName, currentChar.toString());
+			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
@@ -250,7 +254,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			CSVTools.writeToCSV(fileName, currentChar.toString());
+			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
@@ -270,7 +274,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			CSVTools.writeToCSV(fileName, currentChar.toString());
+			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
@@ -290,7 +294,7 @@ public class Runner extends Application
 			maxHunger = Utilities.baseHunger[currentChar.getPos()];
 			maxClean = Utilities.baseClean[currentChar.getPos()];
 			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			CSVTools.writeToCSV(fileName, currentChar.toString());
+			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
 			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
