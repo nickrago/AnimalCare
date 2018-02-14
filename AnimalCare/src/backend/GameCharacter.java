@@ -1,5 +1,5 @@
 package backend;
-/*
+/**
 *	Authors: Justin Fagan, Amir Hasan, Anis Tarafdar
 *	Description: GameCharacter represents the animal that the player cares for.
 */
@@ -33,9 +33,8 @@ public class GameCharacter
 		this.charCleanliness=Utilities.baseClean[pos];
 		this.daysAlive=0;
 		this.isAlive=true;
-		
 	}
-	//This constructor is for LOADING CHARACTERS.
+	//This constructor is for LOADING CHARACTERS (from the CSV).
 	public GameCharacter(String charName, boolean isAlive, int daysAlive, int charCleanliness, int charHunger, int charHealth)
 	{
 		this.charName=charName.toLowerCase();
