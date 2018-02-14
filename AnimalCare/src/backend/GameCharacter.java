@@ -13,7 +13,7 @@ public class GameCharacter
 	private int daysAlive;
 	private boolean isAlive;
 	private int pos;
-	//this constructor is for making NEW CHARACTERS.
+	//This constructor is for making NEW CHARACTERS.
 	public GameCharacter(String charName) 
 	{
 		this.charName=charName;
@@ -35,7 +35,7 @@ public class GameCharacter
 		this.isAlive=true;
 		
 	}
-	//this constructor is for LOADING CHARACTERS.
+	//This constructor is for LOADING CHARACTERS.
 	public GameCharacter(String charName, boolean isAlive, int daysAlive, int charCleanliness, int charHunger, int charHealth)
 	{
 		this.charName=charName.toLowerCase();
@@ -110,7 +110,10 @@ public class GameCharacter
 		return pos;
 	}
 	public String toString()
-	{ 
-		return this.charName + "," + this.isAlive + "," + this.daysAlive + "," + this.charCleanliness + "," + this.charHunger + "," + this.charHealth + "\n";
+	{
+		//Converts the data of the character into a comma-delimited string.
+		//Also, do not add "\n" to this string. it makes no sense conceptually to put it in this function.
+		//It makes more sense to put "\n" in the CSVTools file when creating a new line.
+		return this.charName + "," + this.isAlive + "," + this.daysAlive + "," + this.charCleanliness + "," + this.charHunger + "," + this.charHealth;
 	}
 }
