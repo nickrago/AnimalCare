@@ -100,9 +100,9 @@ public class GameCharacter
 	{
 		return isAlive;
 	}
-	public void changeIsAlive(boolean isAlive)
+	public void changeIsAlive()
 	{
-		this.isAlive=isAlive;
+		this.isAlive=!isAlive;
 	}
 	public int getPos()
 	{
