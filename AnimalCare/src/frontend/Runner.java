@@ -308,7 +308,28 @@ public class Runner extends Application
 		primaryStage.show();
 	}
 	/**
-		Initializes the game by taking in the front-end elements as parameters and updating them.
+	 * Initializes the game by taking in the front-end elements as parameters and updating them.
+	 * 	@param txt
+	 * 			Changes the text to tell the player which character they chose.
+	 * @param characterDisplay
+	 * 			Updates the character display based on the character chosen
+	 * @param primaryStage
+	 * 			the Stage of the program
+	 * @param nurturePage
+	 * 			the Scene of the character
+	 * @param characterLayout
+	 * 			the BorderPane of the game that holds buttons and the characters
+	 * @param hunger 
+	 * 			the hunger level of the character
+	 * @param cleanliness
+	 * 			the cleanliness level of the character
+	 * @param health
+	 * 			the health level of the character
+	 * @param days
+	 * 			the amount of days the character has been alive
+	 * @param titleMusic
+	 * 			the sound effect of the main screen
+	 * 
 	*/
 	public void initCharacter(Text txt, Pane characterDisplay, Stage primaryStage, Scene nurturePage, BorderPane characterLayout, Text hunger, Text cleanliness, Text health, Text days, SoundEffect titleMusic)
 	{
