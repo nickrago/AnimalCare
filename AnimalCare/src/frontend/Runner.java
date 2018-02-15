@@ -22,6 +22,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.awt.Font;
 import java.io.File;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public class Runner extends Application
 	long timeSwap;
 	//day, dec, and swap represent how long it takes to shift one day, to decrease stats, and to swap images, respectively.
 	static long day=30000000000L;
-	static long dec=5000000000L;
+	static long dec=10000000000L;
 	static long swap=3000000000L;
 	//maxHunger, maxHealth, and maxClean represent the current character's max stats.
 	int maxHunger=0;
@@ -91,9 +93,10 @@ public class Runner extends Application
 		medicate.setPrefSize(200, 100);
 		//Puts the stats into their own region of the screen.
 		VBox daysAliveBox = new VBox(10);
-		daysAliveBox.getChildren().addAll(back, days,hunger,cleanliness,health);
-		daysAliveBox.setStyle("-fx-background-color: #FFFFFF;");
 		
+		daysAliveBox.getChildren().addAll(back, days,hunger,cleanliness,health);
+		daysAliveBox.setStyle("-fx-font: 18px \"Arial\"; -fx-stroke-width: 14;");
+			
 		buttonContainer.getChildren().addAll(feed, clean, medicate);
 		characterLayout.setTop(characterName);
 		characterLayout.setCenter(characterDisplay);
@@ -171,13 +174,12 @@ public class Runner extends Application
 					{
 						//if not, RIP, show game over screen.
 						dTimer.stop();
-						currentChar.changeIsAlive();
+						currentChar.changeIsAlive(false);
 						CSVTools.update(fileName, currentChar.toString());
 						GridPane deathScreen = new GridPane(); 
 						deathScreen.setId("deathScreen");
 						deathScreen.getStylesheets().add("stylesheets/DeathPage.css"); 
 						Scene deathPage = new Scene(deathScreen, dimX, dimY);
-						deathPage.getStylesheets().add("stylesheets/DeathPage.css");
 						primaryStage.setScene(deathPage);
 						this.stop();
 					}
@@ -249,7 +251,6 @@ public class Runner extends Application
 				hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			}
 		});
-		
 		clean.setOnAction(e->
 		{
 			if(currentChar.getCharCleanliness()<=maxClean-Utilities.clean)
@@ -275,8 +276,6 @@ public class Runner extends Application
 				health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
 			}
 		});
-		
-		
 		GridPane gameScreen = new GridPane();
 		gameScreen.setId("gamescreen");
 		
@@ -300,38 +299,12 @@ public class Runner extends Application
 			titleMusic.play();
 		});
 		scene.getStylesheets().add("stylesheets/style.css");
-		
-		back.setOnAction(e->{
-			primaryStage.setScene(scene);
-			currentChar = null;
-		});
 		//Starts the game on the main screen.
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 	/**
-	 * Initializes the game by taking in the front-end elements as parameters and updating them.
-	 * 	@param txt
-	 * 			Changes the text to tell the player which character they chose.
-	 * @param characterDisplay
-	 * 			Updates the character display based on the character chosen
-	 * @param primaryStage
-	 * 			the Stage of the program
-	 * @param nurturePage
-	 * 			the Scene of the character
-	 * @param characterLayout
-	 * 			the BorderPane of the game that holds buttons and the characters
-	 * @param hunger 
-	 * 			the hunger level of the character
-	 * @param cleanliness
-	 * 			the cleanliness level of the character
-	 * @param health
-	 * 			the health level of the character
-	 * @param days
-	 * 			the amount of days the character has been alive
-	 * @param titleMusic
-	 * 			the sound effect of the main screen
-	 * 
+		Initializes the game by taking in the front-end elements as parameters and updating them.
 	*/
 	public void initCharacter(Text txt, Pane characterDisplay, Stage primaryStage, Scene nurturePage, BorderPane characterLayout, Text hunger, Text cleanliness, Text health, Text days, SoundEffect titleMusic)
 	{
