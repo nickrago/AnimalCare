@@ -14,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -58,6 +59,7 @@ public class Runner extends Application
 	{ 
 		//Sets the title of the window.
 		primaryStage.setTitle("Animal Care: Game of the Year Edition");
+		primaryStage.getIcons().add(new Image("file:src/frontend/animalcrossingleaf.png"));
 		//Character buttons for main screen.
 		Button martha = new Button("");
 		Button amelie = new Button("");
