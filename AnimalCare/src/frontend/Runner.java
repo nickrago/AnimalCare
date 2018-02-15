@@ -176,6 +176,7 @@ public class Runner extends Application
 						deathScreen.setId("deathScreen");
 						deathScreen.getStylesheets().add("stylesheets/DeathPage.css"); 
 						Scene deathPage = new Scene(deathScreen, dimX, dimY);
+						deathPage.getStylesheets().add("stylesheets/DeathPage.css");
 						primaryStage.setScene(deathPage);
 						this.stop();
 					}
@@ -272,6 +273,8 @@ public class Runner extends Application
 				health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
 			}
 		});
+		
+		
 		GridPane gameScreen = new GridPane();
 		gameScreen.setId("gamescreen");
 		
@@ -295,6 +298,11 @@ public class Runner extends Application
 			titleMusic.play();
 		});
 		scene.getStylesheets().add("stylesheets/style.css");
+		
+		back.setOnAction(e->{
+			primaryStage.setScene(scene);
+			currentChar = null;
+		});
 		//Starts the game on the main screen.
 		primaryStage.setScene(scene);
 		primaryStage.show();
