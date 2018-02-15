@@ -6,6 +6,7 @@ package frontend;
 */
 
 import backend.GameCharacter;
+import backend.SoundEffect;
 import backend.Utilities;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -13,7 +14,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -22,7 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
 
 public class Runner extends Application
@@ -46,37 +46,16 @@ public class Runner extends Application
 	int maxClean=0;
 	//currentChar is the character that the player selects.
 	GameCharacter currentChar;
-	
+	//Creates a list of characters by reading the CSV file.
 	static List<GameCharacter> pets = CSVTools.readCSV(fileName);
-	
 	public static void main(String args[])
 	{
 		launch(args);
-		//CSVTools.clearCSV(fileName);
-		//Creates the CSV
-		//List<GameCharacter> pets = CSVTools.readCSV(fileName);
-		//CSVTools.writeCSV(fileName, pets);
 	}
 	public void start(Stage primaryStage)
 	{ 
-		/*CSVTools.clearCSV(fileName);
-		CSVTools.writeCSV(fileName, new ArrayList());
-		*/
 		//Sets the title of the window.
 		primaryStage.setTitle("Animal Care: Game of the Year Edition");
-		/*
-		//Starts main music loop.
-		URL resource = getClass().getResource("animalforest.mp3");
-		MediaPlayer titleScreen =new MediaPlayer(new Media(resource.toString()));
-		titleScreen.setOnEndOfMedia(new Runnable()
-		{
-			public void run()
-			{
-				titleScreen.seek(Duration.ZERO);
-			}
-		});
-		titleScreen.play();
-		*/
 		//Character buttons for main screen.
 		Button martha = new Button("");
 		Button amelie = new Button("");
@@ -113,7 +92,7 @@ public class Runner extends Application
 		//Puts the stats into their own region of the screen.
 		VBox daysAliveBox = new VBox(10);
 		daysAliveBox.getChildren().addAll(back, days,hunger,cleanliness,health);
-		//daysAliveBox.setStyle("-fx-background-color: #FFFFFF;");
+		daysAliveBox.setStyle("-fx-background-color: #FFFFFF;");
 		
 		buttonContainer.getChildren().addAll(feed, clean, medicate);
 		characterLayout.setTop(characterName);
@@ -138,7 +117,10 @@ public class Runner extends Application
 		
 		primaryStage.setHeight(dimY);
 		primaryStage.setWidth(dimX);
-		
+		//Title screen music is initialized. It loops, too!
+		String titleURI = new File("src/sound/animalforest.mp3").toURI().toString();
+		SoundEffect titleMusic = new SoundEffect(titleURI, true);
+		titleMusic.play();
 		//swapTimer is the timer that swaps the character image back to the main image after a few seconds following pressing the feed, medicate, or clean buttons.
 		AnimationTimer swapTimer = new AnimationTimer()
 		{
@@ -200,111 +182,54 @@ public class Runner extends Application
 				}
 			}
 		};
-		
 		//Each character button has basically the same code in it, just using a different name each.
 		martha.setOnAction(e->
 		{
 			currentChar=new GameCharacter("Martha");
-			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			/*//The max stats are set from the Utilities class file.
-			maxHunger = Utilities.baseHunger[currentChar.getPos()];
-			maxClean = Utilities.baseClean[currentChar.getPos()];
-			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			test code
-			currentChar.changeHunger(-100);
-			
-			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
-			//Sets the text fields for the stats.
-			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
-			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
-			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
+			initCharacter(txt, characterDisplay, primaryStage, nurturePage, characterLayout, hunger, cleanliness, health, days, titleMusic);
 			//Starts the timer for decreasing the stats of the character.
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			//Starts timing the in-game days.
-			//Timer for setting daily events : 60000000000L (60 seconds)
 			timeDay = System.nanoTime() + day;
 			dTimer.start();
 		});
-		
 		amelie.setOnAction(e->
 		{
 			currentChar=new GameCharacter("Amelie");
-			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			/*maxHunger = Utilities.baseHunger[currentChar.getPos()];
-			maxClean = Utilities.baseClean[currentChar.getPos()];
-			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
-			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
-			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
-			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
+			initCharacter(txt, characterDisplay, primaryStage, nurturePage, characterLayout, hunger, cleanliness, health, days, titleMusic);
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			timeDay = System.nanoTime() + day;
 			dTimer.start();
 		});
-		
 		mimi.setOnAction(e->
 		{
 			currentChar=new GameCharacter("Mimi");
-			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			/*maxHunger = Utilities.baseHunger[currentChar.getPos()];
-			maxClean = Utilities.baseClean[currentChar.getPos()];
-			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
-			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
-			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
-			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
+			initCharacter(txt, characterDisplay, primaryStage, nurturePage, characterLayout, hunger, cleanliness, health, days, titleMusic);
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			timeDay = System.nanoTime() + day;
 			dTimer.start();
 		});
-		
 		ned.setOnAction(e->
 		{
 			currentChar=new GameCharacter("Ned");
-			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			/*maxHunger = Utilities.baseHunger[currentChar.getPos()];
-			maxClean = Utilities.baseClean[currentChar.getPos()];
-			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
-			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
-			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
-			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
+			initCharacter(txt, characterDisplay, primaryStage, nurturePage, characterLayout, hunger, cleanliness, health, days, titleMusic);
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			timeDay = System.nanoTime() + day;
 			dTimer.start();
 		});
-		
 		holden.setOnAction(e->
 		{
 			currentChar = new GameCharacter("Holden");
-			initCharacter(health, characterDisplay, primaryStage, currentChar, maxClean, maxClean, maxClean, nurturePage, characterLayout, hunger, cleanliness, health, days);
-			/*txt.setText("You Have Selected Holden");
-			characterLayout.setStyle("-fx-background-image: url(\"backgroundimages/holden.png\"); -fx-background-size: stretch;");
-			characterDisplay.setStyle("-fx-background-image: url(\"holdencharacterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;");
-			primaryStage.setScene(nurturePage);
-			currentChar=new GameCharacter("Holden");
-			maxHunger = Utilities.baseHunger[currentChar.getPos()];
-			maxClean = Utilities.baseClean[currentChar.getPos()];
-			maxHealth = Utilities.baseHealth[currentChar.getPos()];
-			CSVTools.writeToCSV(fileName, currentChar.toString(),pets);
-			hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
-			cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
-			health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
-			days.setText("Days Alive: " + currentChar.getDaysAlive());*/
+			initCharacter(txt, characterDisplay, primaryStage, nurturePage, characterLayout, hunger, cleanliness, health, days, titleMusic);
 			timeDec=System.nanoTime()+dec;
 			decTimer.start();
 			timeDay = System.nanoTime() + day;
 			dTimer.start();
 		});
-		
 		//The three player actions directly below do the same thing for different stats.
 		feed.setOnAction(e->
 		{
@@ -322,7 +247,6 @@ public class Runner extends Application
 				hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			}
 		});
-		
 		clean.setOnAction(e->
 		{
 			if(currentChar.getCharCleanliness()<=maxClean-Utilities.clean)
@@ -348,9 +272,6 @@ public class Runner extends Application
 				health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
 			}
 		});
-		
-		
-		
 		GridPane gameScreen = new GridPane();
 		gameScreen.setId("gamescreen");
 		
@@ -364,47 +285,43 @@ public class Runner extends Application
 		gameScreen.add(holden,5,6);
 		
 		Scene scene = new Scene(gameScreen, dimX, dimY);
-		
-		back.setOnAction(e->{
-			primaryStage.setScene(scene);
+		//When the user goes back to the main screen, the current character is changed to null and the timers are stopped.
+		back.setOnAction(e->
+		{
+			dTimer.stop();
+			decTimer.stop();
 			currentChar = null;
+			primaryStage.setScene(scene);
+			titleMusic.play();
 		});
-		
 		scene.getStylesheets().add("stylesheets/style.css");
 		//Starts the game on the main screen.
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	public static void initCharacter(Text txt, Pane characterDisplay, Stage primaryStage, GameCharacter currentChar, int maxHunger, int maxClean, int maxHealth, Scene nurturePage, BorderPane characterLayout, Text hunger, Text cleanliness, Text health, Text days ) {
-		
+	/**
+		Initializes the game by taking in the front-end elements as parameters and updating them.
+	*/
+	public void initCharacter(Text txt, Pane characterDisplay, Stage primaryStage, Scene nurturePage, BorderPane characterLayout, Text hunger, Text cleanliness, Text health, Text days, SoundEffect titleMusic)
+	{
+		//The background and main images are set according to the characters' names.
 		String imagePath = "-fx-background-image: url(\""+currentChar.getCharName().toLowerCase()+"characterimages/main.png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
 		String backgroundImagePath = "-fx-background-image: url(\""+"backgroundimages/"+currentChar.getCharName().toLowerCase()+".png\"); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-position: center;";
-		
 		txt.setText("You Have Selected" + currentChar.getCharName());
 		characterLayout.setStyle(backgroundImagePath);
 		characterDisplay.setStyle(imagePath);
 		primaryStage.setScene(nurturePage);
-		//currentChar=new GameCharacter("Holden");
+		//The max stats of each character are retrieved from the Utilities file.
 		maxHunger = Utilities.baseHunger[currentChar.getPos()];
 		maxClean = Utilities.baseClean[currentChar.getPos()];
 		maxHealth = Utilities.baseHealth[currentChar.getPos()];
 		CSVTools.writeToCSV(fileName, currentChar.toString(), pets);
+		//Sets up the text fields for the stats.
 		hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 		cleanliness.setText("Hygiene: " + currentChar.getCharCleanliness() + "/" + maxClean);
 		health.setText("Health: " + currentChar.getCharHealth() + "/" + maxHealth);
 		days.setText("Days Alive: " + currentChar.getDaysAlive());
+		//Stops the title screen music.
+		titleMusic.stop();
 	}
 }
-/*
-URL resource = getClass().getResource("abcd.mp3");
-MediaPlayer a =new MediaPlayer(new Media(resource.toString()));
-a.setOnEndOfMedia(
-	new Runnable()
-	{
-		public void run()
-		{
-			a.seek(Duration.ZERO);
-		}
-	});
-a.play();
-*/
