@@ -38,7 +38,7 @@ public class Runner extends Application
 	long timeSwap;
 	//day, dec, and swap represent how long it takes to shift one day, to decrease stats, and to swap images, respectively.
 	static long day=30000000000L;
-	static long dec=10000000000L;
+	static long dec=5000000000L;
 	static long swap=3000000000L;
 	//maxHunger, maxHealth, and maxClean represent the current character's max stats.
 	int maxHunger=0;
