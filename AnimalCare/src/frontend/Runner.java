@@ -249,6 +249,7 @@ public class Runner extends Application
 				hunger.setText("Hunger: " + currentChar.getCharHunger() + "/" + maxHunger);
 			}
 		});
+		
 		clean.setOnAction(e->
 		{
 			if(currentChar.getCharCleanliness()<=maxClean-Utilities.clean)
