@@ -171,7 +171,7 @@ public class Runner extends Application
 					{
 						//if not, RIP, show game over screen.
 						dTimer.stop();
-						currentChar.changeIsAlive(false);
+						currentChar.changeIsAlive();
 						CSVTools.update(fileName, currentChar.toString());
 						GridPane deathScreen = new GridPane(); 
 						deathScreen.setId("deathScreen");
